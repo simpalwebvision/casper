@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998399878014",
+    "project_id": "caspro-enterprises",
+    "storage_bucket": "caspro-enterprises.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998399878014:android:7691d332ec472dea5d492f",
+        "android_client_info": {
+          "package_name": "com.webvision.caspro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMMDKnB8bvnoKwonmY4WAA9p5IubpVmR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
