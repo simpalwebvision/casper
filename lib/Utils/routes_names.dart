@@ -4,6 +4,7 @@ import 'package:caspro_enterprises/Screens/Type-Admin/Home/admin_home_screen.dar
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manufacturing_unit_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints-List/complaints_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/History/history_list.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/technician_complaints_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Home/technician_home_screen.dart';
 import 'package:caspro_enterprises/Widgets/pdf_viewer_page.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,7 @@ class RouteNames {
 
   //! Technician Screen
   static const String technicianHomeScreen = "/technician_home_screen";
+  static const String techComplaintsList = "/tech_complaints_list";
 
   //! Manufacturing Unit Screen
   static const String manufacturingUnitHomeScreen =
@@ -96,6 +98,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.technicianHomeScreen,
             page: () => const TechnicianHomeScreen(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(milliseconds: 500)),
+
+        GetPage(
+            name: RouteNames.techComplaintsList,
+            page: () => const TechnicianComplaintsList(),
             transition: Transition.fade,
             transitionDuration: const Duration(milliseconds: 500)),
 

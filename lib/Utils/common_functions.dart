@@ -169,8 +169,10 @@ class CommonFunctions {
   stateCityAreaDialogue(
       {required BuildContext context,
       required String title,
+      required String serachHint,
       required TextEditingController controller,
       required Function(String)? onChange,
+      required Widget titleEndIcon,
       required listWidget}) {
     return Get.dialog(
       GestureDetector(
@@ -190,13 +192,10 @@ class CommonFunctions {
                       child: Text(title,
                           style: GoogleFonts.poppins(
                               color: blackColor,
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold)),
                     ),
-                    const Icon(
-                      CupertinoIcons.location_solid,
-                      color: primaryColor,
-                    )
+                    titleEndIcon
                   ],
                 ),
                 const SizedBox(
@@ -235,7 +234,7 @@ class CommonFunctions {
                       errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: const BorderSide(color: Colors.red)),
-                      hintText: title,
+                      hintText: serachHint,
                       helperStyle: GoogleFonts.poppins(fontSize: 14),
                       counterText: ""),
                 ),

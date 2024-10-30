@@ -67,7 +67,7 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
             DashboardWidget(
               widgetText: 'Complaints',
               imageAssets: AppImages.complaints,
-              onClicked: () => Get.toNamed(RouteNames.complaintsList),
+              onClicked: () => Get.toNamed(RouteNames.techComplaintsList),
             ),
             DashboardWidget(
               widgetText: 'History',

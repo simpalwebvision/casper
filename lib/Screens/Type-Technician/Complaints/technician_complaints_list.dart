@@ -1,4 +1,3 @@
-import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints-List/complaints_list_controller.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
@@ -8,19 +7,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ComplaintsList extends StatefulWidget {
-  const ComplaintsList({super.key});
+import 'technician_complaints_list_controller.dart';
+
+class TechnicianComplaintsList extends StatefulWidget {
+  const TechnicianComplaintsList({super.key});
 
   @override
-  State<ComplaintsList> createState() => _ComplaintsListState();
+  State<TechnicianComplaintsList> createState() =>
+      _TechnicianComplaintsListState();
 }
 
-class _ComplaintsListState extends State<ComplaintsList> {
-  final controller = Get.put(ComplaintsListController());
+class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
+  final controller = Get.put(TechnicianComplaintsListController());
 
   @override
   void dispose() {
-    Get.delete<ComplaintsListController>();
+    Get.delete<TechnicianComplaintsListController>();
     super.dispose();
   }
 
@@ -159,12 +161,12 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                 ),
                                 const Spacer(),
                                 AppSmallButtonBorder(
-                                  backColor: successColor,
-                                  horizontalPadding: 20,
+                                  backColor: blueColor,
+                                  horizontalPadding: 10,
                                   child: Row(
                                     children: [
                                       Text(
-                                        "Assign",
+                                        "Proceed",
                                         style: GoogleFonts.poppins(
                                             color: whiteColor),
                                       ),
@@ -172,14 +174,12 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                         width: 10,
                                       ),
                                       const Icon(
-                                        Icons.person,
+                                        Icons.chevron_right,
                                         color: whiteColor,
-                                        size: 18,
                                       )
                                     ],
                                   ),
-                                  onPressed: () =>
-                                      controller.assignTechnician(context),
+                                  onPressed: () {},
                                 )
                               ],
                             ),
