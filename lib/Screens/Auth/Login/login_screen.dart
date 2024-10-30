@@ -82,12 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Obx(
                           () => LoginTextField(
                             pref: const Icon(
-                              CupertinoIcons.number_circle,
+                              CupertinoIcons.phone,
                               color: iconColor,
                             ),
-                            controllerValue: controller.ctlEmail.value,
-                            hintText: 'Email',
-                            inputType: TextInputType.emailAddress,
+                            controllerValue: controller.ctlMobile.value,
+                            hintText: 'Mobile',
+                            mLength: 10,
+                            inputType: TextInputType.number,
                             validate: (val) {
                               if (val!.isEmpty) {
                                 return "Cant be Empty.";

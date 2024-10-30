@@ -125,8 +125,8 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                       height: 5,
                                     ),
                                     const DetailWidgetHelper(
-                                      heading: "Email",
-                                      value: "test@gmail.com",
+                                      heading: "Address",
+                                      value: "",
                                     ),
                                     const SizedBox(
                                       height: 5,

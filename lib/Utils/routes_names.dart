@@ -104,7 +104,7 @@ class AppRoute {
         GetPage(
             name: RouteNames.techComplaintsList,
             page: () => const TechnicianComplaintsList(),
-            transition: Transition.fade,
+            transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 500)),
 
         //! Admin Screen

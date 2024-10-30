@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
+  final Rx<TextEditingController> ctlMobile = TextEditingController().obs;
   final Rx<TextEditingController> ctlPassword = TextEditingController().obs;
 
   RxBool isLoggingIn = false.obs;
@@ -18,7 +18,7 @@ class LoginController extends GetxController {
 
   @override
   void dispose() {
-    ctlEmail.value.dispose();
+    ctlMobile.value.dispose();
     ctlPassword.value.dispose();
     super.dispose();
   }
