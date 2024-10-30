@@ -86,7 +86,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             DashboardWidget(
               widgetText: "My Account",
               imageAssets: AppImages.account,
-              onClicked: () {},
+              onClicked: () => Get.toNamed(RouteNames.profileScreen),
             ),
           ],
         ),

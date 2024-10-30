@@ -16,6 +16,9 @@ import 'routes_names.dart';
 
 class CommonFunctions {
   final picker = ImagePicker();
+
+  DateTime todaysDate = DateTime.now();
+  String selectedVisitDate = "";
   static var globalContext = NavigationService.navigatorKey.currentContext!;
   static void hideKeyboard(BuildContext context) =>
       FocusScope.of(context).requestFocus(FocusNode());
@@ -54,6 +57,64 @@ class CommonFunctions {
   //     throw 'Could not launch $emailAddress';
   //   }
   // }
+
+  Future pickDate(BuildContext context, DateTime? pickedDate) async {
+    final initalDate = todaysDate;
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: pickedDate ?? initalDate,
+      firstDate: DateTime(todaysDate.year - 100),
+      lastDate: todaysDate,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: primaryColor,
+              onPrimary: whiteColor,
+              onSurface: blackColor,
+            ),
+            dialogBackgroundColor: primaryColor,
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (newDate == null) {
+      return ["null", null];
+    } else {
+      selectedVisitDate = DateFormat('dd-MM-yyyy').format(newDate);
+      return [selectedVisitDate, newDate];
+    }
+  }
+
+  Future pickDateFuture(BuildContext context, DateTime? pickedDate) async {
+    final initalDate = todaysDate;
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: pickedDate ?? initalDate,
+      firstDate: DateTime(todaysDate.year - 100),
+      lastDate: DateTime(todaysDate.year + 100),
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: primaryColor,
+              onPrimary: whiteColor,
+              onSurface: blackColor,
+            ),
+            dialogBackgroundColor: primaryColor,
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (newDate == null) {
+      return ["null", null];
+    } else {
+      selectedVisitDate = DateFormat('dd-MM-yyyy').format(newDate);
+      return [selectedVisitDate, newDate];
+    }
+  }
 
   String returnAppDateFormat(DateTime date) =>
       DateFormat('dd-MM-yyyy').format(date);

@@ -244,3 +244,52 @@ class SearchTextField extends StatelessWidget {
     );
   }
 }
+
+class DateFilterTextField extends StatelessWidget {
+  final String hint;
+  final VoidCallback? onTap;
+  final bool? rOnly;
+  final TextEditingController? controllerValue;
+  final TextAlign? textAlignment;
+  const DateFilterTextField(
+      {super.key,
+      this.rOnly = false,
+      this.textAlignment,
+      required this.hint,
+      required this.onTap,
+      required this.controllerValue});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      style: GoogleFonts.mukta(fontSize: 13, color: Colors.black),
+      controller: controllerValue,
+      onTap: onTap,
+      readOnly: rOnly!,
+      textAlign: textAlignment ?? TextAlign.center,
+      decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        filled: true,
+        fillColor: Colors.grey[200],
+        hintText: hint,
+        labelStyle: GoogleFonts.mukta(fontSize: 13, color: Colors.black87),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+            )),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.grey)),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.red)),
+      ),
+    );
+  }
+}
