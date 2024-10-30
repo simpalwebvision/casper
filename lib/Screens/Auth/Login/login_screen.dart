@@ -191,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 child: ElevatedButton(
                                                     onPressed: () => Get
                                                         .offAllNamed(RouteNames
-                                                            .adminHomeScreen),
+                                                            .superAdminHomeScreen),
                                                     child: Text(
                                                       "Super Admin",
                                                       style:
@@ -206,7 +206,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                               SizedBox(
                                                 width: double.infinity,
                                                 child: ElevatedButton(
-                                                    onPressed: () {},
+                                                    onPressed: () => Get
+                                                        .offAllNamed(RouteNames
+                                                            .adminHomeScreen),
                                                     child: Text(
                                                       "Admin",
                                                       style:
@@ -221,7 +223,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                               SizedBox(
                                                 width: double.infinity,
                                                 child: ElevatedButton(
-                                                    onPressed: () {},
+                                                    onPressed: () => Get
+                                                        .offAllNamed(RouteNames
+                                                            .technicianHomeScreen),
                                                     child: Text(
                                                       "Technician",
                                                       style:
@@ -236,7 +240,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                               SizedBox(
                                                 width: double.infinity,
                                                 child: ElevatedButton(
-                                                    onPressed: () {},
+                                                    onPressed: () => Get
+                                                        .offAllNamed(RouteNames
+                                                            .manufacturingUnitHomeScreen),
                                                     child: Text(
                                                       "Manufacturing Unit",
                                                       style:

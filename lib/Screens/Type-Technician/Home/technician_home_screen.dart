@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AdminHomeScreen extends StatefulWidget {
-  const AdminHomeScreen({super.key});
+class TechnicianHomeScreen extends StatefulWidget {
+  const TechnicianHomeScreen({super.key});
 
   @override
-  State<AdminHomeScreen> createState() => _AdminHomeScreenState();
+  State<TechnicianHomeScreen> createState() => _TechnicianHomeScreenState();
 }
 
-class _AdminHomeScreenState extends State<AdminHomeScreen> {
+class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +64,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 20.0,
           children: [
-            // DashboardWidget(
-            //   widgetText: 'Employees',
-            //   imageAssets: AppImages.users,
-            //   onClicked: () => Get.toNamed(RouteNames.employeesList),
-            // ),
             DashboardWidget(
               widgetText: 'Complaints',
               imageAssets: AppImages.complaints,

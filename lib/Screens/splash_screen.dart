@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       bool isLogin = await LocalPreferences().getLoginBool() ?? false;
 
       if (isLogin) {
-        Get.offAllNamed(RouteNames.adminHomeScreen);
+        Get.offAllNamed(RouteNames.superAdminHomeScreen);
       } else {
         Get.offAllNamed(RouteNames.loginScreen);
       }
