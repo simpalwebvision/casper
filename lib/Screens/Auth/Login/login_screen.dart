@@ -1,6 +1,7 @@
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
+import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/app_helpers.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text(
                           "Login Yourself",
-                          style: GoogleFonts.mukta(
+                          style: GoogleFonts.poppins(
                               color: secondaryColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
@@ -175,6 +176,79 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                     _formKey.currentState!.save();
                                     CommonFunctions.hideKeyboard(context);
+                                    Get.bottomSheet(
+                                        isScrollControlled: true,
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10, vertical: 10),
+                                          width: double.infinity,
+                                          color: whiteColor,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                    onPressed: () => Get
+                                                        .offAllNamed(RouteNames
+                                                            .adminHomeScreen),
+                                                    child: Text(
+                                                      "Super Admin",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  whiteColor),
+                                                    )),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Admin",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  whiteColor),
+                                                    )),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Technician",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  whiteColor),
+                                                    )),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Manufacturing Unit",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  whiteColor),
+                                                    )),
+                                              ),
+                                            ],
+                                          ),
+                                        ));
+
                                     // controller.loginUser();
                                   },
                             child: controller.isLoggingIn.value
@@ -183,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   )
                                 : Text(
                                     "Sign In",
-                                    style: GoogleFonts.mukta(
+                                    style: GoogleFonts.poppins(
                                         color: whiteColor,
                                         fontWeight: FontWeight.bold),
                                   ))),
@@ -204,13 +278,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 //   children: [
                 //     Text(
                 //       "Doesn't have an account yet ? ",
-                //       style: GoogleFonts.mukta(color: Colors.black),
+                //       style: GoogleFonts.poppins(color: Colors.black),
                 //     ),
                 //     InkWell(
                 //       onTap: () => Get.toNamed(RouteNames.introOneScreen),
                 //       child: Text(
                 //         "Sign Up",
-                //         style: GoogleFonts.mukta(
+                //         style: GoogleFonts.poppins(
                 //             color: primaryColor,
                 //             fontWeight: FontWeight.bold,
                 //             decoration: TextDecoration.underline),

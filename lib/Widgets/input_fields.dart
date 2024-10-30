@@ -36,7 +36,7 @@ class LoginTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChange,
-      style: GoogleFonts.mukta(fontSize: 14, color: blackColor),
+      style: GoogleFonts.poppins(fontSize: 14, color: blackColor),
       cursorColor: primaryColor,
       readOnly: rOnly!,
       textInputAction: actionNext,
@@ -54,9 +54,9 @@ class LoginTextField extends StatelessWidget {
           filled: true,
           fillColor: whiteColor,
           counterText: '',
-          errorStyle: GoogleFonts.mukta(color: Colors.red),
+          errorStyle: GoogleFonts.poppins(color: Colors.red),
           hintText: hintText,
-          hintStyle: GoogleFonts.mukta(
+          hintStyle: GoogleFonts.poppins(
             color: blackColor,
             fontSize: 12,
             letterSpacing: 1,
@@ -73,7 +73,7 @@ class LoginTextField extends StatelessWidget {
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.red)),
-          labelStyle: const TextStyle(fontSize: 14, color: Colors.black87)),
+          labelStyle: GoogleFonts.poppins(fontSize: 14, color: Colors.black87)),
     );
   }
 }
@@ -117,7 +117,7 @@ class StepperTextField extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return TextFormField(
       onChanged: onChange,
-      style: GoogleFonts.mukta(
+      style: GoogleFonts.poppins(
         fontSize: size.width * 0.034,
         color: Colors.black,
         letterSpacing: 1,
@@ -137,7 +137,7 @@ class StepperTextField extends StatelessWidget {
           suffixIcon: suf,
           label: Text(
             label ?? hintValue!,
-            style: GoogleFonts.mukta(),
+            style: GoogleFonts.poppins(),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -145,12 +145,12 @@ class StepperTextField extends StatelessWidget {
           fillColor: Colors.white,
           counterText: '',
           hintText: hintValue,
-          hintStyle: GoogleFonts.mukta(
+          hintStyle: GoogleFonts.poppins(
             fontSize: size.width * 0.034,
             color: Colors.black38,
             letterSpacing: 1,
           ),
-          errorStyle: GoogleFonts.mukta(
+          errorStyle: GoogleFonts.poppins(
               color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -165,11 +165,82 @@ class StepperTextField extends StatelessWidget {
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.red)),
-          labelStyle: GoogleFonts.mukta(
+          labelStyle: GoogleFonts.poppins(
             fontSize: size.width * 0.034,
             color: Colors.black,
             letterSpacing: 1,
           )),
+    );
+  }
+}
+
+class SearchTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+  final Color borderColor;
+  final Color focusedBorderColor;
+  final Color errorBorderColor;
+  final Color fillColor;
+  final TextStyle? textStyle;
+  final ValueChanged<String>? onChanged;
+
+  const SearchTextField({
+    super.key,
+    required this.controller,
+    this.hintText = 'Search ...',
+    this.borderColor = Colors.grey,
+    this.focusedBorderColor = Colors.blue,
+    this.errorBorderColor = Colors.red,
+    this.fillColor = Colors.white,
+    this.textStyle,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+      child: TextField(
+        controller: controller,
+        onChanged: onChanged,
+        style: textStyle ??
+            GoogleFonts.poppins(
+              fontSize: 14,
+            ),
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: GoogleFonts.poppins(
+            fontSize: 14,
+          ),
+          prefixIcon: const Icon(
+            Icons.search,
+            color: Colors.black,
+          ),
+          contentPadding: EdgeInsets.zero,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: borderColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: borderColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: focusedBorderColor, width: 1.8),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: errorBorderColor),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: errorBorderColor),
+          ),
+          filled: true,
+          fillColor: fillColor,
+        ),
+      ),
     );
   }
 }

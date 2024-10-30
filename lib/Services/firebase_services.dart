@@ -39,8 +39,6 @@ class FirebaseServices {
       description: 'For showing messsage notification.', // description
       importance: Importance.high,
     );
-
-    //  print(androidChannel);
   }
 
   void requestPermission() async {

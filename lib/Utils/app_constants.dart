@@ -37,7 +37,7 @@ Card settingsCommonCard({required Widget child}) {
 Text settingsTitle(String title) {
   return Text(
     title,
-    style: GoogleFonts.mukta(
+    style: GoogleFonts.poppins(
       color: blackColor,
       fontWeight: FontWeight.bold,
       fontSize: 13,

@@ -2,6 +2,7 @@ import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/local_shared_preferences.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
+import 'package:caspro_enterprises/Widgets/common_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       bool isLogin = await LocalPreferences().getLoginBool() ?? false;
 
       if (isLogin) {
-        Get.offAllNamed(RouteNames.homeScreen);
+        Get.offAllNamed(RouteNames.adminHomeScreen);
       } else {
         Get.offAllNamed(RouteNames.loginScreen);
       }
@@ -32,16 +33,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-              color: whiteColor,
-              image: DecorationImage(
-                  image: AssetImage(
-                AppImages.appLogo,
-              ))),
-          width: double.infinity,
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(),
+          Image.asset(
+            AppImages.appLogo,
+            width: double.infinity,
+          ),
+          const CommonLoader(),
+          const SizedBox(
+            height: 20,
+          ),
+        ],
+      )),
     );
   }
 }

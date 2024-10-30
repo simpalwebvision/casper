@@ -91,14 +91,14 @@ class CommonFunctions {
         margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
         titleText: Text(
           title,
-          style:
-              GoogleFonts.mukta(color: whiteColor, fontWeight: FontWeight.bold),
+          style: GoogleFonts.poppins(
+              color: whiteColor, fontWeight: FontWeight.bold),
         ),
         messageText: msg == null
             ? null
             : Text(
                 msg,
-                style: GoogleFonts.mukta(color: whiteColor),
+                style: GoogleFonts.poppins(color: whiteColor),
               ),
         snackPosition: position ?? SnackPosition.BOTTOM,
         backgroundColor: backColor ?? Colors.red,
@@ -127,7 +127,7 @@ class CommonFunctions {
                         icon: const Icon(Icons.arrow_back_ios)),
                     Expanded(
                       child: Text(title,
-                          style: GoogleFonts.mukta(
+                          style: GoogleFonts.poppins(
                               color: blackColor,
                               fontSize: 18,
                               fontWeight: FontWeight.bold)),
@@ -143,7 +143,7 @@ class CommonFunctions {
                 ),
                 TextFormField(
                   autofocus: true,
-                  style: GoogleFonts.mukta(fontSize: 14),
+                  style: GoogleFonts.poppins(fontSize: 14),
                   maxLength: 15,
                   onChanged: onChange,
                   validator: (value) {
@@ -175,7 +175,7 @@ class CommonFunctions {
                           borderRadius: BorderRadius.circular(8),
                           borderSide: const BorderSide(color: Colors.red)),
                       hintText: title,
-                      helperStyle: GoogleFonts.mukta(fontSize: 14),
+                      helperStyle: GoogleFonts.poppins(fontSize: 14),
                       counterText: ""),
                 ),
                 const SizedBox(
@@ -220,7 +220,7 @@ class CommonFunctions {
                   children: [
                     Text(
                       'Select By',
-                      style: GoogleFonts.mukta(
+                      style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                           fontSize: 17),
