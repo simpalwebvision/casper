@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AdminHomeScreen extends StatefulWidget {
-  const AdminHomeScreen({super.key});
+class CustomerHomeScreen extends StatefulWidget {
+  const CustomerHomeScreen({super.key});
 
   @override
-  State<AdminHomeScreen> createState() => _AdminHomeScreenState();
+  State<CustomerHomeScreen> createState() => _CustomerHomeScreenState();
 }
 
-class _AdminHomeScreenState extends State<AdminHomeScreen> {
+class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,13 +74,14 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
               imageAssets: AppImages.complaints,
               onClicked: () => Get.toNamed(RouteNames.complaintsList),
             ),
+
             DashboardWidget(
               widgetText: 'History',
               imageAssets: AppImages.history,
               onClicked: () => Get.toNamed(RouteNames.historyList),
             ),
             DashboardWidget(
-              widgetText: "Today's Offer",
+              widgetText: "Catalog",
               imageAssets: AppImages.offer,
               onClicked: () {},
             ),

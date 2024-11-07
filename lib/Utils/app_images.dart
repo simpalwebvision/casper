@@ -12,4 +12,6 @@ class AppImages {
   static const users = "assets/svg_images/users.svg";
   static const search = "assets/svg_images/search.svg";
   static const logout = "assets/svg_images/logout.svg";
+  static const uploadImage = "assets/svg_images/upload_image.svg";
+  static const customerManagement = "assets/svg_images/customer_management.svg";
 }

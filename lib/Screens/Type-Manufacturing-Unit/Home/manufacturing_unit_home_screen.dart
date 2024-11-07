@@ -77,7 +77,12 @@ class _ManufacturingUnitHomeScreenState
               onClicked: () => Get.toNamed(RouteNames.historyList),
             ),
             DashboardWidget(
-              widgetText: "Today's Offer",
+              widgetText: "Upload Image",
+              imageAssets: AppImages.uploadImage,
+              onClicked: () => Get.toNamed(RouteNames.uploadImageList),
+            ),
+            DashboardWidget(
+              widgetText: "Catalog",
               imageAssets: AppImages.offer,
               onClicked: () {},
             ),

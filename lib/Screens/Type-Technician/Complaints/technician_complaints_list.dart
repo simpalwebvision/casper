@@ -1,5 +1,6 @@
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
+import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/detail_widget_helper.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
@@ -79,13 +80,6 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                               height: 5,
                             ),
                             const DetailWidgetHelper(
-                              heading: "Assign To",
-                              value: "",
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            const DetailWidgetHelper(
                               heading: "Remark",
                               value: "",
                             ),
@@ -114,7 +108,7 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                     ),
                                     const DetailWidgetHelper(
                                       heading: "Name",
-                                      value: "",
+                                      value: "Siddhant Test",
                                     ),
                                     const SizedBox(
                                       height: 5,
@@ -128,7 +122,7 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                     ),
                                     const DetailWidgetHelper(
                                       heading: "Address",
-                                      value: "",
+                                      value: "Address test",
                                     ),
                                     const SizedBox(
                                       height: 5,
@@ -179,7 +173,8 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                       )
                                     ],
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      Get.toNamed(RouteNames.complaintProceed),
                                 )
                               ],
                             ),

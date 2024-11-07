@@ -77,13 +77,6 @@ class _ComplaintsListState extends State<ComplaintsList> {
                               height: 5,
                             ),
                             const DetailWidgetHelper(
-                              heading: "Assign To",
-                              value: "",
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            const DetailWidgetHelper(
                               heading: "Remark",
                               value: "",
                             ),

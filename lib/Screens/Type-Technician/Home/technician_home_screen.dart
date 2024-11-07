@@ -75,7 +75,7 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
               onClicked: () => Get.toNamed(RouteNames.historyList),
             ),
             DashboardWidget(
-              widgetText: "Today's Offer",
+              widgetText: "Catalog",
               imageAssets: AppImages.offer,
               onClicked: () {},
             ),

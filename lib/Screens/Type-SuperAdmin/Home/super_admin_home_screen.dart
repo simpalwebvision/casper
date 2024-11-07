@@ -70,6 +70,11 @@ class _SuperAdminHomeScreenState extends State<SuperAdminHomeScreen> {
               onClicked: () => Get.toNamed(RouteNames.employeesList),
             ),
             DashboardWidget(
+              widgetText: 'Customer',
+              imageAssets: AppImages.customerManagement,
+              onClicked: () => Get.toNamed(RouteNames.customerList),
+            ),
+            DashboardWidget(
               widgetText: 'Complaints',
               imageAssets: AppImages.complaints,
               onClicked: () => Get.toNamed(RouteNames.complaintsList),
@@ -80,7 +85,7 @@ class _SuperAdminHomeScreenState extends State<SuperAdminHomeScreen> {
               onClicked: () => Get.toNamed(RouteNames.historyList),
             ),
             DashboardWidget(
-              widgetText: "Today's Offer",
+              widgetText: "Catalog",
               imageAssets: AppImages.offer,
               onClicked: () {},
             ),

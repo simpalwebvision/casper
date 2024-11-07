@@ -209,23 +209,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 child: ElevatedButton(
                                                     onPressed: () => Get
                                                         .offAllNamed(RouteNames
-                                                            .adminHomeScreen),
-                                                    child: Text(
-                                                      "Admin",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  whiteColor),
-                                                    )),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                    onPressed: () => Get
-                                                        .offAllNamed(RouteNames
                                                             .technicianHomeScreen),
                                                     child: Text(
                                                       "Technician",
@@ -246,6 +229,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                                             .manufacturingUnitHomeScreen),
                                                     child: Text(
                                                       "Manufacturing Unit",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  whiteColor),
+                                                    )),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: ElevatedButton(
+                                                    onPressed: () => Get
+                                                        .offAllNamed(RouteNames
+                                                            .customerHomeScreen),
+                                                    child: Text(
+                                                      "Customer",
                                                       style:
                                                           GoogleFonts.poppins(
                                                               color:
