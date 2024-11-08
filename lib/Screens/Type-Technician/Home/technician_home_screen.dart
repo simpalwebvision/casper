@@ -300,7 +300,8 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                             children: [
                               Expanded(
                                 child: TechnicianDashBoardWidget(
-                                  onPressed: () => {},
+                                  onPressed: () =>
+                                      Get.toNamed(RouteNames.inventoryList),
                                   title: 'Spare Parts',
                                   iconString: AppImages.spareParts,
                                 ),
@@ -310,7 +311,8 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                               ),
                               Expanded(
                                 child: TechnicianDashBoardWidget(
-                                  onPressed: () => {},
+                                  onPressed: () =>
+                                      Get.toNamed(RouteNames.manualScreen),
                                   title: 'Manual',
                                   iconString: AppImages.manualImage,
                                 ),

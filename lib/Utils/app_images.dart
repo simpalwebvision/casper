@@ -21,4 +21,7 @@ class AppImages {
   static const expenseHome = 'assets/svg_images/expense_home.svg';
   static const spareParts = "assets/svg_images/spare_parts.svg";
   static const manualImage = "assets/svg_images/manual_image.svg";
+  static const imagesStore = "assets/svg_images/images_store.svg";
+  static const pdfImage = "assets/svg_images/pdf_image.svg";
+  static const filesStore = "assets/svg_images/files_store.svg";
 }
