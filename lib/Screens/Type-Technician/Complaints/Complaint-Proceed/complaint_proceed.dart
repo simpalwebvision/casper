@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
@@ -42,8 +43,8 @@ class _ComplaintProceedState extends State<ComplaintProceed> {
 
   Future<void> _initializeSpeech() async {
     _speechEnabled = await _speech.initialize(
-      onStatus: (status) => print("Speech status: $status"),
-      onError: (error) => print("Speech error: $error"),
+      onStatus: (status) => log("Speech status: $status"),
+      onError: (error) => log("Speech error: $error"),
     );
     setState(() {});
   }

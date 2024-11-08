@@ -19,18 +19,6 @@ class LocalPreferences {
 
   // ------------------------------------------------------------------
 
-  Future setTechnicianId(String val) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(techIdKey, val);
-  }
-
-  Future<String?> getTechnicianId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(techIdKey);
-  }
-
-  // ------------------------------------------------------------------
-
   Future setProfileData(String val) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(profileDataKey, val);

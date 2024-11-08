@@ -2,17 +2,19 @@ import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-AppBar commonAppBar(
-    {required BuildContext context,
-    required String heading,
-    String? subtitle,
-    double? elv = 0,
-    PreferredSizeWidget? bottom,
-    List<Widget>? widgetList,
-    VoidCallback? onPressed,
-    bool? centerTitle}) {
+AppBar commonAppBar({
+  required BuildContext context,
+  required String heading,
+  String? subtitle,
+  double? elv = 0,
+  PreferredSizeWidget? bottom,
+  List<Widget>? widgetList,
+  VoidCallback? onPressed,
+  bool? centerTitle,
+  Color? backColor,
+}) {
   return AppBar(
-    backgroundColor: secondaryColor,
+    backgroundColor: backColor ?? secondaryColor,
     elevation: elv,
     centerTitle: centerTitle,
     title: Text(

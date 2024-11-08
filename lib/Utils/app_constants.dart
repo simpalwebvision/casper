@@ -44,3 +44,26 @@ Text settingsTitle(String title) {
     ),
   );
 }
+
+double toFixed(num val) {
+  num mod = power(10, 2);
+  return (((val * mod)).floor().toDouble() / mod);
+}
+
+int power(int x, int n) {
+  int retval = 1;
+  for (int i = 0; i < n; i++) {
+    retval *= x;
+  }
+  return retval;
+}
+
+String checkNullOperatorFun(dynamic val) {
+  if (val == null) {
+    return "";
+  } else if (val.isEmpty) {
+    return "-";
+  } else {
+    return val;
+  }
+}

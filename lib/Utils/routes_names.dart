@@ -8,7 +8,10 @@ import 'package:caspro_enterprises/Screens/Type-SuperAdmin/CustomerList/customer
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/History/history_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/Complaint-Proceed/complaint_proceed.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/technician_complaints_list.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/History/history.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Home/technician_home_screen.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/AddExpense/add_expense.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/ExpenseList/expense_list.dart';
 import 'package:caspro_enterprises/Widgets/pdf_viewer_page.dart';
 import 'package:get/get.dart';
 
@@ -39,6 +42,9 @@ class RouteNames {
   static const String technicianHomeScreen = "/technician_home_screen";
   static const String techComplaintsList = "/tech_complaints_list";
   static const String complaintProceed = "/complaint_proceed";
+  static const String historyScreen = "/history_screen";
+  static const String expenseList = "/expense_list";
+  static const String addExpense = "/add_expense";
 
   //! Manufacturing Unit Screen
   static const String manufacturingUnitHomeScreen =
@@ -125,6 +131,24 @@ class AppRoute {
         GetPage(
             name: RouteNames.complaintProceed,
             page: () => const ComplaintProceed(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.historyScreen,
+            page: () => const HistoryScreen(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.expenseList,
+            page: () => const ExpenseList(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.addExpense,
+            page: () => const AddExpense(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

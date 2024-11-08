@@ -3,9 +3,12 @@ import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/dashboard_widget.dart';
+import 'package:caspro_enterprises/Widgets/detail_widget_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'technician_home_controller.dart';
 
 class TechnicianHomeScreen extends StatefulWidget {
   const TechnicianHomeScreen({super.key});
@@ -15,6 +18,14 @@ class TechnicianHomeScreen extends StatefulWidget {
 }
 
 class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
+  final controller = Get.put(TechnicianHomeController());
+
+  @override
+  void dispose() {
+    Get.delete<TechnicianHomeController>();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,43 +66,302 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
           ],
         ),
       ),
-      body: Container(
-        alignment: Alignment.topCenter,
-        child: GridView.count(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-          shrinkWrap: true,
-          crossAxisCount: 3,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 20.0,
-          children: [
-            DashboardWidget(
-              widgetText: 'Complaints',
-              imageAssets: AppImages.complaints,
-              onClicked: () => Get.toNamed(RouteNames.techComplaintsList),
+      body: RefreshIndicator(
+          onRefresh: () => controller.initData(),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 255, 149, 149),
+                        border: Border.all(color: blackColor),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Obx(
+                              () => Expanded(
+                                child: RechargeWidget(
+                                  ispassEnded:
+                                      controller.mobileRecharge.value == null
+                                          ? false
+                                          : controller.mobileRecharge.value!
+                                              .isPassEnded,
+                                  isPassExpiring:
+                                      controller.mobileRecharge.value == null
+                                          ? false
+                                          : controller.mobileRecharge.value!
+                                              .isPassEnding,
+                                  bgColor:
+                                      const Color.fromARGB(255, 254, 251, 172),
+                                  image: AppImages.mobileRecharge,
+                                  title: "Recharge",
+                                  fromDate: controller.mobileRecharge.value !=
+                                          null
+                                      ? controller.mobileRecharge.value!.id ==
+                                              null
+                                          ? "No Present Recharge"
+                                          : CommonFunctions()
+                                              .convertToApplicationShowDate(
+                                                  controller.mobileRecharge
+                                                      .value!.fromdate!)
+                                      : "-",
+                                  toDate: controller.mobileRecharge.value !=
+                                          null
+                                      ? controller.mobileRecharge.value!.id ==
+                                              null
+                                          ? "No Present Recharge"
+                                          : CommonFunctions()
+                                              .convertToApplicationShowDate(
+                                                  controller.mobileRecharge
+                                                      .value!.todate!)
+                                      : "-",
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Obx(
+                              () => Expanded(
+                                child: RechargeWidget(
+                                  ispassEnded: controller.trainPass.value ==
+                                          null
+                                      ? false
+                                      : controller.trainPass.value!.isPassEnded,
+                                  isPassExpiring:
+                                      controller.trainPass.value == null
+                                          ? false
+                                          : controller
+                                              .trainPass.value!.isPassEnding,
+                                  bgColor:
+                                      const Color.fromARGB(255, 172, 244, 254),
+                                  image: AppImages.trainPass,
+                                  title: "Train Pass",
+                                  fromDate: controller.trainPass.value != null
+                                      ? controller.trainPass.value!.id == null
+                                          ? "No Present Recharge"
+                                          : CommonFunctions()
+                                              .convertToApplicationShowDate(
+                                                  controller.trainPass.value!
+                                                      .fromdate!)
+                                      : "-",
+                                  toDate: controller.trainPass.value != null
+                                      ? controller.trainPass.value!.id == null
+                                          ? "No Present Recharge"
+                                          : CommonFunctions()
+                                              .convertToApplicationShowDate(
+                                                  controller
+                                                      .trainPass.value!.todate!)
+                                      : "-",
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: [
+                            Obx(
+                              () => Expanded(
+                                  child: ReportDataWidget(
+                                value: controller
+                                            .technicianDashboardExpenseModel
+                                            .value ==
+                                        null
+                                    ? 0.0
+                                    : double.parse(controller
+                                        .technicianDashboardExpenseModel
+                                        .value!
+                                        .loanBalance!),
+                                title: "Loan Wallet\nAmount",
+                                bgColor:
+                                    const Color.fromARGB(255, 173, 255, 218),
+                              )),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: TechnicianDashBoardWidget(
+                                onPressed: () =>
+                                    Get.toNamed(RouteNames.historyScreen),
+                                title: 'Loan Statement',
+                                iconString: AppImages.mytasksHome,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(color: blackColor),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Obx(
+                              () => Expanded(
+                                  child: ReportDataWidget(
+                                value: controller
+                                            .technicianDashboardExpenseModel
+                                            .value ==
+                                        null
+                                    ? 0.0
+                                    : double.parse(controller
+                                        .technicianDashboardExpenseModel
+                                        .value!
+                                        .balanceExpense!),
+                                title: "Expense\nSummary",
+                                bgColor:
+                                    const Color.fromARGB(255, 172, 206, 254),
+                              )),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: TechnicianDashBoardWidget(
+                                onPressed: () =>
+                                    Get.toNamed(RouteNames.expenseList),
+                                // onPressed: () =>
+                                // Get.toNamed(RouteNames.expenseList)!.then(
+                                //     (value) => controller.getProfileData()),
+                                title: 'Expense',
+                                iconString: AppImages.expenseHome,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: TechnicianDashBoardWidget(
+                                onPressed: () =>
+                                    Get.toNamed(RouteNames.techComplaintsList),
+                                title: 'Complaints\nList',
+                                iconString: AppImages.complaints,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: TechnicianDashBoardWidget(
+                                onPressed: () => {},
+                                title: 'Add\nComplaint',
+                                iconString: AppImages.complaints,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          border: Border.all(color: blackColor),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TechnicianDashBoardWidget(
+                                  onPressed: () => {},
+                                  title: 'Spare Parts',
+                                  iconString: AppImages.spareParts,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: TechnicianDashBoardWidget(
+                                  onPressed: () => {},
+                                  title: 'Manual',
+                                  iconString: AppImages.manualImage,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                ],
+              ),
             ),
-            DashboardWidget(
-              widgetText: 'History',
-              imageAssets: AppImages.history,
-              onClicked: () => Get.toNamed(RouteNames.historyList),
-            ),
-            DashboardWidget(
-              widgetText: "Catalog",
-              imageAssets: AppImages.offer,
-              onClicked: () {},
-            ),
-            DashboardWidget(
-              widgetText: "My Account",
-              imageAssets: AppImages.account,
-              onClicked: () => Get.toNamed(RouteNames.profileScreen),
-            ),
-            DashboardWidget(
-              widgetText: "Logout",
-              imageAssets: AppImages.logout,
-              onClicked: () => CommonFunctions().logOut(),
-            ),
-          ],
-        ),
-      ),
+          )
+
+          // Container(
+          //   alignment: Alignment.topCenter,
+          //   child: GridView.count(
+          //     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+          //     shrinkWrap: true,
+          //     crossAxisCount: 3,
+          //     crossAxisSpacing: 8.0,
+          //     mainAxisSpacing: 20.0,
+          //     children: [
+          //       DashboardWidget(
+          //         widgetText: 'Complaints',
+          //         imageAssets: AppImages.complaints,
+          //         onClicked: () => Get.toNamed(RouteNames.techComplaintsList),
+          //       ),
+          //       DashboardWidget(
+          //         widgetText: 'History',
+          //         imageAssets: AppImages.history,
+          //         onClicked: () => Get.toNamed(RouteNames.historyList),
+          //       ),
+          //       DashboardWidget(
+          //         widgetText: "Catalog",
+          //         imageAssets: AppImages.offer,
+          //         onClicked: () {},
+          //       ),
+          //       DashboardWidget(
+          //         widgetText: "My Account",
+          //         imageAssets: AppImages.account,
+          //         onClicked: () => Get.toNamed(RouteNames.profileScreen),
+          //       ),
+          //       DashboardWidget(
+          //         widgetText: "Logout",
+          //         imageAssets: AppImages.logout,
+          //         onClicked: () => CommonFunctions().logOut(),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          ),
     );
   }
 }
