@@ -27,7 +27,7 @@ class HistoryController extends GetxController {
     var result = await homeRepository.getHistoryByType(type);
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       if (type == "LOAN") {
         loadingLoanFun(false);
       } else {

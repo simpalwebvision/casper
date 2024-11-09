@@ -1,10 +1,13 @@
 import 'package:caspro_enterprises/Models/manuals_model.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Repository/manual_repository.dart';
+
 class ManualsController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  // ManualsRepository manualsRepository = ManualsRepository();
+  ManualsRepository manualsRepository = ManualsRepository();
   late AnimationController animationController;
   final RxBool isOpen = false.obs;
   RxBool isLoading = false.obs;
@@ -43,20 +46,20 @@ class ManualsController extends GetxController
   }
 
   Future getManuals() async {
-    // loadingFun(true);
+    loadingFun(true);
 
-    // var result = await manualsRepository.getManualsList();
+    var result = await manualsRepository.getManualsList();
 
-    // result.fold((error) {
-    //   CommonFunctions.showErrorSnackbar(error.message);
-    //   loadingFun(false);
-    // }, (data) {
-    //   imageList.value =
-    //       data.where((elements) => elements.type == "Image").toList();
-    //   fileList.value =
-    //       data.where((elements) => elements.type == "PDF").toList();
-    //   loadingFun(false);
-    // });
+    result.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      loadingFun(false);
+    }, (data) {
+      imageList.value =
+          data.where((elements) => elements.type == "Image").toList();
+      fileList.value =
+          data.where((elements) => elements.type == "PDF").toList();
+      loadingFun(false);
+    });
   }
 
   @override

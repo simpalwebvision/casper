@@ -18,7 +18,7 @@ class HistoryReturnController extends GetxController {
     var result = await homeRepository.getHistoryReturn();
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       loadingFun(false);
     }, (data) {
       historyList.value = data;

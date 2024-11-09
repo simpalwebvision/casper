@@ -1,3 +1,4 @@
+import 'package:caspro_enterprises/Models/inventory_models.dart';
 import 'package:caspro_enterprises/Models/tech_history_model.dart';
 import 'package:caspro_enterprises/Models/technician_dashboard_model.dart';
 import 'package:caspro_enterprises/Models/user_profile_model.dart';
@@ -13,6 +14,30 @@ import '../Utils/app_network_api_services.dart';
 
 class HomeRepository {
   BaseApiService apiService = NetworkAPIService();
+
+  Future<Either<Failure, List<TechnicianStockModel>>>
+      getTechnicianStockList() async {
+    TechnicianProfileModel userProfileModel =
+        await CommonFunctions().getTechnicianProfileData();
+    try {
+      var response = await apiService.getGetApiResponse(
+        "${RemoteUrls.technicianStockList}${userProfileModel.id}",
+      );
+
+      List<TechnicianStockModel> inventoryList = [];
+      List list = response['data'];
+
+      inventoryList = list
+          .map(
+            (e) => TechnicianStockModel.fromJson(e),
+          )
+          .toList();
+
+      return right(inventoryList);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
 
   Future<Either<Failure, TechnicianDashboardExpenseModel>>
       technicianAllExpense() async {

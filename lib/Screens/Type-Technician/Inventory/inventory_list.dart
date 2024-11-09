@@ -74,7 +74,7 @@ class _InventoryListState extends State<InventoryList> {
                 onRefresh: () => controller.getInventoryList(),
                 child: Obx(
                   () => controller.isLoading.value
-                      ? const CommonLoader()
+                      ? const Center(child: CommonLoader())
                       : controller.inventoryList.isEmpty
                           ? const NoDataFoundScreen(
                               image: AppImages.emptyData,

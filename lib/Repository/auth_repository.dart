@@ -43,6 +43,17 @@ class AuthRepository {
     }
   }
 
+  Future<Either<Failure, dynamic>> updateProfile(data) async {
+    try {
+      var response =
+          await apiService.dioApiResponse(RemoteUrls.profileUpdate, data);
+
+      return right(response);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
   Future<Either<Failure, List<TechnicianRechargeModel>>>
       getRechargeData() async {
     String techId = await LocalPreferences().getUserid() ?? "";

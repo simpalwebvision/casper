@@ -26,21 +26,6 @@ class CommonFunctions {
   static void hideKeyboard(BuildContext context) =>
       FocusScope.of(context).requestFocus(FocusNode());
 
-  static void showErrorSnackbar(String msg) {
-    ScaffoldMessenger.of(globalContext).clearSnackBars();
-    ScaffoldMessenger.of(globalContext).showSnackBar(SnackBar(
-        margin: const EdgeInsets.only(bottom: 70.0, left: 20, right: 20),
-        content: Text(
-          msg,
-          style: GoogleFonts.poppins(
-              color: whiteColor,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.5),
-        ),
-        backgroundColor: Colors.red.withOpacity(.8),
-        behavior: SnackBarBehavior.floating));
-  }
-
   // launchURL(url) async {
   //   if (await canLaunchUrl(Uri.parse(url))) {
   //     await launchUrl(Uri.parse(url));

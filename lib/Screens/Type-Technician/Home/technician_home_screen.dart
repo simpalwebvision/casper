@@ -292,7 +292,8 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                     children: [
                       Expanded(
                           child: ColumnImageHelper(
-                        onPressed: () => Get.toNamed(RouteNames.profileScreen),
+                        onPressed: () =>
+                            Get.toNamed(RouteNames.techProfileScreen),
                         image: AppImages.account,
                         title: "My Account",
                       )),

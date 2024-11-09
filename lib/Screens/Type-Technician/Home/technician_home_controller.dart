@@ -39,7 +39,7 @@ class TechnicianHomeController extends GetxController {
     var result = await authRepository.getProfileData();
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       loadingFun(false);
     }, (data) {
       technicianProfileModel.value = data;
@@ -65,7 +65,7 @@ class TechnicianHomeController extends GetxController {
     var result = await authRepository.getRechargeData();
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       loadingFun(false);
     }, (data) {
       trainPass.value = finadByRechargeType(data, "PASS");
@@ -79,7 +79,7 @@ class TechnicianHomeController extends GetxController {
     var result = await homeRepository.technicianAllExpense();
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       loadingFun(false);
     }, (data) {
       technicianDashboardExpenseModel.value = data;
@@ -92,7 +92,7 @@ class TechnicianHomeController extends GetxController {
     var result = await homeRepository.getClaimSheetAmt();
 
     result.fold((error) {
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
       loadingFun(false);
     }, (data) {
       claimSheetAmt.value = data;

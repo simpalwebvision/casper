@@ -40,7 +40,7 @@ class LoginController extends GetxController {
 
     result.fold((error) {
       isLogging(false);
-      CommonFunctions.showErrorSnackbar(error.message);
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
     }, (data) async {
       errorEmailText.value = "";
       errorPasswordText.value = "";
@@ -63,7 +63,8 @@ class LoginController extends GetxController {
               }
             });
           } else {
-            CommonFunctions.showErrorSnackbar(responseJson['msg']);
+            CommonFunctions.showGetxSnackBar("Error", msg: responseJson['msg']);
+
             isLogging(false);
           }
         } else if (data.statusCode == 200) {

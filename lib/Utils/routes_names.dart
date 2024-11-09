@@ -1,4 +1,5 @@
 import 'package:caspro_enterprises/Screens/Auth/Login/login_screen.dart';
+import 'package:caspro_enterprises/Screens/Auth/Profile/TechnicianProfile/tech_profile_screen.dart';
 import 'package:caspro_enterprises/Screens/Auth/Profile/profile_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Customer/Home/customer_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manufacturing_unit_home_screen.dart';
@@ -51,6 +52,7 @@ class RouteNames {
   static const String inventoryList = "/inventory_list";
   static const String manualScreen = "/manual_screen";
   static const String addComplaint = "/add_complaint";
+  static const String techProfileScreen = "/tech_profile_screen";
 
   //! Manufacturing Unit Screen
   static const String manufacturingUnitHomeScreen =
@@ -173,6 +175,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.addComplaint,
             page: () => const AddComplaint(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.techProfileScreen,
+            page: () => const TechProfileScreen(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 
