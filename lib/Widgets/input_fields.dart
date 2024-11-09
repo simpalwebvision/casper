@@ -262,7 +262,7 @@ class DateFilterTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: GoogleFonts.mukta(fontSize: 13, color: Colors.black),
+      style: GoogleFonts.poppins(fontSize: 13, color: Colors.black),
       controller: controllerValue,
       onTap: onTap,
       readOnly: rOnly!,
@@ -273,7 +273,7 @@ class DateFilterTextField extends StatelessWidget {
         filled: true,
         fillColor: Colors.grey[200],
         hintText: hint,
-        labelStyle: GoogleFonts.mukta(fontSize: 13, color: Colors.black87),
+        labelStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.black87),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.grey),

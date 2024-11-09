@@ -15,6 +15,7 @@ Color totalContactColor = const Color(0xFFe9f9f7);
 Color successColor = Colors.green;
 Color failedColor = Colors.red;
 Color blueColor = const Color(0xFF278ce4);
+Color transparentColor = Colors.transparent;
 
 Color purpleColor = const Color(0xFF9290ff);
 Color greenColor = const Color(0xFF60c879);

@@ -78,136 +78,137 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                     height: 15,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 255, 149, 149),
-                        border: Border.all(color: blackColor),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Obx(
-                              () => Expanded(
-                                child: RechargeWidget(
-                                  ispassEnded:
-                                      controller.mobileRecharge.value == null
-                                          ? false
-                                          : controller.mobileRecharge.value!
-                                              .isPassEnded,
-                                  isPassExpiring:
-                                      controller.mobileRecharge.value == null
-                                          ? false
-                                          : controller.mobileRecharge.value!
-                                              .isPassEnding,
-                                  bgColor:
-                                      const Color.fromARGB(255, 254, 251, 172),
-                                  image: AppImages.mobileRecharge,
-                                  title: "Recharge",
-                                  fromDate: controller.mobileRecharge.value !=
-                                          null
-                                      ? controller.mobileRecharge.value!.id ==
-                                              null
-                                          ? "No Present Recharge"
-                                          : CommonFunctions()
-                                              .convertToApplicationShowDate(
-                                                  controller.mobileRecharge
-                                                      .value!.fromdate!)
-                                      : "-",
-                                  toDate: controller.mobileRecharge.value !=
-                                          null
-                                      ? controller.mobileRecharge.value!.id ==
-                                              null
-                                          ? "No Present Recharge"
-                                          : CommonFunctions()
-                                              .convertToApplicationShowDate(
-                                                  controller.mobileRecharge
-                                                      .value!.todate!)
-                                      : "-",
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: purpleColor,
+                          border: Border.all(color: blackColor),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Obx(
+                                () => Expanded(
+                                  child: RechargeWidget(
+                                    ispassEnded:
+                                        controller.mobileRecharge.value == null
+                                            ? false
+                                            : controller.mobileRecharge.value!
+                                                .isPassEnded,
+                                    isPassExpiring:
+                                        controller.mobileRecharge.value == null
+                                            ? false
+                                            : controller.mobileRecharge.value!
+                                                .isPassEnding,
+                                    bgColor: const Color.fromARGB(
+                                        255, 254, 251, 172),
+                                    image: AppImages.mobileRecharge,
+                                    title: "Recharge",
+                                    fromDate: controller.mobileRecharge.value !=
+                                            null
+                                        ? controller.mobileRecharge.value!.id ==
+                                                null
+                                            ? "No Present Recharge"
+                                            : CommonFunctions()
+                                                .convertToApplicationShowDate(
+                                                    controller.mobileRecharge
+                                                        .value!.fromdate!)
+                                        : "-",
+                                    toDate: controller.mobileRecharge.value !=
+                                            null
+                                        ? controller.mobileRecharge.value!.id ==
+                                                null
+                                            ? "No Present Recharge"
+                                            : CommonFunctions()
+                                                .convertToApplicationShowDate(
+                                                    controller.mobileRecharge
+                                                        .value!.todate!)
+                                        : "-",
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Obx(
-                              () => Expanded(
-                                child: RechargeWidget(
-                                  ispassEnded: controller.trainPass.value ==
-                                          null
-                                      ? false
-                                      : controller.trainPass.value!.isPassEnded,
-                                  isPassExpiring:
-                                      controller.trainPass.value == null
-                                          ? false
-                                          : controller
-                                              .trainPass.value!.isPassEnding,
-                                  bgColor:
-                                      const Color.fromARGB(255, 172, 244, 254),
-                                  image: AppImages.trainPass,
-                                  title: "Train Pass",
-                                  fromDate: controller.trainPass.value != null
-                                      ? controller.trainPass.value!.id == null
-                                          ? "No Present Recharge"
-                                          : CommonFunctions()
-                                              .convertToApplicationShowDate(
-                                                  controller.trainPass.value!
-                                                      .fromdate!)
-                                      : "-",
-                                  toDate: controller.trainPass.value != null
-                                      ? controller.trainPass.value!.id == null
-                                          ? "No Present Recharge"
-                                          : CommonFunctions()
-                                              .convertToApplicationShowDate(
-                                                  controller
-                                                      .trainPass.value!.todate!)
-                                      : "-",
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Obx(
+                                () => Expanded(
+                                  child: RechargeWidget(
+                                    ispassEnded:
+                                        controller.trainPass.value == null
+                                            ? false
+                                            : controller
+                                                .trainPass.value!.isPassEnded,
+                                    isPassExpiring:
+                                        controller.trainPass.value == null
+                                            ? false
+                                            : controller
+                                                .trainPass.value!.isPassEnding,
+                                    bgColor: const Color.fromARGB(
+                                        255, 172, 244, 254),
+                                    image: AppImages.trainPass,
+                                    title: "Train Pass",
+                                    fromDate: controller.trainPass.value != null
+                                        ? controller.trainPass.value!.id == null
+                                            ? "No Present Recharge"
+                                            : CommonFunctions()
+                                                .convertToApplicationShowDate(
+                                                    controller.trainPass.value!
+                                                        .fromdate!)
+                                        : "-",
+                                    toDate: controller.trainPass.value != null
+                                        ? controller.trainPass.value!.id == null
+                                            ? "No Present Recharge"
+                                            : CommonFunctions()
+                                                .convertToApplicationShowDate(
+                                                    controller.trainPass.value!
+                                                        .todate!)
+                                        : "-",
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            Obx(
-                              () => Expanded(
-                                  child: ReportDataWidget(
-                                value: controller
-                                            .technicianDashboardExpenseModel
-                                            .value ==
-                                        null
-                                    ? 0.0
-                                    : double.parse(controller
-                                        .technicianDashboardExpenseModel
-                                        .value!
-                                        .loanBalance!),
-                                title: "Loan Wallet\nAmount",
-                                bgColor:
-                                    const Color.fromARGB(255, 173, 255, 218),
-                              )),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: TechnicianDashBoardWidget(
-                                onPressed: () =>
-                                    Get.toNamed(RouteNames.historyScreen),
-                                title: 'Loan Statement',
-                                iconString: AppImages.mytasksHome,
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              Obx(
+                                () => Expanded(
+                                    child: ReportDataWidget(
+                                  value: controller
+                                              .technicianDashboardExpenseModel
+                                              .value ==
+                                          null
+                                      ? 0.0
+                                      : double.parse(controller
+                                          .technicianDashboardExpenseModel
+                                          .value!
+                                          .loanBalance!),
+                                  title: "Loan Wallet\nAmount",
+                                  bgColor:
+                                      const Color.fromARGB(255, 173, 255, 218),
+                                )),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: TechnicianDashBoardWidget(
+                                  onPressed: () =>
+                                      Get.toNamed(RouteNames.historyScreen),
+                                  title: 'Loan Statement',
+                                  iconString: AppImages.mytasksHome,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
                   const SizedBox(
                     height: 15,
                   ),
@@ -215,9 +216,9 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
-                        color: Colors.yellow,
+                        color: planColor,
                         border: Border.all(color: blackColor),
-                        borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(15)),
                     child: Column(
                       children: [
                         Row(
@@ -273,7 +274,8 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                             ),
                             Expanded(
                               child: TechnicianDashBoardWidget(
-                                onPressed: () => {},
+                                onPressed: () =>
+                                    Get.toNamed(RouteNames.addComplaint),
                                 title: 'Add\nComplaint',
                                 iconString: AppImages.complaints,
                               ),
@@ -284,43 +286,55 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                     ),
                   ),
                   const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: ColumnImageHelper(
+                        onPressed: () => Get.toNamed(RouteNames.profileScreen),
+                        image: AppImages.account,
+                        title: "My Account",
+                      )),
+                      Expanded(
+                        child: ColumnImageHelper(
+                          title: "Catalog",
+                          image: AppImages.offer,
+                          onPressed: () {},
+                        ),
+                      ),
+                      Expanded(
+                          child: ColumnImageHelper(
+                        onPressed: () => Get.toNamed(RouteNames.inventoryList),
+                        image: AppImages.spareParts,
+                        title: "Spare Parts",
+                      )),
+                    ],
+                  ),
+                  const SizedBox(
                     height: 15,
                   ),
-                  Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          border: Border.all(color: blackColor),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TechnicianDashBoardWidget(
-                                  onPressed: () =>
-                                      Get.toNamed(RouteNames.inventoryList),
-                                  title: 'Spare Parts',
-                                  iconString: AppImages.spareParts,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: TechnicianDashBoardWidget(
-                                  onPressed: () =>
-                                      Get.toNamed(RouteNames.manualScreen),
-                                  title: 'Manual',
-                                  iconString: AppImages.manualImage,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ColumnImageHelper(
+                          title: "Manual",
+                          image: AppImages.manualImage,
+                          onPressed: () => Get.toNamed(RouteNames.manualScreen),
+                        ),
+                      ),
+                      Expanded(
+                          child: ColumnImageHelper(
+                        onPressed: () => CommonFunctions().logOut(),
+                        image: AppImages.logout,
+                        title: "Logout",
                       )),
+                      Expanded(child: Container()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
                 ],
               ),
             ),

@@ -156,14 +156,61 @@ class TechnicianDashBoardWidget extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
+                style: GoogleFonts.poppins(
                     color: blackColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ColumnImageHelper extends StatelessWidget {
+  final String image, title;
+  final VoidCallback onPressed;
+  const ColumnImageHelper(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      focusColor: transparentColor,
+      splashColor: transparentColor,
+      highlightColor: transparentColor,
+      onTap: onPressed,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: Border.all(color: secondaryColor, width: 1.5),
+                color: secondaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(12)),
+            child: SvgPicture.asset(
+              image,
+              height: 28,
+              width: 28,
+              colorFilter:
+                  const ColorFilter.mode(secondaryColor, BlendMode.srcIn),
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+                fontSize: 13, fontWeight: FontWeight.w500, color: blackColor),
+          )
+        ],
       ),
     );
   }

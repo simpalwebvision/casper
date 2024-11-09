@@ -393,7 +393,9 @@ class CommonFunctions {
   }
 
   void logOut() async {
-    LocalPreferences().setLoginBool(false);
+    LocalPreferences().setAdminLoginBool(false);
+    LocalPreferences().setManufacturingUnitLoginBool(false);
+    LocalPreferences().setTechnicianLoginBool(false);
     final preferences = await SharedPreferences.getInstance();
     await preferences.clear();
     Get.offAllNamed(RouteNames.splashScreen);

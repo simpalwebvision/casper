@@ -62,7 +62,7 @@ class UploadImagesHelper extends StatelessWidget {
                                   child: Text(
                                     'Add\nLogo',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.nunito(
+                                    style: GoogleFonts.poppins(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ))),
@@ -78,7 +78,7 @@ class UploadImagesHelper extends StatelessWidget {
                                 horizontal: 10, vertical: 10),
                             child: Text(
                               'Upload',
-                              style: GoogleFonts.nunito(color: Colors.white),
+                              style: GoogleFonts.poppins(color: Colors.white),
                             ),
                           )),
                     ],
@@ -98,7 +98,7 @@ class UploadImagesHelper extends StatelessWidget {
                         width: 150,
                         child: Text(
                           '+ Upload',
-                          style: GoogleFonts.nunito(
+                          style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold, color: blackColor),
                         ),
                       ),
@@ -206,7 +206,7 @@ class UploadImagesHelperProfile extends StatelessWidget {
                                     child: Text(
                                       'Add\nProfile',
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.nunito(
+                                      style: GoogleFonts.poppins(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ))),
@@ -230,7 +230,7 @@ class UploadImagesHelperProfile extends StatelessWidget {
                         width: 150,
                         child: Text(
                           '+ Upload',
-                          style: GoogleFonts.nunito(
+                          style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold, color: blackColor),
                         ),
                       ),
@@ -313,7 +313,7 @@ class UploadBusinessHelper extends StatelessWidget {
                     width: size.width * 0.8,
                     child: Text(
                       title ?? '+ Upload Customer Business Card',
-                      style: GoogleFonts.nunito(
+                      style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold, color: blackColor),
                     ),
                   ),

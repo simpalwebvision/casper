@@ -23,7 +23,7 @@ class DetailWidgetHelper extends StatelessWidget {
       children: [
         Text(
           heading,
-          style: GoogleFonts.mukta(
+          style: GoogleFonts.poppins(
               fontSize: 14,
               fontWeight: FontWeight.w500,
               color: headingColor ?? blackColor),
@@ -33,8 +33,8 @@ class DetailWidgetHelper extends StatelessWidget {
         ),
         Text(
           " :",
-          style:
-              GoogleFonts.mukta(fontWeight: FontWeight.bold, color: blackColor),
+          style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold, color: blackColor),
         ),
         const SizedBox(
           width: 10,
@@ -43,7 +43,7 @@ class DetailWidgetHelper extends StatelessWidget {
           flex: 3,
           child: Text(
             value,
-            style: GoogleFonts.mukta(
+            style: GoogleFonts.poppins(
                 fontSize: 13.5,
                 fontWeight: FontWeight.normal,
                 color: valueColor ?? blackColor),
@@ -73,7 +73,7 @@ class MultiDetailHelper extends StatelessWidget {
       children: [
         Text(
           heading,
-          style: GoogleFonts.mukta(
+          style: GoogleFonts.poppins(
               fontSize: 14,
               fontWeight: FontWeight.w500,
               color: headingColor ?? blackColor),
@@ -83,15 +83,15 @@ class MultiDetailHelper extends StatelessWidget {
         ),
         Text(
           ":",
-          style:
-              GoogleFonts.mukta(fontWeight: FontWeight.bold, color: blackColor),
+          style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold, color: blackColor),
         ),
         const SizedBox(
           width: 5,
         ),
         Text(
           value,
-          style: GoogleFonts.mukta(
+          style: GoogleFonts.poppins(
               fontSize: 13,
               fontWeight: FontWeight.normal,
               color: valueColor ?? blackColor),

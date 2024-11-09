@@ -34,7 +34,7 @@ class DropDownWidget extends StatelessWidget {
           ),
           dropdownColor: whiteColor,
           decoration: InputDecoration(
-            errorStyle: GoogleFonts.mukta(
+            errorStyle: GoogleFonts.poppins(
                 color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
@@ -56,14 +56,14 @@ class DropDownWidget extends StatelessWidget {
           iconDisabledColor: Colors.black,
           isExpanded: isExpand ?? true,
           validator: validate!,
-          style: GoogleFonts.mukta(
+          style: GoogleFonts.poppins(
             fontSize: size.width * 0.034,
             color: Colors.black,
             letterSpacing: 1,
           ),
           hint: Text(
             hintText!,
-            style: GoogleFonts.mukta(
+            style: GoogleFonts.poppins(
               fontSize: size.width * 0.034,
               color: Colors.black,
             ),
@@ -73,7 +73,7 @@ class DropDownWidget extends StatelessWidget {
               value: item,
               child: Text(
                 item,
-                style: GoogleFonts.mukta(),
+                style: GoogleFonts.poppins(),
               ),
             );
           }).toList(),

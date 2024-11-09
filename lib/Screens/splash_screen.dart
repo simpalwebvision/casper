@@ -17,10 +17,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () async {
-      bool isLogin = await LocalPreferences().getLoginBool() ?? false;
+      bool isAdminLogin = await LocalPreferences().getAdminLoginBool() ?? false;
+      bool isManufacturingLogin =
+          await LocalPreferences().getManufacturingUnitLoginBool() ?? false;
+      bool isTechnicianLogin =
+          await LocalPreferences().getTechnicianLoginBool() ?? false;
 
-      if (isLogin) {
+      if (isAdminLogin) {
         Get.offAllNamed(RouteNames.superAdminHomeScreen);
+      } else if (isManufacturingLogin) {
+        Get.offAllNamed(RouteNames.manufacturingUnitHomeScreen);
+      } else if (isTechnicianLogin) {
+        Get.offAllNamed(RouteNames.technicianHomeScreen);
       } else {
         Get.offAllNamed(RouteNames.loginScreen);
       }

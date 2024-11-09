@@ -1,7 +1,6 @@
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
-import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/app_helpers.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
@@ -82,11 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         Obx(
                           () => LoginTextField(
                             pref: const Icon(
-                              CupertinoIcons.mail,
+                              CupertinoIcons.phone,
                               color: iconColor,
                             ),
-                            controllerValue: controller.ctlEmail.value,
-                            hintText: 'Email',
+                            controllerValue: controller.ctlMobile.value,
+                            hintText: 'Mobile',
+                            mLength: 10,
                             inputType: TextInputType.number,
                             validate: (val) {
                               if (val!.isEmpty) {
@@ -176,86 +176,86 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                     _formKey.currentState!.save();
                                     CommonFunctions.hideKeyboard(context);
-                                    Get.bottomSheet(
-                                        isScrollControlled: true,
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10, vertical: 10),
-                                          width: double.infinity,
-                                          color: whiteColor,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                    onPressed: () => Get
-                                                        .offAllNamed(RouteNames
-                                                            .superAdminHomeScreen),
-                                                    child: Text(
-                                                      "Super Admin",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  whiteColor),
-                                                    )),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                    onPressed: () => Get
-                                                        .offAllNamed(RouteNames
-                                                            .technicianHomeScreen),
-                                                    child: Text(
-                                                      "Technician",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  whiteColor),
-                                                    )),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                    onPressed: () => Get
-                                                        .offAllNamed(RouteNames
-                                                            .manufacturingUnitHomeScreen),
-                                                    child: Text(
-                                                      "Manufacturing Unit",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  whiteColor),
-                                                    )),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: ElevatedButton(
-                                                    onPressed: () => Get
-                                                        .offAllNamed(RouteNames
-                                                            .customerHomeScreen),
-                                                    child: Text(
-                                                      "Customer",
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  whiteColor),
-                                                    )),
-                                              ),
-                                            ],
-                                          ),
-                                        ));
+                                    // Get.bottomSheet(
+                                    //     isScrollControlled: true,
+                                    //     Container(
+                                    //       padding: const EdgeInsets.symmetric(
+                                    //           horizontal: 10, vertical: 10),
+                                    //       width: double.infinity,
+                                    //       color: whiteColor,
+                                    //       child: Column(
+                                    //         mainAxisSize: MainAxisSize.min,
+                                    //         children: [
+                                    //           SizedBox(
+                                    //             width: double.infinity,
+                                    //             child: ElevatedButton(
+                                    //                 onPressed: () => Get
+                                    //                     .offAllNamed(RouteNames
+                                    //                         .superAdminHomeScreen),
+                                    //                 child: Text(
+                                    //                   "Super Admin",
+                                    //                   style:
+                                    //                       GoogleFonts.poppins(
+                                    //                           color:
+                                    //                               whiteColor),
+                                    //                 )),
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 10,
+                                    //           ),
+                                    //           SizedBox(
+                                    //             width: double.infinity,
+                                    //             child: ElevatedButton(
+                                    //                 onPressed: () => Get
+                                    //                     .offAllNamed(RouteNames
+                                    //                         .technicianHomeScreen),
+                                    //                 child: Text(
+                                    //                   "Technician",
+                                    //                   style:
+                                    //                       GoogleFonts.poppins(
+                                    //                           color:
+                                    //                               whiteColor),
+                                    //                 )),
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 10,
+                                    //           ),
+                                    //           SizedBox(
+                                    //             width: double.infinity,
+                                    //             child: ElevatedButton(
+                                    //                 onPressed: () => Get
+                                    //                     .offAllNamed(RouteNames
+                                    //                         .manufacturingUnitHomeScreen),
+                                    //                 child: Text(
+                                    //                   "Manufacturing Unit",
+                                    //                   style:
+                                    //                       GoogleFonts.poppins(
+                                    //                           color:
+                                    //                               whiteColor),
+                                    //                 )),
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 10,
+                                    //           ),
+                                    //           SizedBox(
+                                    //             width: double.infinity,
+                                    //             child: ElevatedButton(
+                                    //                 onPressed: () => Get
+                                    //                     .offAllNamed(RouteNames
+                                    //                         .customerHomeScreen),
+                                    //                 child: Text(
+                                    //                   "Customer",
+                                    //                   style:
+                                    //                       GoogleFonts.poppins(
+                                    //                           color:
+                                    //                               whiteColor),
+                                    //                 )),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ));
 
-                                    // controller.loginUser();
+                                    controller.login();
                                   },
                             child: controller.isLoggingIn.value
                                 ? const CommonButtonLoader(

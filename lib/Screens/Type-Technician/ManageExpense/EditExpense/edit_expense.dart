@@ -465,7 +465,7 @@ class _EditExpenseState extends State<EditExpense> {
                                             indicatorColor: whiteColor)
                                         : Text(
                                             "Update",
-                                            style: GoogleFonts.nunito(
+                                            style: GoogleFonts.poppins(
                                                 color: whiteColor,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -476,7 +476,7 @@ class _EditExpenseState extends State<EditExpense> {
                               //   },
                               //   child: Text(
                               //     "Submit",
-                              //     style: GoogleFonts.nunito(
+                              //     style: GoogleFonts.poppins(
                               //         color: whiteColor, fontWeight: FontWeight.bold),
                               //   ),
                               // )

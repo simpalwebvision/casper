@@ -6,6 +6,7 @@ import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Upload-Proble
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints-List/complaints_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/CustomerList/customer_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/History/history_list.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/Add-Complaint/add_complaint.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/Complaint-Proceed/complaint_proceed.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/technician_complaints_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/History/history.dart';
@@ -49,6 +50,7 @@ class RouteNames {
   static const String addExpense = "/add_expense";
   static const String inventoryList = "/inventory_list";
   static const String manualScreen = "/manual_screen";
+  static const String addComplaint = "/add_complaint";
 
   //! Manufacturing Unit Screen
   static const String manufacturingUnitHomeScreen =
@@ -165,6 +167,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.manualScreen,
             page: () => const ManualScreen(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.addComplaint,
+            page: () => const AddComplaint(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

@@ -18,7 +18,7 @@ class NoDataFoundScreen extends StatelessWidget {
         ),
         Text(
           passedData,
-          style: GoogleFonts.mukta(
+          style: GoogleFonts.poppins(
               fontWeight: FontWeight.bold,
               color: secondaryColor,
               fontSize: 14,

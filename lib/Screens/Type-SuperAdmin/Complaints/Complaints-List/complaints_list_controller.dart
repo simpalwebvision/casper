@@ -76,7 +76,7 @@ class ComplaintsListController extends GetxController {
             ),
             Text(
               "Assign Technician",
-              style: GoogleFonts.mukta(
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
                 color: headingColor,
@@ -124,7 +124,7 @@ class ComplaintsListController extends GetxController {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
                                       child: Text(data.name.toString(),
-                                          style: GoogleFonts.mukta(
+                                          style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.w500)),
                                     ),
                                   );
@@ -165,7 +165,7 @@ class ComplaintsListController extends GetxController {
                     },
                     child: Text(
                       "Assign",
-                      style: GoogleFonts.mukta(color: whiteColor),
+                      style: GoogleFonts.poppins(color: whiteColor),
                     ))),
             const SizedBox(
               height: 20,

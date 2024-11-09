@@ -2,13 +2,20 @@ import 'dart:convert';
 
 import 'package:caspro_enterprises/Repository/auth_repository.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
-import 'package:caspro_enterprises/Utils/local_shared_preferences.dart';
+import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Utils/local_shared_preferences.dart';
+
+//Todo Type (1) : Admin
+//Todo Type (2) : Staff
+//Todo Type (3) : Manufacturing Unit
+//Todo Type (Technician) : Technician
+
 class LoginController extends GetxController {
   AuthRepository authRepository = AuthRepository();
-  final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
+  final Rx<TextEditingController> ctlMobile = TextEditingController().obs;
   final Rx<TextEditingController> ctlPassword = TextEditingController().obs;
 
   RxBool isLoggingIn = false.obs;
@@ -26,7 +33,7 @@ class LoginController extends GetxController {
     isLogging(true);
 
     var passedData = json.encode({
-      "email": ctlEmail.value.text,
+      "mobile": ctlMobile.value.text,
       "password": ctlPassword.value.text,
     });
     var result = await authRepository.loginUser(passedData);
@@ -60,10 +67,20 @@ class LoginController extends GetxController {
             isLogging(false);
           }
         } else if (data.statusCode == 200) {
-          await LocalPreferences().setLoginBool(true);
+          await LocalPreferences().setUserType(responseJson['Type']);
+          await LocalPreferences().setUserid(responseJson['data']["id"]);
+          if (responseJson['Type'] == "1") {
+            await LocalPreferences().setAdminLoginBool(true);
+            Get.offAllNamed(RouteNames.superAdminHomeScreen);
+          } else if (responseJson['Type'] == "3") {
+            await LocalPreferences().setManufacturingUnitLoginBool(true);
+            Get.offAllNamed(RouteNames.manufacturingUnitHomeScreen);
+          } else if (responseJson['Type'] == "Technician") {
+            await LocalPreferences().setTechnicianLoginBool(true);
+            Get.offAllNamed(RouteNames.technicianHomeScreen);
+          }
 
           isLogging(false);
-          //   Get.offAllNamed(RouteNames.homeScreen);
         }
       }
     });
@@ -71,14 +88,19 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    ctlEmail.value.text = "sunil@gmail.com";
+    //! Admin
+    // ctlMobile.value.text = "9049623444";
+    //! Manufacturing Unit
+    // ctlMobile.value.text = "9670451991";
+    //! Technician
+    ctlMobile.value.text = "7276191016";
     ctlPassword.value.text = "12345";
     super.onInit();
   }
 
   @override
   void dispose() {
-    ctlEmail.value.dispose();
+    ctlMobile.value.dispose();
     ctlPassword.value.dispose();
     super.dispose();
   }

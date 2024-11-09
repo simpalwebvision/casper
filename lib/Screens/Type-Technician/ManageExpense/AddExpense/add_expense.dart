@@ -418,7 +418,7 @@ class _AddExpenseState extends State<AddExpense> {
                                     width: size.width * 0.2,
                                     child: Text(
                                       '+ Upload',
-                                      style: GoogleFonts.nunito(
+                                      style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.bold,
                                           color: blackColor),
                                     ),
@@ -466,7 +466,7 @@ class _AddExpenseState extends State<AddExpense> {
                                   indicatorColor: whiteColor)
                               : Text(
                                   "Submit",
-                                  style: GoogleFonts.nunito(
+                                  style: GoogleFonts.poppins(
                                       color: whiteColor,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -477,7 +477,7 @@ class _AddExpenseState extends State<AddExpense> {
                     //   },
                     //   child: Text(
                     //     "Submit",
-                    //     style: GoogleFonts.nunito(
+                    //     style: GoogleFonts.poppins(
                     //         color: whiteColor, fontWeight: FontWeight.bold),
                     //   ),
                     // )
