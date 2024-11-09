@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:caspro_enterprises/Models/user_profile_model.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Widgets/columnimagehelper.dart';
@@ -150,6 +153,15 @@ class CommonFunctions {
     var helper = date.split("-");
 
     return "${helper[2]}-${helper[1]}-${helper[0]}";
+  }
+
+  Future<TechnicianProfileModel> getTechnicianProfileData() async {
+    String helper = await LocalPreferences().getProfileData() ?? "";
+
+    Map<String, dynamic> userMap = jsonDecode(helper);
+    TechnicianProfileModel userProfile =
+        TechnicianProfileModel.fromJson(userMap);
+    return userProfile;
   }
 
   // Future<UserProfileModel> getUserProfileData() async {

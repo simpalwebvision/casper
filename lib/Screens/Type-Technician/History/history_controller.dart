@@ -1,8 +1,10 @@
 import 'package:caspro_enterprises/Models/tech_history_model.dart';
+import 'package:caspro_enterprises/Repository/home_repository.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:get/get.dart';
 
 class HistoryController extends GetxController {
-  // HomeRepository homeRepository = HomeRepository();
+  HomeRepository homeRepository = HomeRepository();
 
   RxBool isLoadingLoan = true.obs, isLoadingAdc = true.obs;
 
@@ -16,28 +18,28 @@ class HistoryController extends GetxController {
   loadingAdvFun(bool val) => isLoadingAdc.value = val;
 
   Future getHistory(String type) async {
-    // if (type == "LOAN") {
-    //   loadingLoanFun(true);
-    // } else {
-    //   loadingAdvFun(true);
-    // }
+    if (type == "LOAN") {
+      loadingLoanFun(true);
+    } else {
+      loadingAdvFun(true);
+    }
 
-    // var result = await homeRepository.getHistoryByType(type);
+    var result = await homeRepository.getHistoryByType(type);
 
-    // result.fold((error) {
-    //   CommonFunctions.showErrorSnackbar(error.message);
-    //   if (type == "LOAN") {
-    //     loadingLoanFun(false);
-    //   } else {
-    //     loadingAdvFun(false);
-    //   }
-    // }, (data) {
-    //   historyList.value = data;
-    //   if (type == "LOAN") {
-    //     loadingLoanFun(false);
-    //   } else {
-    //     loadingAdvFun(false);
-    //   }
-    // });
+    result.fold((error) {
+      CommonFunctions.showErrorSnackbar(error.message);
+      if (type == "LOAN") {
+        loadingLoanFun(false);
+      } else {
+        loadingAdvFun(false);
+      }
+    }, (data) {
+      historyList.value = data;
+      if (type == "LOAN") {
+        loadingLoanFun(false);
+      } else {
+        loadingAdvFun(false);
+      }
+    });
   }
 }

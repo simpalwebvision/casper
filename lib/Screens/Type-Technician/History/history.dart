@@ -6,7 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:nb_utils/nb_utils.dart' as nb;
 
+import 'HistoryReturn/history_return.dart';
+import 'HistoryReturn/history_return_controller.dart';
+import 'advance_history.dart';
 import 'history_controller.dart';
+import 'loan_history.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -18,7 +22,7 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen>
     with SingleTickerProviderStateMixin {
   final controller = Get.put(HistoryController());
-  // final controllerReturnHistory = Get.put(HistoryReturnController());
+  final controllerReturnHistory = Get.put(HistoryReturnController());
   late TabController tabController;
   @override
   void initState() {
@@ -72,7 +76,11 @@ class _HistoryScreenState extends State<HistoryScreen>
               child: TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: tabController,
-                  children: [Container(), Container(), Container()]))
+                  children: const [
+                LoanHistory(),
+                AdvanceHistory(),
+                LoanReturnHistory()
+              ]))
         ],
       ),
     );
