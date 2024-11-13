@@ -62,3 +62,68 @@ class PFDViewerPageState extends State<PFDViewerPage> {
     );
   }
 }
+
+class PFDViewerPageTwo extends StatefulWidget {
+  const PFDViewerPageTwo({
+    super.key,
+  });
+
+  @override
+  PFDViewerPageTwoState createState() => PFDViewerPageTwoState();
+}
+
+class PFDViewerPageTwoState extends State<PFDViewerPageTwo> {
+  Future<bool> onBackPressed() async {
+    Get.back();
+    return Future.value(false);
+  }
+
+  bool isLoading = true;
+  File? file;
+  String fileName = "";
+  @override
+  void initState() {
+    setState(() {
+      isLoading = true;
+    });
+
+    var data = Get.arguments;
+    file = data['file'] as File;
+    fileName = data['file_name'] as String;
+    setState(() {
+      isLoading = false;
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: onBackPressed,
+      child: Scaffold(
+        appBar: commonAppBar(
+            context: context,
+            heading: fileName,
+            onPressed: () => Get.back(),
+            widgetList: [
+              isLoading
+                  ? const SizedBox()
+                  : IconButton(
+                      onPressed: () {
+                        Share.shareXFiles([XFile(file!.path)],
+                            text: 'Claim Sheet');
+                      },
+                      icon: const Icon(
+                        Icons.share,
+                        color: whiteColor,
+                      ))
+            ]),
+        body: isLoading
+            ? const CommonLoader()
+            : PDFView(
+                filePath: file!.path,
+              ),
+      ),
+    );
+  }
+}

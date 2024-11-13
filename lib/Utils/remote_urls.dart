@@ -36,4 +36,9 @@ class RemoteUrls {
 
   static String getManualsList = "$baseUrl/manual-list";
   static String appVersion = "$baseUrl/app-version";
+
+  //! Complaint
+
+  static String getComplaint = "$baseUrl/get-complaint-list";
+  static String addComplaint = "$baseUrl/add-complaint";
 }

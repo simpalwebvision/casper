@@ -614,7 +614,7 @@ class _EditExpenseState extends State<EditExpense> {
                       : controller.ctlTransportMode.value.text,
                   validate: (val) {
                     if (val == null) {
-                      return "required".tr;
+                      return "Required";
                     }
                     return null;
                   },

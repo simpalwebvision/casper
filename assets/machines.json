@@ -1,0 +1,812 @@
+[
+    {
+        "id": "1",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "150 w built ss body",
+        "machineSizeWeightLitter": "6 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "19000",
+        "machineGST": "3420",
+        "machineGrandTotal": "22420"
+    },
+    {
+        "id": "2",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "250 w built ss body",
+        "machineSizeWeightLitter": "9 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "3",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "350 w built ss body",
+        "machineSizeWeightLitter": "9 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "32000",
+        "machineGST": "5760",
+        "machineGrandTotal": "37760"
+    },
+    {
+        "id": "4",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "500 w built ss body",
+        "machineSizeWeightLitter": "18 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "55000",
+        "machineGST": "9900",
+        "machineGrandTotal": "64900"
+    },
+    {
+        "id": "5",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "750 w built ss body",
+        "machineSizeWeightLitter": "25 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "70000",
+        "machineGST": "12600",
+        "machineGrandTotal": "82600"
+    },
+    {
+        "id": "6",
+        "machineName": "Ultra sonic cleaner",
+        "machineDescription": "300 w built ss body",
+        "machineSizeWeightLitter": "30 ltr",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "95000",
+        "machineGST": "17100",
+        "machineGrandTotal": "112100"
+    },
+    {
+        "id": "7",
+        "machineName": "Steam machine",
+        "machineDescription": "2000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "7.5 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "8",
+        "machineName": "Steam machine",
+        "machineDescription": "2000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "9 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "33000",
+        "machineGST": "5940",
+        "machineGrandTotal": "38940"
+    },
+    {
+        "id": "9",
+        "machineName": "Steam machine",
+        "machineDescription": "4000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "12 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "38000",
+        "machineGST": "6840",
+        "machineGrandTotal": "44840"
+    },
+    {
+        "id": "10",
+        "machineName": "Steam machine",
+        "machineDescription": "4000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "15 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "45000",
+        "machineGST": "8100",
+        "machineGrandTotal": "53100"
+    },
+    {
+        "id": "11",
+        "machineName": "Steam machine",
+        "machineDescription": "6000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "20 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "55000",
+        "machineGST": "9900",
+        "machineGrandTotal": "64900"
+    },
+    {
+        "id": "12",
+        "machineName": "Steam machine",
+        "machineDescription": "6000w auto level ss tank ss body",
+        "machineSizeWeightLitter": "25 ltr",
+        "machineHsnCode": "8450",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "13",
+        "machineName": "Polish machine",
+        "machineDescription": "Standing ms",
+        "machineSizeWeightLitter": "Single",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "38000",
+        "machineGST": "6840",
+        "machineGrandTotal": "44840"
+    },
+    {
+        "id": "14",
+        "machineName": "Polish machine",
+        "machineDescription": "Vertical standing ms",
+        "machineSizeWeightLitter": "single",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "39500",
+        "machineGST": "7110",
+        "machineGrandTotal": "46610"
+    },
+    {
+        "id": "15",
+        "machineName": "Polish machine",
+        "machineDescription": "Top ss",
+        "machineSizeWeightLitter": "single",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "48000",
+        "machineGST": "8640",
+        "machineGrandTotal": "56640"
+    },
+    {
+        "id": "16",
+        "machineName": "Polish machine",
+        "machineDescription": "Full ss",
+        "machineSizeWeightLitter": "single",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "55000",
+        "machineGST": "9900",
+        "machineGrandTotal": "64900"
+    },
+    {
+        "id": "17",
+        "machineName": "Polish machine",
+        "machineDescription": "Mini new module",
+        "machineSizeWeightLitter": "single",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "37000",
+        "machineGST": "6660",
+        "machineGrandTotal": "43660"
+    },
+    {
+        "id": "18",
+        "machineName": "Polish machine",
+        "machineDescription": "Standing ms",
+        "machineSizeWeightLitter": "Double",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "75000",
+        "machineGST": "13500",
+        "machineGrandTotal": "88500"
+    },
+    {
+        "id": "19",
+        "machineName": "Polish machine",
+        "machineDescription": "Standing top ss",
+        "machineSizeWeightLitter": "Double",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "90000",
+        "machineGST": "16200",
+        "machineGrandTotal": "106200"
+    },
+    {
+        "id": "20",
+        "machineName": "Polish machine",
+        "machineDescription": "Standing ms",
+        "machineSizeWeightLitter": "Double",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "21",
+        "machineName": "Polish machine",
+        "machineDescription": "Mini new module",
+        "machineSizeWeightLitter": "Double",
+        "machineHsnCode": "8460",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "22",
+        "machineName": "Scru grandering",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "",
+        "machineSellingPrice": "45000",
+        "machineGST": "8100",
+        "machineGrandTotal": "53100"
+    },
+    {
+        "id": "23",
+        "machineName": "Magnate machine",
+        "machineDescription": "Auto F/R with dule speed",
+        "machineSizeWeightLitter": "1/2 kg",
+        "machineHsnCode": "8540",
+        "machineSellingPrice": "29500",
+        "machineGST": "5310",
+        "machineGrandTotal": "34810"
+    },
+    {
+        "id": "24",
+        "machineName": "Magnate machine",
+        "machineDescription": "Auto F/R with dule speed",
+        "machineSizeWeightLitter": "1 kg",
+        "machineHsnCode": "8540",
+        "machineSellingPrice": "40000",
+        "machineGST": "7200",
+        "machineGrandTotal": "47200"
+    },
+    {
+        "id": "25",
+        "machineName": "Magnate machine",
+        "machineDescription": "Auto F/R with dule speed",
+        "machineSizeWeightLitter": "2 kg",
+        "machineHsnCode": "8540",
+        "machineSellingPrice": "55000",
+        "machineGST": "9900",
+        "machineGrandTotal": "64900"
+    },
+    {
+        "id": "26",
+        "machineName": "Magnate machine",
+        "machineDescription": "Auto F/R with dule speed",
+        "machineSizeWeightLitter": "5 kg",
+        "machineHsnCode": "8540",
+        "machineSellingPrice": "80000",
+        "machineGST": "14400",
+        "machineGrandTotal": "94400"
+    },
+    {
+        "id": "27",
+        "machineName": "Vacuum cleaner",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "15 ltr",
+        "machineHsnCode": "8508",
+        "machineSellingPrice": "15000",
+        "machineGST": "2700",
+        "machineGrandTotal": "17700"
+    },
+    {
+        "id": "29",
+        "machineName": "Vacuum cleaner",
+        "machineDescription": "Double motor 2000w",
+        "machineSizeWeightLitter": "60 ltr",
+        "machineHsnCode": "8508",
+        "machineSellingPrice": "45000",
+        "machineGST": "8100",
+        "machineGrandTotal": "53100"
+    },
+    {
+        "id": "30",
+        "machineName": "Rodium plant 3 biker machine",
+        "machineDescription": "pp 24 V/10 A -digital -single hitter",
+        "machineSizeWeightLitter": ". ltr",
+        "machineHsnCode": "8466",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "31",
+        "machineName": "Rodium plant 3 biker machine",
+        "machineDescription": "ss 24 V/10 A -digital -single hitter",
+        "machineSizeWeightLitter": "3 ltr",
+        "machineHsnCode": "8466",
+        "machineSellingPrice": "32000",
+        "machineGST": "5760",
+        "machineGrandTotal": "37760"
+    },
+    {
+        "id": "32",
+        "machineName": "Rectifier machine",
+        "machineDescription": "24 V/10 A digital",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8504",
+        "machineSellingPrice": "18000",
+        "machineGST": "3240",
+        "machineGrandTotal": "21240"
+    },
+    {
+        "id": "33",
+        "machineName": "Pen machine",
+        "machineDescription": "15 V 2 MPR",
+        "machineSizeWeightLitter": "CBCC",
+        "machineHsnCode": "8504",
+        "machineSellingPrice": "7000",
+        "machineGST": "1260",
+        "machineGrandTotal": "8260"
+    },
+    {
+        "id": "34",
+        "machineName": "Gilit machine",
+        "machineDescription": "18 V 2 MPR",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8543",
+        "machineSellingPrice": "7000",
+        "machineGST": "1260",
+        "machineGrandTotal": "8260"
+    },
+    {
+        "id": "35",
+        "machineName": "Pickler machine (3 bikar rodium tank )",
+        "machineDescription": "3 biker single heater",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "3810",
+        "machineSellingPrice": "14000",
+        "machineGST": "2520",
+        "machineGrandTotal": "16520"
+    },
+    {
+        "id": "36",
+        "machineName": "Pickler machine (3 bikar rodium tank)",
+        "machineDescription": "1 biker single heater",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "3810",
+        "machineSellingPrice": "8500",
+        "machineGST": "1530",
+        "machineGrandTotal": "10030"
+    },
+    {
+        "id": "37",
+        "machineName": "Set link tank",
+        "machineDescription": "35x18x30",
+        "machineSizeWeightLitter": "Single tab",
+        "machineHsnCode": "8438",
+        "machineSellingPrice": "39500",
+        "machineGST": "7110",
+        "machineGrandTotal": "46610"
+    },
+    {
+        "id": "38",
+        "machineName": "Set link tank",
+        "machineDescription": "45x18x30",
+        "machineSizeWeightLitter": "Double tab",
+        "machineHsnCode": "3920",
+        "machineSellingPrice": "47000",
+        "machineGST": "8460",
+        "machineGrandTotal": "55460"
+    },
+    {
+        "id": "39",
+        "machineName": "Set link tank",
+        "machineDescription": "54x20x30",
+        "machineSizeWeightLitter": "Three tab",
+        "machineHsnCode": "3920",
+        "machineSellingPrice": "58000",
+        "machineGST": "10440",
+        "machineGrandTotal": "68440"
+    },
+    {
+        "id": "40",
+        "machineName": "Set link tank",
+        "machineDescription": "66x20x42",
+        "machineSizeWeightLitter": "Four tab",
+        "machineHsnCode": "3920",
+        "machineSellingPrice": "75000",
+        "machineGST": "13500",
+        "machineGrandTotal": "88500"
+    },
+    {
+        "id": "41",
+        "machineName": "Set link tank",
+        "machineDescription": "72x18x30",
+        "machineSizeWeightLitter": "Five tab",
+        "machineHsnCode": "3920",
+        "machineSellingPrice": "",
+        "machineGST": "",
+        "machineGrandTotal": ""
+    },
+    {
+        "id": "42",
+        "machineName": "Hydro max micro brazier 2+2",
+        "machineDescription": "4 point",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8431",
+        "machineSellingPrice": "39500",
+        "machineGST": "7110",
+        "machineGrandTotal": "46610"
+    },
+    {
+        "id": "43",
+        "machineName": "Hydro max micro brazier 4+2",
+        "machineDescription": "6 point",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8431",
+        "machineSellingPrice": "48000",
+        "machineGST": "8640",
+        "machineGrandTotal": "56640"
+    },
+    {
+        "id": "44",
+        "machineName": "Hydro max micro brazier 6+2",
+        "machineDescription": "8 point",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8431",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "45",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base standing module",
+        "machineSizeWeightLitter": "1kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "21500",
+        "machineGST": "3870",
+        "machineGrandTotal": "25370"
+    },
+    {
+        "id": "46",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base L module",
+        "machineSizeWeightLitter": "1kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "19500",
+        "machineGST": "3510",
+        "machineGrandTotal": "23010"
+    },
+    {
+        "id": "47",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "1kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "9000",
+        "machineGST": "1620",
+        "machineGrandTotal": "10620"
+    },
+    {
+        "id": "48",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base standing module",
+        "machineSizeWeightLitter": "2kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "31000",
+        "machineGST": "5580",
+        "machineGrandTotal": "36580"
+    },
+    {
+        "id": "49",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base L module",
+        "machineSizeWeightLitter": "2kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "50",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "2kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "18500",
+        "machineGST": "3330",
+        "machineGrandTotal": "21830"
+    },
+    {
+        "id": "51",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base standing module",
+        "machineSizeWeightLitter": "5kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "58000",
+        "machineGST": "10440",
+        "machineGrandTotal": "68440"
+    },
+    {
+        "id": "52",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base L module",
+        "machineSizeWeightLitter": "5kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "55000",
+        "machineGST": "9900",
+        "machineGrandTotal": "64900"
+    },
+    {
+        "id": "53",
+        "machineName": "MELTING MACHINE",
+        "machineDescription": "Transformer base L module",
+        "machineSizeWeightLitter": "5kg",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "35000",
+        "machineGST": "6300",
+        "machineGrandTotal": "41300"
+    },
+    {
+        "id": "54",
+        "machineName": "Wax injector machine",
+        "machineDescription": "DIGITAL",
+        "machineSizeWeightLitter": "2 kg",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "18000",
+        "machineGST": "3240",
+        "machineGrandTotal": "21240"
+    },
+    {
+        "id": "55",
+        "machineName": "Wax injector machine",
+        "machineDescription": "DIGITAL",
+        "machineSizeWeightLitter": "5 kg",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "32500",
+        "machineGST": "5850",
+        "machineGrandTotal": "38350"
+    },
+    {
+        "id": "56",
+        "machineName": "Casting machine 2 in one machine",
+        "machineDescription": "600 pump 2 hp motor",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "147500",
+        "machineGST": "26550",
+        "machineGrandTotal": "174050"
+    },
+    {
+        "id": "57",
+        "machineName": "Casting machine 3 in one machine",
+        "machineDescription": "450 pump",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "120000",
+        "machineGST": "21600",
+        "machineGrandTotal": "141600"
+    },
+    {
+        "id": "58",
+        "machineName": "Casting machine 3 in one machine",
+        "machineDescription": "600 pump and vacuum filter 2 hp motor",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8471",
+        "machineSellingPrice": "140000",
+        "machineGST": "25200",
+        "machineGrandTotal": "165200"
+    },
+    {
+        "id": "59",
+        "machineName": "Casting powder vacuum machine",
+        "machineDescription": "Pump 450",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8477",
+        "machineSellingPrice": "6500",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "60",
+        "machineName": "Furnace bhatii ss",
+        "machineDescription": "Devising with controller",
+        "machineSizeWeightLitter": "9x9x10",
+        "machineHsnCode": "8417",
+        "machineSellingPrice": "42000",
+        "machineGST": "7560",
+        "machineGrandTotal": "49560"
+    },
+    {
+        "id": "61",
+        "machineName": "Furnace bhatii ss",
+        "machineDescription": "Devising with controller",
+        "machineSizeWeightLitter": "12x12x10",
+        "machineHsnCode": "8417",
+        "machineSellingPrice": "48000",
+        "machineGST": "8640",
+        "machineGrandTotal": "56640"
+    },
+    {
+        "id": "62",
+        "machineName": "Furnace bhatii ss",
+        "machineDescription": "Devising with controller",
+        "machineSizeWeightLitter": "13x17x10",
+        "machineHsnCode": "8417",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "63",
+        "machineName": "Furnace bhatii ss",
+        "machineDescription": "Devising with controller",
+        "machineSizeWeightLitter": "17x17x12",
+        "machineHsnCode": "8417",
+        "machineSellingPrice": "75000",
+        "machineGST": "13500",
+        "machineGrandTotal": "88500"
+    },
+    {
+        "id": "64",
+        "machineName": "Filling vacuum",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8422",
+        "machineSellingPrice": "38000",
+        "machineGST": "6840",
+        "machineGrandTotal": "44840"
+    },
+    {
+        "id": "65",
+        "machineName": "Depress machine",
+        "machineDescription": "Digital and timer",
+        "machineSizeWeightLitter": "8x8",
+        "machineHsnCode": "9619",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "66",
+        "machineName": "Depress machine",
+        "machineDescription": "Digital and timer",
+        "machineSizeWeightLitter": "6x8",
+        "machineHsnCode": "9619",
+        "machineSellingPrice": "26000",
+        "machineGST": "4680",
+        "machineGrandTotal": "30680"
+    },
+    {
+        "id": "67",
+        "machineName": "Water zed machine",
+        "machineDescription": "Full ss",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8448",
+        "machineSellingPrice": "70000",
+        "machineGST": "12600",
+        "machineGrandTotal": "82600"
+    },
+    {
+        "id": "68",
+        "machineName": "Vibrator machine",
+        "machineDescription": "25 kg 0.75 hp motor",
+        "machineSizeWeightLitter": "17x17x17",
+        "machineHsnCode": "8429",
+        "machineSellingPrice": "70000",
+        "machineGST": "12600",
+        "machineGrandTotal": "82600"
+    },
+    {
+        "id": "69",
+        "machineName": "Vibrator machine",
+        "machineDescription": "35 kg 2ph motor",
+        "machineSizeWeightLitter": "18.5x12x12",
+        "machineHsnCode": "8429",
+        "machineSellingPrice": "65000",
+        "machineGST": "11700",
+        "machineGrandTotal": "76700"
+    },
+    {
+        "id": "70",
+        "machineName": "Dryer machine",
+        "machineDescription": "1kg 0.12 hp",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8421",
+        "machineSellingPrice": "28000",
+        "machineGST": "5040",
+        "machineGrandTotal": "33040"
+    },
+    {
+        "id": "71",
+        "machineName": "Tar pata(motor)",
+        "machineDescription": "Roller press machine",
+        "machineSizeWeightLitter": "5x2.5",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "38000",
+        "machineGST": "7380",
+        "machineGrandTotal": "48380"
+    },
+    {
+        "id": "72",
+        "machineName": "Tar pata (hand)",
+        "machineDescription": "Roller press machine",
+        "machineSizeWeightLitter": "4x2",
+        "machineHsnCode": "8479",
+        "machineSellingPrice": "38000",
+        "machineGST": "6840",
+        "machineGrandTotal": "44840"
+    },
+    {
+        "id": "73",
+        "machineName": "Divecsor machine",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "20x20x20",
+        "machineHsnCode": "8418",
+        "machineSellingPrice": "25000",
+        "machineGST": "4500",
+        "machineGrandTotal": "29500"
+    },
+    {
+        "id": "74",
+        "machineName": "Divecsor machine",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "17x17x17",
+        "machineHsnCode": "8418",
+        "machineSellingPrice": "24500",
+        "machineGST": "4410",
+        "machineGrandTotal": "28910"
+    },
+    {
+        "id": "75",
+        "machineName": "Twin pen /dul machine",
+        "machineDescription": "Stand blaster",
+        "machineSizeWeightLitter": "",
+        "machineHsnCode": "8424",
+        "machineSellingPrice": "28500",
+        "machineGST": "5130",
+        "machineGrandTotal": "33630"
+    },
+    {
+        "id": "76",
+        "machineName": "Pp hand wash tank",
+        "machineDescription": "4 tap",
+        "machineSizeWeightLitter": "66x20x42 = 8mm",
+        "machineHsnCode": "39202010",
+        "machineSellingPrice": "68500",
+        "machineGST": "12330",
+        "machineGrandTotal": "80830"
+    },
+    {
+        "id": "77",
+        "machineName": "Pp washing tank",
+        "machineDescription": "tap ms stand 12",
+        "machineSizeWeightLitter": "48x32x36",
+        "machineHsnCode": "39202010",
+        "machineSellingPrice": "76500",
+        "machineGST": "13770",
+        "machineGrandTotal": "90270"
+    },
+    {
+        "id": "78",
+        "machineName": "Washing machine tank",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "24x36x42",
+        "machineHsnCode": "",
+        "machineSellingPrice": "56500",
+        "machineGST": "10170",
+        "machineGrandTotal": "66670"
+    },
+    {
+        "id": "79",
+        "machineName": "Filling vacuum machine",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "Double section",
+        "machineHsnCode": "8422",
+        "machineSellingPrice": "41000",
+        "machineGST": "7380",
+        "machineGrandTotal": "48380"
+    },
+    {
+        "id": "80",
+        "machineName": "Washing machine tank",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "36x24x24",
+        "machineHsnCode": "39202010",
+        "machineSellingPrice": "57500",
+        "machineGST": "",
+        "machineGrandTotal": ""
+    },
+    {
+        "id": "81",
+        "machineName": "Washing machine tank",
+        "machineDescription": "",
+        "machineSizeWeightLitter": "54x22x24",
+        "machineHsnCode": "39202010",
+        "machineSellingPrice": "75000",
+        "machineGST": "",
+        "machineGrandTotal": ""
+    },
+    {
+        "id": "82",
+        "machineName": "Washing machine tank",
+        "machineDescription": "PP",
+        "machineSizeWeightLitter": "48x24x30",
+        "machineHsnCode": "39202010",
+        "machineSellingPrice": "48500",
+        "machineGST": "",
+        "machineGrandTotal": ""
+    }
+]

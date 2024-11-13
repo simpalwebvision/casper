@@ -2,10 +2,13 @@ import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
+import 'package:caspro_enterprises/Utils/pdf_helper.dart';
+import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/common_loader.dart';
 import 'package:caspro_enterprises/Widgets/custom_image.dart';
 import 'package:caspro_enterprises/Widgets/upload_images_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -103,12 +106,12 @@ class _ManualScreenState extends State<ManualScreen> {
                               : controller.fileList[index];
                           return controller.initialIndex.value == 0
                               ? InkWell(
-                                  // onTap: () => Get.toNamed(
-                                  //     RouteNames.photoViewer,
-                                  //     arguments: {
-                                  //       "image": data.urlLink ?? "",
-                                  //       "title": data.fileName ?? ""
-                                  //     }),
+                                  onTap: () => Get.toNamed(
+                                      RouteNames.photoViewer,
+                                      arguments: {
+                                        "image": data.urlLink ?? "",
+                                        "title": data.fileName ?? ""
+                                      }),
                                   child: Card(
                                     shadowColor: blackColor,
                                     clipBehavior: Clip.hardEdge,
@@ -150,24 +153,24 @@ class _ManualScreenState extends State<ManualScreen> {
                                 )
                               : InkWell(
                                   onTap: () async {
-                                    // await EasyLoading.show(
-                                    //   status: 'Loading PDF Contents',
-                                    //   maskType: EasyLoadingMaskType.black,
-                                    // );
-                                    // try {
-                                    //   final file = await PdfApi.loadNetworkFile(
-                                    //       data.urlLink);
-                                    //   EasyLoading.dismiss();
-                                    //   Get.toNamed(RouteNames.pdfViewerPageTwo,
-                                    //       arguments: {
-                                    //         "file": file,
-                                    //         "file_name": data.fileName
-                                    //       });
-                                    // } catch (error) {
-                                    //   EasyLoading.dismiss();
-                                    //   CommonFunctions.showErrorSnackbar(
-                                    //       "Network Error..");
-                                    // }
+                                    await EasyLoading.show(
+                                      status: 'Loading PDF Contents',
+                                      maskType: EasyLoadingMaskType.black,
+                                    );
+                                    try {
+                                      final file = await PdfApi.loadNetworkFile(
+                                          data.urlLink);
+                                      EasyLoading.dismiss();
+                                      Get.toNamed(RouteNames.pdfViewerPageTwo,
+                                          arguments: {
+                                            "file": file,
+                                            "file_name": data.fileName
+                                          });
+                                    } catch (error) {
+                                      EasyLoading.dismiss();
+                                      CommonFunctions.showGetxSnackBar("Error",
+                                          msg: "Network Error..");
+                                    }
                                   },
                                   child: Card(
                                     shadowColor: blackColor,

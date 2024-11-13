@@ -24,7 +24,7 @@ class DetailWidgetHelper extends StatelessWidget {
         Text(
           heading,
           style: GoogleFonts.poppins(
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w500,
               color: headingColor ?? blackColor),
         ),
@@ -44,7 +44,7 @@ class DetailWidgetHelper extends StatelessWidget {
           child: Text(
             value,
             style: GoogleFonts.poppins(
-                fontSize: 13.5,
+                fontSize: 12,
                 fontWeight: FontWeight.normal,
                 color: valueColor ?? blackColor),
           ),
@@ -74,7 +74,7 @@ class MultiDetailHelper extends StatelessWidget {
         Text(
           heading,
           style: GoogleFonts.poppins(
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w500,
               color: headingColor ?? blackColor),
         ),
@@ -92,7 +92,7 @@ class MultiDetailHelper extends StatelessWidget {
         Text(
           value,
           style: GoogleFonts.poppins(
-              fontSize: 13,
+              fontSize: 12,
               fontWeight: FontWeight.normal,
               color: valueColor ?? blackColor),
         ),

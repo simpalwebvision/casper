@@ -1,4 +1,5 @@
 import 'package:caspro_enterprises/Utils/app_constants.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,6 +31,7 @@ AppBar commonAppBar({
     leading: InkWell(
         onTap: onPressed ??
             () {
+              CommonFunctions.hideKeyboard(context);
               Navigator.pop(context);
             },
         child: Container(

@@ -17,6 +17,7 @@ import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/AddExpe
 import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/ExpenseList/expense_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Manual/manual_screen.dart';
 import 'package:caspro_enterprises/Widgets/pdf_viewer_page.dart';
+import 'package:caspro_enterprises/Widgets/photo_view.dart';
 import 'package:get/get.dart';
 
 import '../Screens/Type-SuperAdmin/CustomerList/CustomerMachines/customer_machine_list.dart';
@@ -27,6 +28,8 @@ import '../Screens/splash_screen.dart';
 class RouteNames {
   static const String splashScreen = "/splash_screen";
   static const String loginScreen = "/login_screen";
+  static const String photoViewer = "/photo_viewer";
+  static const String pdfViewerPageTwo = "/pdf_viewer_page_two";
 
   //! Super Admin Screen
   static const String superAdminHomeScreen = "/super_admin_home_screen";
@@ -77,6 +80,18 @@ class AppRoute {
         GetPage(
             name: RouteNames.pdfViewerPage,
             page: () => const PFDViewerPage(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.photoViewer,
+            page: () => const PhotoViewScreen(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.pdfViewerPageTwo,
+            page: () => const PFDViewerPageTwo(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 
