@@ -254,8 +254,10 @@ class _ComplaintProceedState extends State<ComplaintProceed> {
                 style: GoogleFonts.poppins(color: Colors.white),
               ),
               onPressed: () {
-                _saveText(_wordsSpoken);
+                // _saveText(_wordsSpoken);
                 // Handle additional submit actions here
+
+                controller.updateComplaint(_wordsSpoken);
               },
             ),
           ],

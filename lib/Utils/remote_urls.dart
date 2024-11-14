@@ -41,4 +41,5 @@ class RemoteUrls {
 
   static String getComplaint = "$baseUrl/get-complaint-list";
   static String addComplaint = "$baseUrl/add-complaint";
+  static String updateComplaint = "$baseUrl/update-complaint-remark";
 }

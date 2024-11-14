@@ -17,7 +17,7 @@ class TechnicianComplaintsListController extends GetxController {
 
   Future fetchData() async {
     loadingFun(true);
-    var response = await complaintRepository.getComplaint();
+    var response = await complaintRepository.getComplaint("Pending");
 
     response.fold((error) {
       CommonFunctions.showGetxSnackBar("Error", msg: error.message);
@@ -33,8 +33,8 @@ class TechnicianComplaintsListController extends GetxController {
     List<ComplaintModel> showResult = [];
     if (ctlSearchController.value.text != '') {
       showResult = complaintList.where((prod) {
-        var name = prod.name.toLowerCase();
-        var email = prod.mobile.toLowerCase();
+        var name = prod.name!.toLowerCase();
+        var email = prod.mobile!.toLowerCase();
 
         return name.contains(ctlSearchController.value.text.toLowerCase()) ||
             email.contains(ctlSearchController.value.text.toLowerCase());

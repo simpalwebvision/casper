@@ -168,11 +168,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: controller.isLoggingIn.value
                                 ? null
                                 : () async {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) =>
-                                    //             const HelperPage()));
                                     final isValid =
                                         _formKey.currentState!.validate();
 

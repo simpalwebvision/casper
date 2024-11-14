@@ -2,6 +2,7 @@ import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
+import 'package:caspro_enterprises/Widgets/Helper-Page/helper_page.dart';
 import 'package:caspro_enterprises/Widgets/dashboard_widget.dart';
 import 'package:caspro_enterprises/Widgets/detail_widget_helper.dart';
 import 'package:flutter/material.dart';
@@ -301,7 +302,12 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                         child: ColumnImageHelper(
                           title: "Catalog",
                           image: AppImages.offer,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HelperPage()));
+                          },
                         ),
                       ),
                       Expanded(

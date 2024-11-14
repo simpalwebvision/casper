@@ -87,30 +87,60 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                           const SizedBox(
                                             height: 5,
                                           ),
+                                          Row(
+                                            children: [
+                                              MultiDetailHelper(
+                                                heading: "Sr.No",
+                                                value: "${index + 1}",
+                                              ),
+                                              const Spacer(),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10,
+                                                        vertical: 5),
+                                                decoration: BoxDecoration(
+                                                    color: data.statusColor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                child: Text(
+                                                  data.status!,
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           DetailWidgetHelper(
                                             heading: "Complaint",
-                                            value: data.complain,
+                                            value: data.complain!,
                                           ),
                                           const SizedBox(
                                             height: 5,
                                           ),
                                           DetailWidgetHelper(
                                             heading: "Machine",
-                                            value: data.machineName,
+                                            value: data.machineName!,
                                           ),
                                           const SizedBox(
                                             height: 5,
                                           ),
                                           DetailWidgetHelper(
                                             heading: "Description",
-                                            value: data.machineDescription,
+                                            value: data.machineDescription!,
                                           ),
                                           const SizedBox(
                                             height: 5,
                                           ),
                                           DetailWidgetHelper(
                                             heading: "Size/Weight/Litter",
-                                            value: data.machineSizeWeightLitter,
+                                            value:
+                                                data.machineSizeWeightLitter!,
                                           ),
                                           const SizedBox(
                                             height: 10,
@@ -141,21 +171,21 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                                   ),
                                                   DetailWidgetHelper(
                                                     heading: "Name",
-                                                    value: data.name,
+                                                    value: data.name!,
                                                   ),
                                                   const SizedBox(
                                                     height: 5,
                                                   ),
                                                   DetailWidgetHelper(
                                                     heading: "Mobile",
-                                                    value: data.mobile,
+                                                    value: data.mobile!,
                                                   ),
                                                   const SizedBox(
                                                     height: 5,
                                                   ),
                                                   DetailWidgetHelper(
                                                     heading: "Address",
-                                                    value: data.address,
+                                                    value: data.address!,
                                                   ),
                                                   const SizedBox(
                                                     height: 5,
@@ -181,7 +211,7 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                                         FontWeight.w500),
                                               ),
                                               Text(
-                                                data.createdAt,
+                                                data.createdAt!,
                                                 style: GoogleFonts.poppins(
                                                     fontSize: 11,
                                                     fontStyle: FontStyle.italic,
@@ -211,8 +241,13 @@ class _TechnicianComplaintsListState extends State<TechnicianComplaintsList> {
                                                   ],
                                                 ),
                                                 onPressed: () => Get.toNamed(
-                                                    RouteNames
-                                                        .complaintProceed),
+                                                        RouteNames
+                                                            .complaintProceed,
+                                                        arguments: {
+                                                      "complain_model": data
+                                                    })!
+                                                    .then((e) =>
+                                                        controller.fetchData()),
                                               )
                                             ],
                                           ),
