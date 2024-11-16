@@ -23,8 +23,6 @@ class ComplaintRepository {
 
       complaintList = list.map((e) => ComplaintModel.fromJson(e)).toList();
 
-      // complaintList = complaintList.reversed.toList();
-
       return right(complaintList);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));

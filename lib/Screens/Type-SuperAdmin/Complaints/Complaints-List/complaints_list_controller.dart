@@ -267,7 +267,7 @@ class ComplaintsListController extends GetxController {
         if (decodedData["response"]) {
           Get.back();
           CommonFunctions.showGetxSnackBar("Success",
-              msg: decodedData["msg"], backColor: successColor);
+              msg: "Assigned technician.", backColor: successColor);
         } else {
           CommonFunctions.showGetxSnackBar(
             "Error",
