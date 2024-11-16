@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:caspro_enterprises/Models/machine_model.dart';
 import 'package:caspro_enterprises/Models/user_profile_model.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
@@ -147,6 +148,23 @@ class CommonFunctions {
     TechnicianProfileModel userProfile =
         TechnicianProfileModel.fromJson(userMap);
     return userProfile;
+  }
+
+  Future<List<MachineModel>> getMachineList() async {
+    String helper = await LocalPreferences().getMachineList() ?? "";
+
+    var userMap = jsonDecode(helper);
+    // TechnicianProfileModel userProfile =
+    //     TechnicianProfileModel.fromJson(userMap);
+
+    List<MachineModel> machineList = [];
+
+    machineList = userMap
+        .map<MachineModel>(
+          (e) => MachineModel.fromJson(e),
+        )
+        .toList();
+    return machineList;
   }
 
   // Future<UserProfileModel> getUserProfileData() async {

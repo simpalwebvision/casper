@@ -1,11 +1,12 @@
+import 'package:caspro_enterprises/Models/machine_model.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/app_helpers.dart';
-import 'package:caspro_enterprises/Widgets/dropdown_widget.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,6 +41,67 @@ class _AddComplaintState extends State<AddComplaint> {
             key: controller.formKey,
             child: Column(
               children: [
+                TypeAheadField<MachineModel>(
+                  controller: controller.ctlMachineCode.value,
+                  suggestionsCallback: (query) {
+                    return controller.searchMachines(query);
+                  },
+                  builder: (context, controller, focusNode) {
+                    return TextField(
+                      style: GoogleFonts.poppins(
+                        fontSize: Get.width * 0.034,
+                        color: Colors.black,
+                        letterSpacing: 1,
+                      ),
+                      controller: controller,
+                      focusNode: focusNode,
+                      decoration: InputDecoration(
+                          label: Text(
+                            "Enter Machie code",
+                            style: GoogleFonts.poppins(),
+                          ),
+                          hintText: "Enter Machie code",
+                          hintStyle: GoogleFonts.poppins(
+                            fontSize: Get.width * 0.034,
+                            color: Colors.black38,
+                            letterSpacing: 1,
+                          ),
+                          errorStyle: GoogleFonts.poppins(
+                              color: Colors.red,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                  color: secondaryColor, width: 1.5)),
+                          focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Colors.grey)),
+                          errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Colors.red)),
+                          labelStyle: GoogleFonts.poppins(
+                            fontSize: Get.width * 0.034,
+                            color: Colors.black,
+                            letterSpacing: 1,
+                          )),
+                    );
+                  },
+                  itemBuilder: (context, machine) {
+                    return ListTile(
+                      title: Text(machine.machineCode!),
+                      subtitle: Text(machine.name!),
+                    );
+                  },
+                  onSelected: (machine) => controller.onSelected(machine),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 StepperTextField(
                   controllerValue: controller.ctlNumber.value,
                   mLength: 10,
@@ -97,68 +159,38 @@ class _AddComplaintState extends State<AddComplaint> {
                 const SizedBox(
                   height: 15,
                 ),
-                GetBuilder<AddComplaintController>(
-                  builder: (ctl) {
-                    return DropDownWidget(
-                      isExpand: true,
-                      selectedVal: ctl.ctlMachineName.value.text,
-                      onChanged: (value) =>
-                          ctl.setMachineName(value.toString()),
-                      labelText: "Machine name",
-                      hintText: "Machine name",
-                      validate: (val) {
-                        if (val == null) {
-                          return "Required";
-                        }
-                        return null;
-                      },
-                      dropMenuList: ctl.machineNameList,
-                    );
+                StepperTextField(
+                  controllerValue: controller.ctlMachineName.value,
+                  inputType: TextInputType.text,
+                  rOnly: true,
+                  validate: (val) {
+                    return null;
                   },
+                  hintValue: "Machine name",
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                GetBuilder<AddComplaintController>(
-                  builder: (ctl) {
-                    return DropDownWidget(
-                      isExpand: true,
-                      selectedVal: ctl.ctlMachineDescription.value.text,
-                      onChanged: (value) =>
-                          ctl.setMachineDescription(value.toString()),
-                      labelText: "Machine Description",
-                      hintText: "Machine Description",
-                      validate: (val) {
-                        if (val == null) {
-                          return "Required";
-                        }
-                        return null;
-                      },
-                      dropMenuList: ctl.machineDescriptionList,
-                    );
+                StepperTextField(
+                  controllerValue: controller.ctlMachineDescription.value,
+                  inputType: TextInputType.text,
+                  rOnly: true,
+                  validate: (val) {
+                    return null;
                   },
+                  hintValue: "Machine Description",
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                GetBuilder<AddComplaintController>(
-                  builder: (ctl) {
-                    return DropDownWidget(
-                      isExpand: true,
-                      selectedVal: ctl.ctlMachineSizeWeightLitter.value.text,
-                      onChanged: (value) =>
-                          ctl.setMachineSizeWeightLitter(value.toString()),
-                      labelText: "Size / Weight / Litter",
-                      hintText: "Size / Weight / Litter",
-                      validate: (val) {
-                        if (val == null) {
-                          return "Required";
-                        }
-                        return null;
-                      },
-                      dropMenuList: ctl.machineSizeWeightLitterList,
-                    );
+                StepperTextField(
+                  controllerValue: controller.ctlMachineSizeWeightLitter.value,
+                  inputType: TextInputType.text,
+                  rOnly: true,
+                  validate: (val) {
+                    return null;
                   },
+                  hintValue: "Size / Weight / Litter",
                 ),
                 const SizedBox(
                   height: 15,

@@ -1,3 +1,4 @@
+import 'package:caspro_enterprises/Screens/SplashScreen/splash_controller.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/local_shared_preferences.dart';
@@ -14,6 +15,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final controller = Get.put(SplashController());
+
+  @override
+  void dispose() {
+    Get.delete<SplashController>();
+    super.dispose();
+  }
+
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () async {

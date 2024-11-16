@@ -5,6 +5,7 @@ const loginStaffKey = "STAFF_LOGIN_STATUS";
 const loginManufacturingUnitKey = "MANUFACTURING_UNIT_LOGIN_STATUS";
 const loginTechnicianKey = "TECHNICIAN_LOGIN_STATUS";
 const profileDataKey = "PROFILEDATAKEY";
+const machineListKey = "MACHINELISTKEY";
 const loginUserId = "LOGINUSERID";
 const loginUserType = "LOGINUSERTYPE";
 
@@ -74,6 +75,18 @@ class LocalPreferences {
   Future<String?> getProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(profileDataKey);
+  }
+
+  // ----------------------------------------------------------------------
+
+  Future setMachineList(String val) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(machineListKey, val);
+  }
+
+  Future<String?> getMachineList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(machineListKey);
   }
 
   // ----------------------------------------------------------------------

@@ -1,4 +1,4 @@
-import 'package:caspro_enterprises/Screens/splash_screen.dart';
+import 'package:caspro_enterprises/Screens/SplashScreen/splash_screen.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Utils/theme_data.dart';

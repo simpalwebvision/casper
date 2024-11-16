@@ -23,7 +23,7 @@ import 'package:get/get.dart';
 import '../Screens/Type-SuperAdmin/CustomerList/CustomerMachines/customer_machine_list.dart';
 import '../Screens/Type-SuperAdmin/Employees/Employee-List/employees_list.dart';
 import '../Screens/Type-SuperAdmin/Home/super_admin_home_screen.dart';
-import '../Screens/splash_screen.dart';
+import '../Screens/SplashScreen/splash_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/splash_screen";

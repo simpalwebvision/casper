@@ -52,4 +52,22 @@ class ComplaintRepository {
       return Left(ServerFailure(e.message, e.statusCode));
     }
   }
+
+  Future<Either<Failure, List<ComplaintModel>>> getComplaintHistory() async {
+    try {
+      var response =
+          await apiService.getGetApiResponse(RemoteUrls.getComplaint);
+
+      List<ComplaintModel> complaintList = [];
+      List list = response['data'];
+
+      complaintList = list.map((e) => ComplaintModel.fromJson(e)).toList();
+
+      // complaintList = complaintList.reversed.toList();
+
+      return right(complaintList);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
 }

@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:caspro_enterprises/Models/complaint_model.dart';
+import 'package:caspro_enterprises/Models/user_profile_model.dart';
+import 'package:caspro_enterprises/Repository/auth_repository.dart';
+import 'package:caspro_enterprises/Repository/complaint_repository.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
@@ -8,37 +14,104 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ComplaintsListController extends GetxController {
+  ComplaintRepository complaintRepository = ComplaintRepository();
+  AuthRepository authRepository = AuthRepository();
   Rx<TextEditingController> ctlSearchController = TextEditingController().obs;
   Rx<TextEditingController> ctlTechnician = TextEditingController().obs;
   Rx<TextEditingController> ctlTechnicianName = TextEditingController().obs;
 
   GlobalKey<FormState> formKey = GlobalKey();
 
-  Future fetchData() async {}
+  RxList<ComplaintModel> complaintList = <ComplaintModel>[].obs;
+  RxList<ComplaintModel> searchResultList = <ComplaintModel>[].obs;
 
-  RxList<dynamic> technicianList = <dynamic>[].obs;
-  RxList<dynamic> filteredAreaList = <dynamic>[].obs;
+  RxBool isLoading = false.obs;
+  loadingFun(bool val) => isLoading.value = val;
+
+  Future fetchData() async {
+    loadingFun(true);
+    var response = await complaintRepository.getComplaint("Pending");
+
+    response.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      loadingFun(false);
+    }, (data) {
+      complaintList.value = data;
+      searchResulList();
+    });
+  }
+
+  Future getTechnicianList() async {
+    loadingFun(true);
+    var response = await authRepository.getTechincianList();
+
+    response.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      loadingFun(false);
+    }, (data) {
+      technicianList.value = data;
+      searchResulList();
+    });
+  }
+
+  onSearchChanged() => searchResulList();
+  searchResulList() {
+    List<ComplaintModel> showResult = [];
+    if (ctlSearchController.value.text != '') {
+      showResult = complaintList.where((prod) {
+        var name = prod.name!.toLowerCase();
+        var email = prod.mobile!.toLowerCase();
+
+        return name.contains(ctlSearchController.value.text.toLowerCase()) ||
+            email.contains(ctlSearchController.value.text.toLowerCase());
+      }).toList();
+    } else {
+      showResult = List.from(complaintList);
+    }
+
+    searchResultList.value = showResult;
+    loadingFun(false);
+  }
+
+  RxList<TechnicianProfileModel> technicianList =
+      <TechnicianProfileModel>[].obs;
+  RxList<TechnicianProfileModel> filteredAreaList =
+      <TechnicianProfileModel>[].obs;
 
   void searchArea(String query) {
-    List<dynamic> results = [];
+    List<TechnicianProfileModel> results = [];
     if (query.isEmpty) {
       results = technicianList;
     } else {
       results = technicianList
           .where(
-              (item) => item.name.toLowerCase().contains(query.toLowerCase()))
+              (item) => item.name!.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
 
     filteredAreaList.value = results;
   }
 
-  void onSelectArea(
-      // ServiceAreaListModel serviceCity,
-      ) {
-    // selectedArea.value = serviceCity;
-    // ctlServiceArea.value.text = serviceCity.name;
+  TechnicianProfileModel selectedTechnician = TechnicianProfileModel();
+
+  void onSelectTechnician(
+    TechnicianProfileModel technician,
+  ) {
+    ctlTechnician.value.text = technician.name ?? "";
+    ctlTechnicianName.value.text = technician.name ?? "";
+    selectedTechnician = technician;
     Get.back();
+  }
+
+  @override
+  void onInit() {
+    ctlSearchController.value.addListener(onSearchChanged);
+    initData();
+    super.onInit();
+  }
+
+  initData() async {
+    await Future.wait([getTechnicianList(), fetchData()]);
   }
 
   @override
@@ -49,7 +122,7 @@ class ComplaintsListController extends GetxController {
     super.dispose();
   }
 
-  assignTechnician(BuildContext context) {
+  assignTechnician(BuildContext context, ComplaintModel complaint) {
     ctlTechnician.value.clear();
     ctlTechnicianName.value.clear();
     searchArea("");
@@ -119,7 +192,7 @@ class ComplaintsListController extends GetxController {
                                 itemBuilder: (context, index) {
                                   var data = filteredAreaList[index];
                                   return InkWell(
-                                    onTap: () => onSelectArea(),
+                                    onTap: () => onSelectTechnician(data),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
@@ -155,13 +228,7 @@ class ComplaintsListController extends GetxController {
                       if (!isValid) {
                         return;
                       }
-
-                      Get.back();
-
-                      // Get.toNamed(RouteNames.introScreenTwo, arguments: {
-                      //   "service_id": selectedService.value!.id,
-                      //   "area_id": selectedArea.value!.id,
-                      // });
+                      assignTechnicianToComplaint(complaint);
                     },
                     child: Text(
                       "Assign",
@@ -174,5 +241,46 @@ class ComplaintsListController extends GetxController {
         ),
       ),
     ));
+  }
+
+  RxBool assigningBool = false.obs;
+  assigningBoolFun(bool val) => assigningBool.value = val;
+
+  Future assignTechnicianToComplaint(ComplaintModel complaint) async {
+    assigningBoolFun(true);
+
+    var passedBody = json.encode({
+      "id": complaint.id!,
+      "created_by": selectedTechnician.id,
+      "status": "Pending"
+    });
+
+    var response = await complaintRepository.updateComplaint(passedBody);
+
+    response.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      assigningBoolFun(false);
+    }, (data) {
+      if (data.statusCode == 200) {
+        var decodedData = json.decode(data.body);
+
+        if (decodedData["response"]) {
+          Get.back();
+          CommonFunctions.showGetxSnackBar("Success",
+              msg: decodedData["msg"], backColor: successColor);
+        } else {
+          CommonFunctions.showGetxSnackBar(
+            "Error",
+            msg: decodedData["msg"],
+          );
+        }
+      } else {
+        CommonFunctions.showGetxSnackBar(
+          "Error",
+          msg: "Something went wrong. try again later.",
+        );
+      }
+      assigningBoolFun(false);
+    });
   }
 }

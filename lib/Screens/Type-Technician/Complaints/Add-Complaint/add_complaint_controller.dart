@@ -19,6 +19,7 @@ class AddComplaintController extends GetxController {
   final Rx<TextEditingController> ctlNumber = TextEditingController().obs;
   final Rx<TextEditingController> ctlName = TextEditingController().obs;
   final Rx<TextEditingController> ctlAddress = TextEditingController().obs;
+  final Rx<TextEditingController> ctlMachineCode = TextEditingController().obs;
   final Rx<TextEditingController> ctlMachineName = TextEditingController().obs;
   final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
 
@@ -30,9 +31,6 @@ class AddComplaintController extends GetxController {
       TextEditingController().obs;
 
   RxList<MachineModel> machineList = <MachineModel>[].obs;
-  RxList<String> machineNameList = <String>[].obs;
-  RxList<String> machineDescriptionList = <String>[].obs;
-  RxList<String> machineSizeWeightLitterList = <String>[].obs;
 
   Future<List<MachineModel>> loadMachines() async {
     final String response = await rootBundle.loadString('assets/machines.json');
@@ -47,61 +45,24 @@ class AddComplaintController extends GetxController {
   }
 
   initData() async {
-    machineList.value = await loadMachines();
-    machineNameList.value =
-        machineList.map((e) => e.machineName).toSet().toList();
+    machineList.value = await CommonFunctions().getMachineList();
+    update();
+  }
 
-    machineDescriptionList.value = machineList
-        .map((e) => e.machineDescription)
-        .where((description) => description.isNotEmpty)
-        .toSet()
-        .toList();
-
-    machineSizeWeightLitterList.value = machineList
-        .map((e) => e.machineSizeWeightLitter)
-        .where((machineSizeWeightLitter) => machineSizeWeightLitter.isNotEmpty)
-        .toSet()
-        .toList();
+  onSelected(MachineModel machine) {
+    ctlMachineCode.value.text = machine.name!;
+    ctlMachineName.value.text = machine.name!;
+    ctlMachineDescription.value.text = machine.description!;
+    ctlMachineSizeWeightLitter.value.text = machine.size!;
 
     update();
   }
 
-  setMachineName(String val) {
-    ctlMachineName.value.text = val;
-    // List<MachineModel> selectedMachines = machineList
-    //     .where((e) => e.machineName == val && e.machineName.isNotEmpty)
-    //     .toSet()
-    //     .toList();
-
-    // machineDescriptionList.value = selectedMachines
-    //     .map((e) => e.machineDescription)
-    //     .where((description) => description.isNotEmpty)
-    //     .toSet()
-    //     .toList();
-
-    // update();
+  List<MachineModel> searchMachines(String query) {
+    return machineList.where((machine) {
+      return machine.machineCode!.toLowerCase().contains(query.toLowerCase());
+    }).toList();
   }
-
-  setMachineDescription(String val) {
-    ctlMachineDescription.value.text = val;
-
-    // List<MachineModel> selectedMachines = machineList
-    //     .where((e) =>
-    //         e.machineDescription == val && e.machineDescription.isNotEmpty)
-    //     .toSet()
-    //     .toList();
-
-    // machineSizeWeightLitterList.value = selectedMachines
-    //     .map((e) => e.machineSizeWeightLitter)
-    //     .where((machineSizeWeightLitter) => machineSizeWeightLitter.isNotEmpty)
-    //     .toSet()
-    //     .toList();
-
-    // update();
-  }
-
-  setMachineSizeWeightLitter(String val) =>
-      ctlMachineSizeWeightLitter.value.text = val;
 
   Future addComplaint(BuildContext context) async {
     CommonFunctions.hideKeyboard(context);
@@ -162,6 +123,7 @@ class AddComplaintController extends GetxController {
     ctlMachineDescription.value.dispose();
     ctlMachineSizeWeightLitter.value.dispose();
     ctlComplaint.value.dispose();
+    ctlMachineCode.value.dispose();
     super.dispose();
   }
 }

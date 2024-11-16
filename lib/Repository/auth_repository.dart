@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:caspro_enterprises/Models/machine_model.dart';
 import 'package:caspro_enterprises/Models/technician_recharge_model.dart';
 import 'package:caspro_enterprises/Models/user_profile_model.dart';
 import 'package:caspro_enterprises/Utils/app_base_api_services.dart';
@@ -72,6 +73,41 @@ class AuthRepository {
           .toList();
 
       return right(claimList);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  Future<Either<Failure, List<MachineModel>>> getMachineList() async {
+    try {
+      var response = await apiService.getGetApiResponse(
+        RemoteUrls.getMachineList,
+      );
+
+      String machineData = jsonEncode(response['data']);
+      await LocalPreferences().setMachineList(machineData);
+
+      return right([]);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  Future<Either<Failure, List<TechnicianProfileModel>>>
+      getTechincianList() async {
+    try {
+      var response =
+          await apiService.getGetApiResponse(RemoteUrls.getTechnicianList);
+
+      List<TechnicianProfileModel> complaintList = [];
+      List list = response['data'];
+
+      complaintList =
+          list.map((e) => TechnicianProfileModel.fromJson(e)).toList();
+
+      // complaintList = complaintList.reversed.toList();
+
+      return right(complaintList);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));
     }

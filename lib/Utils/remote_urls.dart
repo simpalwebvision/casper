@@ -3,9 +3,10 @@ class RemoteUrls {
   static String imageUrl = "https://fastquote.co.in/cashpro";
 
   static String loginUrl = "$baseUrl/login";
-
+  static String getMachineList = "$baseUrl/get-machine-list";
   // * Technician
   static String getProfile = "$baseUrl/technician-list?tech_id";
+
   static String getRechargeData = "$baseUrl/technician-pass-recharge?tech_id";
   static String getClaimSheetAmt =
       "$baseUrl/technician-claim-sheet-pending?tech_id";
@@ -42,4 +43,5 @@ class RemoteUrls {
   static String getComplaint = "$baseUrl/get-complaint-list";
   static String addComplaint = "$baseUrl/add-complaint";
   static String updateComplaint = "$baseUrl/update-complaint-remark";
+  static String getTechnicianList = "$baseUrl/technician-list";
 }

@@ -1,50 +1,47 @@
 class MachineModel {
-  final String id;
-  final String machineName;
-  final String machineDescription;
-  final String machineSizeWeightLitter;
-  final String machineHsnCode;
-  final String machineSellingPrice;
-  final String machineGST;
-  final String machineGrandTotal;
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? size;
+  final String? hsn;
+  final String? sprice;
+  final String? gst;
+  final String? gtotal;
+  final String? machineCode;
 
   MachineModel({
-    required this.id,
-    required this.machineName,
-    required this.machineDescription,
-    required this.machineSizeWeightLitter,
-    required this.machineHsnCode,
-    required this.machineSellingPrice,
-    required this.machineGST,
-    required this.machineGrandTotal,
+    this.id,
+    this.name,
+    this.description,
+    this.size,
+    this.hsn,
+    this.sprice,
+    this.gst,
+    this.gtotal,
+    this.machineCode,
   });
 
   factory MachineModel.fromJson(Map<String, dynamic> json) => MachineModel(
         id: json["id"],
-        machineName: json["machineName"],
-        machineDescription: json["machineDescription"],
-        machineSizeWeightLitter: json["machineSizeWeightLitter"],
-        machineHsnCode: json["machineHsnCode"],
-        machineSellingPrice: json["machineSellingPrice"],
-        machineGST: json["machineGST"],
-        machineGrandTotal: json["machineGrandTotal"],
+        name: json["name"],
+        description: json["description"],
+        size: json["size"],
+        hsn: json["hsn"],
+        sprice: json["sprice"],
+        gst: json["gst"],
+        gtotal: json["gtotal"],
+        machineCode: json["machine_code"],
       );
-}
 
-class MachineNameModel {
-  final String id;
-  final String machineName;
-
-  MachineNameModel({required this.id, required this.machineName});
-}
-
-class MachineDescriptionModel {
-  final String id;
-  final String description;
-  final String mainDescriptionTitle;
-
-  MachineDescriptionModel(
-      {required this.id,
-      required this.description,
-      required this.mainDescriptionTitle});
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "description": description,
+        "size": size,
+        "hsn": hsn,
+        "sprice": sprice,
+        "gst": gst,
+        "gtotal": gtotal,
+        "machine_code": machineCode,
+      };
 }
