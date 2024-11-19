@@ -82,8 +82,8 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
             ),
             DashboardWidget(
               widgetText: "Catalog",
-              imageAssets: AppImages.offer,
-              onClicked: () {},
+              imageAssets: AppImages.manualImage,
+              onClicked: () => Get.toNamed(RouteNames.manualScreen),
             ),
             DashboardWidget(
               widgetText: "My Account",

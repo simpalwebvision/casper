@@ -301,13 +301,8 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                       Expanded(
                         child: ColumnImageHelper(
                           title: "Catalog",
-                          image: AppImages.offer,
-                          onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const HelperPage()));
-                          },
+                          image: AppImages.manualImage,
+                          onPressed: () => Get.toNamed(RouteNames.manualScreen),
                         ),
                       ),
                       Expanded(
@@ -324,18 +319,12 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: ColumnImageHelper(
-                          title: "Manual",
-                          image: AppImages.manualImage,
-                          onPressed: () => Get.toNamed(RouteNames.manualScreen),
-                        ),
-                      ),
-                      Expanded(
                           child: ColumnImageHelper(
                         onPressed: () => CommonFunctions().logOut(),
                         image: AppImages.logout,
                         title: "Logout",
                       )),
+                      Expanded(child: Container()),
                       Expanded(child: Container()),
                     ],
                   ),

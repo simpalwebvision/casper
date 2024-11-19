@@ -29,7 +29,7 @@ class _ManualScreenState extends State<ManualScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: commonAppBar(context: context, heading: "Tech Manuals"),
+      appBar: commonAppBar(context: context, heading: "Catalog"),
       body: DefaultTabController(
         initialIndex: controller.initialIndex.value,
         length: 2,

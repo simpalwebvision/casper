@@ -94,7 +94,7 @@ class LoginController extends GetxController {
     //! Manufacturing Unit
     // ctlMobile.value.text = "9670451991";
     //! Technician
-    // ctlMobile.value.text = "9324592094";
+    ctlMobile.value.text = "9324592094";
     ctlPassword.value.text = "12345";
     super.onInit();
   }

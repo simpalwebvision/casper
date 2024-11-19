@@ -99,6 +99,8 @@ class DashboardWidget extends StatelessWidget {
                 imageAssets,
                 height: size.height * 0.06,
                 width: size.width * 0.05,
+                colorFilter:
+                    const ColorFilter.mode(headingColor, BlendMode.srcIn),
               ),
               const SizedBox(
                 height: 10,

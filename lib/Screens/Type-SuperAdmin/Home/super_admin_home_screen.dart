@@ -86,8 +86,8 @@ class _SuperAdminHomeScreenState extends State<SuperAdminHomeScreen> {
             ),
             DashboardWidget(
               widgetText: "Catalog",
-              imageAssets: AppImages.offer,
-              onClicked: () {},
+              imageAssets: AppImages.manualImage,
+              onClicked: () => Get.toNamed(RouteNames.manualScreen),
             ),
             DashboardWidget(
               widgetText: "My Account",
