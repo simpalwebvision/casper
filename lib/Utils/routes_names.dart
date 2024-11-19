@@ -5,6 +5,7 @@ import 'package:caspro_enterprises/Screens/Type-Customer/Home/customer_home_scre
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manufacturing_unit_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Upload-Problem-Image/Upload-Image-List/upload_image_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints-List/complaints_list.dart';
+import 'package:caspro_enterprises/Screens/Type-SuperAdmin/CustomerList/Create-Customer/create_customer.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/CustomerList/customer_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/History/history_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Complaints/Add-Complaint/add_complaint.dart';
@@ -41,6 +42,7 @@ class RouteNames {
   static const String pdfViewerPage = "/pdf_viewer_page";
   //! Customer Screen
   static const String customerList = "/customer_list";
+  static const String createCustomerScreen = "/create_customer_screen";
 
   //! Admin Screen
   static const String customerHomeScreen = "/customer_home_screen";
@@ -105,6 +107,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.customerList,
             page: () => const CustomerList(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.createCustomerScreen,
+            page: () => const CreateCustomerScreen(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

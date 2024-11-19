@@ -94,7 +94,7 @@ class AddComplaintController extends GetxController
 
   onSelectedBag(BagModel bag) {
     selectedBagModel = bag;
-    ctlBagCode.value.text = bag.machineName!;
+    ctlBagCode.value.text = bag.bagCode!;
     ctlMachineName.value.text = bag.machineName!;
     ctlMachineDescription.value.text = bag.module!;
     ctlMachineSizeWeightLitter.value.text = bag.size!;

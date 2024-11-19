@@ -5,6 +5,11 @@ class RemoteUrls {
   static String loginUrl = "$baseUrl/login";
   static String getMachineList = "$baseUrl/get-machine-list";
   static String getBagList = "$baseUrl/get-bagmaster-list";
+
+  //! Customer
+  static String getCustomers = "$baseUrl/get-customer-list";
+  static String addCustomers = "$baseUrl/add-customer";
+
   // * Technician
   static String getProfile = "$baseUrl/technician-list?tech_id";
 

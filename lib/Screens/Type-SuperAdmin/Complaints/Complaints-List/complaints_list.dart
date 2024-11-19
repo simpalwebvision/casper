@@ -2,6 +2,7 @@ import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/common_loader.dart';
@@ -301,9 +302,11 @@ class _ComplaintsListState extends State<ComplaintsList> {
             ],
           ),
           backgroundColor: secondaryColor,
-          onPressed: () => Get.toNamed(RouteNames.addComplaint,
-                  arguments: {"from": "admin"})!
-              .then((e) => controller.fetchData())),
+          onPressed: () {
+            CommonFunctions.hideKeyboard(context);
+            Get.toNamed(RouteNames.addComplaint, arguments: {"from": "admin"})!
+                .then((e) => controller.fetchData());
+          }),
     );
   }
 }
