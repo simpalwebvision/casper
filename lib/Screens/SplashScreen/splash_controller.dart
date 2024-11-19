@@ -3,11 +3,15 @@ import 'package:get/get.dart';
 
 class SplashController extends GetxController {
   AuthRepository authRepository = AuthRepository();
-  Future getMachineList() async => await authRepository.getMachineList();
 
   @override
   void onInit() {
-    getMachineList();
+    fetchInitData();
     super.onInit();
   }
+
+  fetchInitData() async => await Future.wait([getMachineList(), getBagList()]);
+
+  Future getMachineList() async => await authRepository.getMachineList();
+  Future getBagList() async => await authRepository.getBagList();
 }

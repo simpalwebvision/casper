@@ -275,7 +275,8 @@ class _ComplaintsListState extends State<ComplaintsList> {
             ],
           ),
           backgroundColor: secondaryColor,
-          onPressed: () => Get.toNamed(RouteNames.addComplaint)!
+          onPressed: () => Get.toNamed(RouteNames.addComplaint,
+                  arguments: {"from": "admin"})!
               .then((e) => controller.fetchData())),
     );
   }

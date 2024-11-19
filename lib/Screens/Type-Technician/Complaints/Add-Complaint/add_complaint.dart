@@ -20,7 +20,7 @@ class AddComplaint extends StatefulWidget {
 }
 
 class _AddComplaintState extends State<AddComplaint> {
-  final controller = Get.put(AddComplaintController());
+  final ctl = Get.put(AddComplaintController());
 
   @override
   void dispose() {
@@ -36,74 +36,178 @@ class _AddComplaintState extends State<AddComplaint> {
         appBar: commonAppBar(context: context, heading: "Add Complaint"),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 17),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: Form(
-            key: controller.formKey,
+            key: ctl.formKey,
             child: Column(
               children: [
-                TypeAheadField<MachineModel>(
-                  controller: controller.ctlMachineCode.value,
-                  suggestionsCallback: (query) {
-                    return controller.searchMachines(query);
-                  },
-                  builder: (context, controller, focusNode) {
-                    return TextField(
-                      style: GoogleFonts.poppins(
-                        fontSize: Get.width * 0.034,
-                        color: Colors.black,
-                        letterSpacing: 1,
+                IgnorePointer(
+                  ignoring: ctl.from == "technician",
+                  child: TabBar(
+                    unselectedLabelColor: secondaryColor,
+                    padding: const EdgeInsets.only(bottom: 5),
+                    indicatorColor: primaryColor,
+                    controller: ctl.tabController,
+                    labelColor: primaryColor,
+                    labelStyle: GoogleFonts.mukta(fontWeight: FontWeight.bold),
+                    onTap: (value) => ctl.onChangeTab(value),
+                    tabs: const [
+                      Tab(
+                        text: 'Service',
                       ),
-                      controller: controller,
-                      focusNode: focusNode,
-                      decoration: InputDecoration(
-                          label: Text(
-                            "Enter Machie code",
-                            style: GoogleFonts.poppins(),
-                          ),
-                          hintText: "Enter Machie code",
-                          hintStyle: GoogleFonts.poppins(
-                            fontSize: Get.width * 0.034,
-                            color: Colors.black38,
-                            letterSpacing: 1,
-                          ),
-                          errorStyle: GoogleFonts.poppins(
-                              color: Colors.red,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                  color: secondaryColor, width: 1.5)),
-                          focusedErrorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(color: Colors.grey)),
-                          errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(color: Colors.red)),
-                          labelStyle: GoogleFonts.poppins(
-                            fontSize: Get.width * 0.034,
-                            color: Colors.black,
-                            letterSpacing: 1,
-                          )),
-                    );
-                  },
-                  itemBuilder: (context, machine) {
-                    return ListTile(
-                      title: Text(machine.machineCode!),
-                      subtitle: Text(machine.name!),
-                    );
-                  },
-                  onSelected: (machine) => controller.onSelected(machine),
+                      Tab(
+                        text: 'Order',
+                      ),
+                    ],
+                  ),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GetBuilder<AddComplaintController>(builder: (controller) {
+                  return Column(
+                    children: [
+                      controller.tabController.index == 0
+                          ? TypeAheadField<MachineModel>(
+                              controller: ctl.ctlMachineCode.value,
+                              suggestionsCallback: (query) {
+                                return ctl.searchMachines(query);
+                              },
+                              builder: (context, ctl, focusNode) {
+                                return TextField(
+                                  style: GoogleFonts.poppins(
+                                    fontSize: Get.width * 0.034,
+                                    color: Colors.black,
+                                    letterSpacing: 1,
+                                  ),
+                                  controller: ctl,
+                                  focusNode: focusNode,
+                                  decoration: InputDecoration(
+                                      label: Text(
+                                        "Enter Machie code",
+                                        style: GoogleFonts.poppins(),
+                                      ),
+                                      hintText: "Enter Machie code",
+                                      hintStyle: GoogleFonts.poppins(
+                                        fontSize: Get.width * 0.034,
+                                        color: Colors.black38,
+                                        letterSpacing: 1,
+                                      ),
+                                      errorStyle: GoogleFonts.poppins(
+                                          color: Colors.red,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: secondaryColor,
+                                              width: 1.5)),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: Colors.grey)),
+                                      errorBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: Colors.red)),
+                                      labelStyle: GoogleFonts.poppins(
+                                        fontSize: Get.width * 0.034,
+                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                      )),
+                                );
+                              },
+                              itemBuilder: (context, machine) {
+                                return ListTile(
+                                  title: Text(machine.machineCode!),
+                                  subtitle: Text(machine.name!),
+                                );
+                              },
+                              onSelected: (machine) => ctl.onSelected(machine),
+                            )
+                          : TypeAheadField<BagModel>(
+                              controller: ctl.ctlBagCode.value,
+                              suggestionsCallback: (query) {
+                                return ctl.searchBag(query);
+                              },
+                              builder: (context, ctl, focusNode) {
+                                return TextField(
+                                  style: GoogleFonts.poppins(
+                                    fontSize: Get.width * 0.034,
+                                    color: Colors.black,
+                                    letterSpacing: 1,
+                                  ),
+                                  controller: ctl,
+                                  focusNode: focusNode,
+                                  decoration: InputDecoration(
+                                      label: Text(
+                                        "Enter Bag code",
+                                        style: GoogleFonts.poppins(),
+                                      ),
+                                      hintText: "Enter Bag code",
+                                      hintStyle: GoogleFonts.poppins(
+                                        fontSize: Get.width * 0.034,
+                                        color: Colors.black38,
+                                        letterSpacing: 1,
+                                      ),
+                                      errorStyle: GoogleFonts.poppins(
+                                          color: Colors.red,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: secondaryColor,
+                                              width: 1.5)),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: Colors.grey)),
+                                      errorBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          borderSide: const BorderSide(
+                                              color: Colors.red)),
+                                      labelStyle: GoogleFonts.poppins(
+                                        fontSize: Get.width * 0.034,
+                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                      )),
+                                );
+                              },
+                              itemBuilder: (context, bag) {
+                                return ListTile(
+                                  title: Text(bag.machineName!),
+                                  subtitle: Text(bag.module!),
+                                );
+                              },
+                              onSelected: (bag) => ctl.onSelectedBag(bag),
+                            ),
+                    ],
+                  );
+                }),
                 const SizedBox(
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlNumber.value,
+                  controllerValue: ctl.ctlNumber.value,
                   mLength: 10,
                   inputType: TextInputType.number,
                   validate: (val) {
@@ -119,7 +223,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlEmail.value,
+                  controllerValue: ctl.ctlEmail.value,
                   inputType: TextInputType.emailAddress,
                   validate: (val) {
                     return null;
@@ -130,7 +234,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlName.value,
+                  controllerValue: ctl.ctlName.value,
                   inputType: TextInputType.text,
                   validate: (val) {
                     if (val!.isEmpty) {
@@ -145,7 +249,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlAddress.value,
+                  controllerValue: ctl.ctlAddress.value,
                   inputType: TextInputType.streetAddress,
                   validate: (val) {
                     if (val!.isEmpty) {
@@ -160,7 +264,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlMachineName.value,
+                  controllerValue: ctl.ctlMachineName.value,
                   inputType: TextInputType.text,
                   rOnly: true,
                   validate: (val) {
@@ -172,7 +276,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlMachineDescription.value,
+                  controllerValue: ctl.ctlMachineDescription.value,
                   inputType: TextInputType.text,
                   rOnly: true,
                   validate: (val) {
@@ -184,7 +288,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlMachineSizeWeightLitter.value,
+                  controllerValue: ctl.ctlMachineSizeWeightLitter.value,
                   inputType: TextInputType.text,
                   rOnly: true,
                   validate: (val) {
@@ -196,7 +300,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   height: 15,
                 ),
                 StepperTextField(
-                  controllerValue: controller.ctlComplaint.value,
+                  controllerValue: ctl.ctlComplaint.value,
                   inputType: TextInputType.text,
                   validate: (val) {
                     if (val!.isEmpty) {
@@ -212,10 +316,10 @@ class _AddComplaintState extends State<AddComplaint> {
                 ),
                 Obx(() => AppButton(
                     backColor: headingColor,
-                    onPressed: controller.isBtnLoading.value
+                    onPressed: ctl.isBtnLoading.value
                         ? null
-                        : () => controller.addComplaint(context),
-                    child: controller.isBtnLoading.value
+                        : () => ctl.addComplaint(context),
+                    child: ctl.isBtnLoading.value
                         ? const CommonButtonLoader(indicatorColor: whiteColor)
                         : Text(
                             "Add Complaint",

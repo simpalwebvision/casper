@@ -274,8 +274,9 @@ class _TechnicianHomeScreenState extends State<TechnicianHomeScreen> {
                             ),
                             Expanded(
                               child: TechnicianDashBoardWidget(
-                                onPressed: () =>
-                                    Get.toNamed(RouteNames.addComplaint),
+                                onPressed: () => Get.toNamed(
+                                    RouteNames.addComplaint,
+                                    arguments: {"from": "technician"}),
                                 title: 'Add\nComplaint',
                                 iconString: AppImages.complaints,
                               ),

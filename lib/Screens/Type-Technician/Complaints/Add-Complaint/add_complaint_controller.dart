@@ -6,20 +6,35 @@ import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Utils/local_shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class AddComplaintController extends GetxController {
+class AddComplaintController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late TabController tabController;
   ComplaintRepository complaintRepository = ComplaintRepository();
   GlobalKey<FormState> formKey = GlobalKey();
-  RxBool isBtnLoading = false.obs;
-
+  RxBool isBtnLoading = false.obs, hideShowOrder = false.obs;
+  String from = "";
   onBtnLoading(bool val) => isBtnLoading.value = val;
+
+  onChangeTab(value) {
+    if (from == "technician") {
+      return;
+    }
+    tabController.index = value;
+    if (value == 0) {
+      hideShowOrder.value = true;
+    } else {
+      hideShowOrder.value = false;
+    }
+    update();
+  }
 
   final Rx<TextEditingController> ctlNumber = TextEditingController().obs;
   final Rx<TextEditingController> ctlName = TextEditingController().obs;
   final Rx<TextEditingController> ctlAddress = TextEditingController().obs;
   final Rx<TextEditingController> ctlMachineCode = TextEditingController().obs;
+  final Rx<TextEditingController> ctlBagCode = TextEditingController().obs;
   final Rx<TextEditingController> ctlMachineName = TextEditingController().obs;
   final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
 
@@ -31,21 +46,21 @@ class AddComplaintController extends GetxController {
       TextEditingController().obs;
 
   RxList<MachineModel> machineList = <MachineModel>[].obs;
-
-  Future<List<MachineModel>> loadMachines() async {
-    final String response = await rootBundle.loadString('assets/machines.json');
-    final List<dynamic> data = json.decode(response);
-    return data.map((json) => MachineModel.fromJson(json)).toList();
-  }
+  RxList<BagModel> bagList = <BagModel>[].obs;
 
   @override
   void onInit() {
+    var data = Get.arguments;
+
+    from = data["from"];
+    tabController = TabController(length: 2, vsync: this);
     initData();
     super.onInit();
   }
 
   initData() async {
     machineList.value = await CommonFunctions().getMachineList();
+    bagList.value = await CommonFunctions().getBagList();
     update();
   }
 
@@ -61,6 +76,21 @@ class AddComplaintController extends GetxController {
   List<MachineModel> searchMachines(String query) {
     return machineList.where((machine) {
       return machine.machineCode!.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+  }
+
+  onSelectedBag(BagModel bag) {
+    ctlBagCode.value.text = bag.machineName!;
+    ctlMachineName.value.text = bag.machineName!;
+    ctlMachineDescription.value.text = bag.module!;
+    ctlMachineSizeWeightLitter.value.text = bag.size!;
+
+    update();
+  }
+
+  List<BagModel> searchBag(String query) {
+    return bagList.where((bag) {
+      return bag.machineName!.toLowerCase().contains(query.toLowerCase());
     }).toList();
   }
 
@@ -124,6 +154,7 @@ class AddComplaintController extends GetxController {
     ctlMachineSizeWeightLitter.value.dispose();
     ctlComplaint.value.dispose();
     ctlMachineCode.value.dispose();
+    ctlBagCode.value.dispose();
     super.dispose();
   }
 }

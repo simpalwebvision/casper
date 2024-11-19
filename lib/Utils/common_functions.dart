@@ -167,6 +167,23 @@ class CommonFunctions {
     return machineList;
   }
 
+  Future<List<BagModel>> getBagList() async {
+    String helper = await LocalPreferences().getBagList() ?? "";
+
+    var userMap = jsonDecode(helper);
+    // TechnicianProfileModel userProfile =
+    //     TechnicianProfileModel.fromJson(userMap);
+
+    List<BagModel> bagList = [];
+
+    bagList = userMap
+        .map<BagModel>(
+          (e) => BagModel.fromJson(e),
+        )
+        .toList();
+    return bagList;
+  }
+
   // Future<UserProfileModel> getUserProfileData() async {
   //   String helper = await LocalPreferences().getUserProfileData() ?? "";
 

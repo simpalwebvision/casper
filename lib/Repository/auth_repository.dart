@@ -93,6 +93,21 @@ class AuthRepository {
     }
   }
 
+  Future<Either<Failure, List<MachineModel>>> getBagList() async {
+    try {
+      var response = await apiService.getGetApiResponse(
+        RemoteUrls.getBagList,
+      );
+
+      String bagData = jsonEncode(response['data']);
+      await LocalPreferences().setBagList(bagData);
+
+      return right([]);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
   Future<Either<Failure, List<TechnicianProfileModel>>>
       getTechincianList() async {
     try {
