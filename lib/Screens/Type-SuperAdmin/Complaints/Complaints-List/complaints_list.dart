@@ -86,6 +86,30 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                           const SizedBox(
                                             height: 5,
                                           ),
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 10,
+                                                      vertical: 5),
+                                              decoration: BoxDecoration(
+                                                  color: purpleColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Text(
+                                                data.complainType!,
+                                                style: GoogleFonts.poppins(
+                                                    color: whiteColor,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           Row(
                                             children: [
                                               MultiDetailHelper(
@@ -106,6 +130,8 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                                 child: Text(
                                                   data.status!,
                                                   style: GoogleFonts.poppins(
+                                                      color:
+                                                          data.statusTextColor,
                                                       fontWeight:
                                                           FontWeight.w500),
                                                 ),

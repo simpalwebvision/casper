@@ -56,6 +56,7 @@ class BagModel {
   final String? khadi;
   final String? white;
   final String? paper;
+  final String? bagCode;
 
   BagModel({
     this.id,
@@ -67,6 +68,7 @@ class BagModel {
     this.khadi,
     this.white,
     this.paper,
+    this.bagCode,
   });
 
   factory BagModel.fromJson(Map<String, dynamic> json) => BagModel(
@@ -79,6 +81,7 @@ class BagModel {
         khadi: json["khadi"],
         white: json["white"],
         paper: json["paper"],
+        bagCode: json["bag_code"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -91,5 +94,6 @@ class BagModel {
         "khadi": khadi,
         "white": white,
         "paper": paper,
+        "bag_code": bagCode,
       };
 }

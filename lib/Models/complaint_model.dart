@@ -19,6 +19,9 @@ class ComplaintModel {
   final Color? statusTextColor;
   final Color? statusColor;
   final String? remark;
+  final String? complainType;
+  final String? machineId;
+  final String? machineObject;
 
   ComplaintModel({
     this.id,
@@ -37,6 +40,9 @@ class ComplaintModel {
     this.statusTextColor,
     this.statusColor,
     this.remark,
+    this.complainType,
+    this.machineId,
+    this.machineObject,
   });
 
   factory ComplaintModel.fromJson(Map<String, dynamic> json) {
@@ -74,6 +80,9 @@ class ComplaintModel {
               .returnAppDateTimeFormat(DateTime.parse(json["created_at"]))),
       createdBy: json["created_by"] ?? "",
       type: json["type"] ?? "",
+      complainType: json["complain_type"] ?? "",
+      machineId: json["machine_id"] ?? "",
+      machineObject: json["object"] ?? "",
     );
   }
 }

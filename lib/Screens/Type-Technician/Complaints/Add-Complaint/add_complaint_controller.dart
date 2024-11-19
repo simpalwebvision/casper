@@ -21,6 +21,7 @@ class AddComplaintController extends GetxController
     if (from == "technician") {
       return;
     }
+    clearServiceOrderData();
     tabController.index = value;
     if (value == 0) {
       hideShowOrder.value = true;
@@ -64,7 +65,19 @@ class AddComplaintController extends GetxController
     update();
   }
 
+  clearServiceOrderData() {
+    ctlMachineName.value.clear();
+    ctlMachineDescription.value.clear();
+    ctlMachineSizeWeightLitter.value.clear();
+    ctlMachineCode.value.clear();
+    ctlBagCode.value.clear();
+  }
+
+  MachineModel selectedMachineModel = MachineModel();
+  BagModel selectedBagModel = BagModel();
+
   onSelected(MachineModel machine) {
+    selectedMachineModel = machine;
     ctlMachineCode.value.text = machine.name!;
     ctlMachineName.value.text = machine.name!;
     ctlMachineDescription.value.text = machine.description!;
@@ -80,6 +93,7 @@ class AddComplaintController extends GetxController
   }
 
   onSelectedBag(BagModel bag) {
+    selectedBagModel = bag;
     ctlBagCode.value.text = bag.machineName!;
     ctlMachineName.value.text = bag.machineName!;
     ctlMachineDescription.value.text = bag.module!;
@@ -90,7 +104,7 @@ class AddComplaintController extends GetxController
 
   List<BagModel> searchBag(String query) {
     return bagList.where((bag) {
-      return bag.machineName!.toLowerCase().contains(query.toLowerCase());
+      return bag.bagCode!.toLowerCase().contains(query.toLowerCase());
     }).toList();
   }
 
@@ -116,7 +130,13 @@ class AddComplaintController extends GetxController
       "complain": ctlComplaint.value.text,
       "created_at": CommonFunctions.returnCreatedAtFormat(),
       "type": userType,
-      "created_by": userId
+      "created_by": userId,
+      "complain_type": tabController.index == 0 ? "Service" : "Order",
+      "machine_id": tabController.index == 0
+          ? selectedMachineModel.id
+          : selectedBagModel.id,
+      "object": json.encode(
+          tabController.index == 0 ? selectedMachineModel : selectedBagModel)
     });
 
     var response = await complaintRepository.addComplaint(passedBody);

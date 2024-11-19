@@ -194,8 +194,8 @@ class _AddComplaintState extends State<AddComplaint> {
                               },
                               itemBuilder: (context, bag) {
                                 return ListTile(
-                                  title: Text(bag.machineName!),
-                                  subtitle: Text(bag.module!),
+                                  title: Text(bag.bagCode!),
+                                  subtitle: Text(bag.machineName!),
                                 );
                               },
                               onSelected: (bag) => ctl.onSelectedBag(bag),

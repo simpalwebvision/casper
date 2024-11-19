@@ -252,7 +252,8 @@ class ComplaintsListController extends GetxController {
     var passedBody = json.encode({
       "id": complaint.id!,
       "created_by": selectedTechnician.id,
-      "status": "Pending"
+      "status": "Pending",
+      "type": "Technician"
     });
 
     var response = await complaintRepository.updateComplaint(passedBody);
