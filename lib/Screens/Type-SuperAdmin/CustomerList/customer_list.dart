@@ -54,7 +54,7 @@ class _CustomerListState extends State<CustomerList> {
                       : controller.searchResultList.isEmpty
                           ? const NoDataFoundScreen(
                               image: AppImages.emptyData,
-                              passedData: "No Complaint Found ..",
+                              passedData: "No Customer Found ..",
                             )
                           : ListView.separated(
                               physics: const BouncingScrollPhysics(),

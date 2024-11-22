@@ -30,8 +30,10 @@ class HistoryListController extends GetxController
     tabController.index = value;
     if (value == 0) {
       complaintList.value = completeComplaintList;
-    } else {
+    } else if (value == 1) {
       complaintList.value = pendingComplaintList;
+    } else {
+      complaintList.value = machineComplaintList;
     }
     update();
   }
@@ -44,10 +46,12 @@ class HistoryListController extends GetxController
   RxList<ComplaintModel> complaintList = <ComplaintModel>[].obs;
   RxList<ComplaintModel> completeComplaintList = <ComplaintModel>[].obs;
   RxList<ComplaintModel> pendingComplaintList = <ComplaintModel>[].obs;
+  RxList<ComplaintModel> machineComplaintList = <ComplaintModel>[].obs;
 
   Future fetchData() async {
     completeComplaintList.clear();
     pendingComplaintList.clear();
+    machineComplaintList.clear();
     loadingFun(true);
     var response = await complaintRepository.getComplaintHistory();
 
@@ -58,8 +62,10 @@ class HistoryListController extends GetxController
       for (var element in data) {
         if (element.status == "Complete") {
           completeComplaintList.add(element);
-        } else {
+        } else if (element.status == "Pending") {
           pendingComplaintList.add(element);
+        } else {
+          machineComplaintList.add(element);
         }
       }
 
@@ -72,7 +78,7 @@ class HistoryListController extends GetxController
 
   @override
   void onInit() {
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
 
     fetchData();
     super.onInit();

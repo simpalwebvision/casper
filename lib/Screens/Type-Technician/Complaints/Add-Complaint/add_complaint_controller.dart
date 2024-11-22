@@ -129,14 +129,15 @@ class AddComplaintController extends GetxController
       "machine_size_weight_litter": ctlMachineSizeWeightLitter.value.text,
       "complain": ctlComplaint.value.text,
       "created_at": CommonFunctions.returnCreatedAtFormat(),
-      "type": userType,
-      "created_by": userId,
+      "type": tabController.index == 0 ? userType : "3",
+      "created_by": tabController.index == 0 ? userId : "3",
       "complain_type": tabController.index == 0 ? "Service" : "Order",
       "machine_id": tabController.index == 0
           ? selectedMachineModel.id
           : selectedBagModel.id,
       "object": json.encode(
-          tabController.index == 0 ? selectedMachineModel : selectedBagModel)
+          tabController.index == 0 ? selectedMachineModel : selectedBagModel),
+      "status": tabController.index == 0 ? "Pending" : "Machine"
     });
 
     var response = await complaintRepository.addComplaint(passedBody);

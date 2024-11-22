@@ -2,6 +2,7 @@ import 'package:caspro_enterprises/Screens/Auth/Login/login_screen.dart';
 import 'package:caspro_enterprises/Screens/Auth/Profile/TechnicianProfile/tech_profile_screen.dart';
 import 'package:caspro_enterprises/Screens/Auth/Profile/Employee-Profile/employee_profile_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Customer/Home/customer_home_screen.dart';
+import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Complaint/manufacturing_complaint.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manufacturing_unit_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Upload-Problem-Image/Upload-Image-List/upload_image_list.dart';
 import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Complaints/Complaints-List/complaints_list.dart';
@@ -64,6 +65,7 @@ class RouteNames {
       "/manufacturing_unit_screen";
 
   static const String uploadImageList = "/upload_image_list";
+  static const String manufacturingComplaint = "/manufacturing_complaint";
 }
 
 class AppRoute {
@@ -217,6 +219,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.uploadImageList,
             page: () => const UploadImageList(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.manufacturingComplaint,
+            page: () => const ManufacturingComplaint(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

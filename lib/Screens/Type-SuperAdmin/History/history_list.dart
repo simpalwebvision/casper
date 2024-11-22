@@ -2,8 +2,6 @@ import 'package:caspro_enterprises/Screens/Type-SuperAdmin/History/history_list_
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_appbar.dart';
-import 'package:caspro_enterprises/Utils/routes_names.dart';
-import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/common_loader.dart';
 import 'package:caspro_enterprises/Widgets/detail_widget_helper.dart';
 import 'package:caspro_enterprises/Widgets/no_data_found.dart';
@@ -57,6 +55,9 @@ class _HistoryListState extends State<HistoryList> {
                 ),
                 Tab(
                   text: 'Pending',
+                ),
+                Tab(
+                  text: 'Machine',
                 ),
               ],
             ),
@@ -274,36 +275,6 @@ class _HistoryListState extends State<HistoryList> {
                                                           FontWeight.w500),
                                                 ),
                                                 const Spacer(),
-                                                AppSmallButtonBorder(
-                                                  backColor: blueColor,
-                                                  horizontalPadding: 10,
-                                                  child: Row(
-                                                    children: [
-                                                      Text(
-                                                        "Proceed",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color:
-                                                                    whiteColor),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                      const Icon(
-                                                        Icons.chevron_right,
-                                                        color: whiteColor,
-                                                      )
-                                                    ],
-                                                  ),
-                                                  onPressed: () => Get.toNamed(
-                                                          RouteNames
-                                                              .complaintProceed,
-                                                          arguments: {
-                                                        "complain_model": data
-                                                      })!
-                                                      .then((e) => controller
-                                                          .fetchData()),
-                                                )
                                               ],
                                             ),
                                           ],

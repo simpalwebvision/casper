@@ -1,3 +1,4 @@
+import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manifacturing_home_controller.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
@@ -17,6 +18,14 @@ class ManufacturingUnitHomeScreen extends StatefulWidget {
 
 class _ManufacturingUnitHomeScreenState
     extends State<ManufacturingUnitHomeScreen> {
+  final controller = Get.put(ManifacturingHomeController());
+
+  @override
+  void dispose() {
+    Get.delete<ManifacturingHomeController>();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,18 +78,18 @@ class _ManufacturingUnitHomeScreenState
             DashboardWidget(
               widgetText: 'Complaints',
               imageAssets: AppImages.complaints,
-              onClicked: () => Get.toNamed(RouteNames.complaintsList),
+              onClicked: () => Get.toNamed(RouteNames.manufacturingComplaint),
             ),
-            DashboardWidget(
-              widgetText: 'History',
-              imageAssets: AppImages.history,
-              onClicked: () => Get.toNamed(RouteNames.historyList),
-            ),
-            DashboardWidget(
-              widgetText: "Upload Image",
-              imageAssets: AppImages.uploadImage,
-              onClicked: () => Get.toNamed(RouteNames.uploadImageList),
-            ),
+            // DashboardWidget(
+            //   widgetText: 'History',
+            //   imageAssets: AppImages.history,
+            //   onClicked: () => Get.toNamed(RouteNames.historyList),
+            // ),
+            // DashboardWidget(
+            //   widgetText: "Upload Image",
+            //   imageAssets: AppImages.uploadImage,
+            //   onClicked: () => Get.toNamed(RouteNames.uploadImageList),
+            // ),
             DashboardWidget(
               widgetText: "Catalog",
               imageAssets: AppImages.manualImage,
