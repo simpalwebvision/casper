@@ -94,3 +94,87 @@ class TechnicianProfileModel {
         "address": address,
       };
 }
+
+class EmployeeProfileModel {
+  final String? id;
+  final String? type;
+  final String? fullname;
+  final String? mobile;
+  final String? email;
+  final String? password;
+  final String? isLogin;
+  final String? sId;
+  final String? isEnable;
+  final String? attempt;
+  final String? resetCode;
+  final String? resetAttempt;
+  final String? resetValidity;
+  final String? image;
+
+  EmployeeProfileModel({
+    this.id,
+    this.type,
+    this.fullname,
+    this.mobile,
+    this.email,
+    this.password,
+    this.isLogin,
+    this.sId,
+    this.isEnable,
+    this.attempt,
+    this.resetCode,
+    this.resetAttempt,
+    this.resetValidity,
+    this.image,
+  });
+
+  factory EmployeeProfileModel.fromJson(Map<String, dynamic> json) {
+    String userType = "";
+    if (json["type"] == "1") {
+      userType = "Admin";
+    } else if (json["type"] == "2") {
+      userType = "Staff";
+    } else if (json["type"] == "3") {
+      userType = "Manufacturing Unit";
+    }
+    String image = json["image"].toString(), profileUrl = "";
+    if (profileUrl.isEmpty || profileUrl == "null") {
+      profileUrl = "";
+    } else {
+      profileUrl = "${RemoteUrls.imageUrl}/$image";
+    }
+    return EmployeeProfileModel(
+      id: json["id"] ?? "",
+      type: userType,
+      fullname: json["fullname"] ?? "",
+      mobile: json["mobile"] ?? "",
+      email: json["email"] ?? "",
+      password: json["password"] ?? "",
+      isLogin: json["isLogin"] ?? "",
+      sId: json["s_id"] ?? "",
+      isEnable: json["isEnable"] ?? "",
+      attempt: json["attempt"] ?? "",
+      resetCode: json["resetCode"] ?? "",
+      resetAttempt: json["resetAttempt"] ?? "",
+      resetValidity: json["resetValidity"] ?? "",
+      image: profileUrl,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "type": type,
+        "fullname": fullname,
+        "mobile": mobile,
+        "email": email,
+        "password": password,
+        "isLogin": isLogin,
+        "s_id": sId,
+        "isEnable": isEnable,
+        "attempt": attempt,
+        "resetCode": resetCode,
+        "resetAttempt": resetAttempt,
+        "resetValidity": resetValidity,
+        "image": image,
+      };
+}

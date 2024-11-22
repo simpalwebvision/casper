@@ -77,7 +77,8 @@ class _EmployeesListState extends State<EmployeesList> {
                                   passedData: "No Technician Found ..",
                                 )
                               : ListView.separated(
-                                  physics: const BouncingScrollPhysics(),
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
                                   padding: const EdgeInsets.only(bottom: 15),
                                   separatorBuilder: (context, index) =>
                                       const SizedBox(
@@ -191,7 +192,131 @@ class _EmployeesListState extends State<EmployeesList> {
                                 ),
                     ),
                   )
-                : const SizedBox(),
+                : Expanded(
+                    child: RefreshIndicator(
+                      onRefresh: () => controller.getEmployeeList(),
+                      child: controller.isEmployeeLoading.value
+                          ? const CommonLoader()
+                          : controller.employeeList.isEmpty
+                              ? const NoDataFoundScreen(
+                                  image: AppImages.emptyData,
+                                  passedData: "No Employee Found ..",
+                                )
+                              : ListView.separated(
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
+                                  padding: const EdgeInsets.only(bottom: 15),
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(
+                                    height: 10,
+                                  ),
+                                  itemCount: controller.employeeList.length,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    var employee =
+                                        controller.employeeList[index];
+                                    return InkWell(
+                                      onTap: () {},
+                                      child: Card(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                        shadowColor: blackColor,
+                                        clipBehavior: Clip.hardEdge,
+                                        shape: RoundedRectangleBorder(
+                                            side: const BorderSide(
+                                                color: borderColor),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ProfileCustomImage(
+                                                image: employee.image ?? "",
+                                                errorImage:
+                                                    "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg",
+                                                imgHeight: 50,
+                                                imgWidth: 50,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    DetailWidgetHelper(
+                                                      heading: "User name",
+                                                      value:
+                                                          employee.fullname ??
+                                                              "",
+                                                      valueColor: blueColor,
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    DetailWidgetHelper(
+                                                      heading: "Mobile no.",
+                                                      value:
+                                                          employee.mobile ?? "",
+                                                      valueColor: blueColor,
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    DetailWidgetHelper(
+                                                      heading: "Email",
+                                                      value:
+                                                          employee.email ?? "",
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    const Divider(
+                                                      color: blackColor,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          employee.type ?? "",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  fontSize: 13,
+                                                                  color:
+                                                                      primaryColor,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                    ),
+                  ),
           )
         ],
       ),

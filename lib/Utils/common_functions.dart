@@ -150,6 +150,14 @@ class CommonFunctions {
     return userProfile;
   }
 
+  Future<EmployeeProfileModel> getEmployeeProfileData() async {
+    String helper = await LocalPreferences().getEmployeeProfileData() ?? "";
+
+    Map<String, dynamic> userMap = jsonDecode(helper);
+    EmployeeProfileModel userProfile = EmployeeProfileModel.fromJson(userMap);
+    return userProfile;
+  }
+
   Future<List<MachineModel>> getMachineList() async {
     String helper = await LocalPreferences().getMachineList() ?? "";
 

@@ -89,7 +89,7 @@ class _ManufacturingUnitHomeScreenState
             DashboardWidget(
               widgetText: "My Account",
               imageAssets: AppImages.account,
-              onClicked: () => Get.toNamed(RouteNames.profileScreen),
+              onClicked: () => Get.toNamed(RouteNames.employeeProfileScreen),
             ),
             DashboardWidget(
               widgetText: "Logout",

@@ -1,6 +1,6 @@
 import 'package:caspro_enterprises/Screens/Auth/Login/login_screen.dart';
 import 'package:caspro_enterprises/Screens/Auth/Profile/TechnicianProfile/tech_profile_screen.dart';
-import 'package:caspro_enterprises/Screens/Auth/Profile/profile_screen.dart';
+import 'package:caspro_enterprises/Screens/Auth/Profile/Employee-Profile/employee_profile_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Customer/Home/customer_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Home/manufacturing_unit_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Manufacturing-Unit/Upload-Problem-Image/Upload-Image-List/upload_image_list.dart';
@@ -38,7 +38,7 @@ class RouteNames {
   static const String complaintsList = "/complaints_list";
   static const String customerMachineList = "/customer_machine_list";
   static const String historyList = "/history_list";
-  static const String profileScreen = "/profile_screen";
+  static const String employeeProfileScreen = "/employee_profile_screen";
   static const String pdfViewerPage = "/pdf_viewer_page";
   //! Customer Screen
   static const String customerList = "/customer_list";
@@ -141,8 +141,8 @@ class AppRoute {
             transitionDuration: const Duration(milliseconds: 250)),
 
         GetPage(
-            name: RouteNames.profileScreen,
-            page: () => const ProfileScreen(),
+            name: RouteNames.employeeProfileScreen,
+            page: () => const EmployeeProfileScreen(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

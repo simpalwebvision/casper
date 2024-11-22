@@ -114,15 +114,51 @@ class AuthRepository {
       var response =
           await apiService.getGetApiResponse(RemoteUrls.getTechnicianList);
 
-      List<TechnicianProfileModel> complaintList = [];
+      List<TechnicianProfileModel> techtList = [];
       List list = response['data'];
 
-      complaintList =
-          list.map((e) => TechnicianProfileModel.fromJson(e)).toList();
+      techtList = list.map((e) => TechnicianProfileModel.fromJson(e)).toList();
 
       // complaintList = complaintList.reversed.toList();
 
-      return right(complaintList);
+      return right(techtList);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  Future<Either<Failure, List<EmployeeProfileModel>>> getEmployeeList() async {
+    try {
+      var response =
+          await apiService.getGetApiResponse(RemoteUrls.getEmployeeList);
+
+      List<EmployeeProfileModel> employeetList = [];
+      List list = response['data'];
+
+      employeetList =
+          list.map((e) => EmployeeProfileModel.fromJson(e)).toList();
+
+      // complaintList = complaintList.reversed.toList();
+
+      return right(employeetList);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  Future<Either<Failure, EmployeeProfileModel>> getEmployeeProfileData() async {
+    String techId = await LocalPreferences().getUserid() ?? "";
+    try {
+      var response = await apiService.getGetApiResponse(
+        "${RemoteUrls.getEmployeeList}?tech_id=$techId",
+      );
+      if (response['data'].isEmpty) {
+        CommonFunctions().logOut();
+        right(EmployeeProfileModel());
+      }
+      String profileData = jsonEncode(response['data'][0]);
+      await LocalPreferences().setEmployeeProfileData(profileData);
+      return right(EmployeeProfileModel.fromJson(response['data'][0]));
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));
     }

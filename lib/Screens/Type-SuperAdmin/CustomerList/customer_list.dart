@@ -127,6 +127,9 @@ class _CustomerListState extends State<CustomerList> {
                                           const Divider(
                                             color: blackColor,
                                           ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           Row(
                                             children: [
                                               Text(
@@ -145,41 +148,41 @@ class _CustomerListState extends State<CustomerList> {
                                                     fontWeight:
                                                         FontWeight.w500),
                                               ),
-                                              const Spacer(),
-                                              InkWell(
-                                                onTap: () => Get.toNamed(
-                                                    RouteNames
-                                                        .customerMachineList),
-                                                child: Container(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 4),
-                                                  decoration: BoxDecoration(
-                                                      color: headingColor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12)),
-                                                  child: Row(
-                                                    children: [
-                                                      const Icon(
-                                                        Icons.settings,
-                                                        color: whiteColor,
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                      Text(
-                                                        "Machines",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color:
-                                                                    whiteColor),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
+                                              // const Spacer(),
+                                              // InkWell(
+                                              //   onTap: () => Get.toNamed(
+                                              //       RouteNames
+                                              //           .customerMachineList),
+                                              //   child: Container(
+                                              //     padding: const EdgeInsets
+                                              //         .symmetric(
+                                              //         horizontal: 10,
+                                              //         vertical: 4),
+                                              //     decoration: BoxDecoration(
+                                              //         color: headingColor,
+                                              //         borderRadius:
+                                              //             BorderRadius.circular(
+                                              //                 12)),
+                                              //     child: Row(
+                                              //       children: [
+                                              //         const Icon(
+                                              //           Icons.settings,
+                                              //           color: whiteColor,
+                                              //         ),
+                                              //         const SizedBox(
+                                              //           width: 10,
+                                              //         ),
+                                              //         Text(
+                                              //           "Machines",
+                                              //           style:
+                                              //               GoogleFonts.poppins(
+                                              //                   color:
+                                              //                       whiteColor),
+                                              //         )
+                                              //       ],
+                                              //     ),
+                                              //   ),
+                                              // )
                                             ],
                                           ),
                                         ],

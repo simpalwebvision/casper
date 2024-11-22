@@ -1,3 +1,4 @@
+import 'package:caspro_enterprises/Screens/Type-SuperAdmin/Home/super_admin_home_controller.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/app_images.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
@@ -15,6 +16,14 @@ class SuperAdminHomeScreen extends StatefulWidget {
 }
 
 class _SuperAdminHomeScreenState extends State<SuperAdminHomeScreen> {
+  final controller = Get.put(SuperAdminHomeController());
+
+  @override
+  void dispose() {
+    Get.delete<SuperAdminHomeController>();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +101,26 @@ class _SuperAdminHomeScreenState extends State<SuperAdminHomeScreen> {
             DashboardWidget(
               widgetText: "My Account",
               imageAssets: AppImages.account,
-              onClicked: () => Get.toNamed(RouteNames.profileScreen),
+              onClicked: () => Get.toNamed(RouteNames.employeeProfileScreen),
             ),
-            DashboardWidget(
-              widgetText: "Logout",
-              imageAssets: AppImages.logout,
-              onClicked: () => CommonFunctions().logOut(),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: primaryColor,
+        onPressed: () => CommonFunctions().logOut(),
+        label: Row(
+          children: [
+            const Icon(
+              Icons.logout,
+              color: whiteColor,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              'logout',
+              style: GoogleFonts.poppins(color: whiteColor),
             ),
           ],
         ),

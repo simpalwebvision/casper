@@ -1,15 +1,16 @@
+import 'package:caspro_enterprises/Models/user_profile_model.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfileController extends GetxController {
+class EmployeeProfileController extends GetxController {
   RxBool btnIsLoading = false.obs;
   final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
   final Rx<TextEditingController> ctlMobile = TextEditingController().obs;
   final Rx<TextEditingController> ctlName = TextEditingController().obs;
-  final Rx<TextEditingController> ctlAddress = TextEditingController().obs;
-  final Rx<TextEditingController> ctlTechCode = TextEditingController().obs;
+  final Rx<TextEditingController> ctlType = TextEditingController().obs;
 
-  // Rxn<UserProfileModel> userProfileModel = Rxn<UserProfileModel>();
+  Rxn<EmployeeProfileModel> employeeProfileModel = Rxn<EmployeeProfileModel>();
 
   @override
   void onInit() {
@@ -22,13 +23,13 @@ class ProfileController extends GetxController {
   }
 
   getProfileData() async {
-    // userProfileModel.value = await CommonFunctions().getProfileData();
+    employeeProfileModel.value =
+        await CommonFunctions().getEmployeeProfileData();
 
-    // ctlEmail.value.text = userProfileModel.value!.email ?? "";
-    // ctlMobile.value.text = userProfileModel.value!.mobile ?? "";
-    // ctlName.value.text = userProfileModel.value!.name ?? "";
-    // ctlAddress.value.text = userProfileModel.value!.address ?? "";
-    // ctlTechCode.value.text = userProfileModel.value!.technicianCode ?? "";
+    ctlEmail.value.text = employeeProfileModel.value!.email ?? "";
+    ctlMobile.value.text = employeeProfileModel.value!.mobile ?? "";
+    ctlName.value.text = employeeProfileModel.value!.fullname ?? "";
+    ctlType.value.text = employeeProfileModel.value!.type ?? "";
   }
 
   // Future updateProfile(
@@ -62,4 +63,13 @@ class ProfileController extends GetxController {
   //     }
   //   });
   // }
+
+  @override
+  void dispose() {
+    ctlEmail.value.dispose();
+    ctlMobile.value.dispose();
+    ctlName.value.dispose();
+    ctlType.value.dispose();
+    super.dispose();
+  }
 }

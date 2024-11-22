@@ -9,18 +9,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:nb_utils/nb_utils.dart' as nb;
 
-import '../../../Widgets/upload_images_helper.dart';
-import 'profile_controller.dart';
+import '../../../../Widgets/upload_images_helper.dart';
+import 'employee_profile_controller.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class EmployeeProfileScreen extends StatefulWidget {
+  const EmployeeProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<EmployeeProfileScreen> createState() => _EmployeeProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  final controller = Get.put(ProfileController());
+class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
+  final controller = Get.put(EmployeeProfileController());
   bool colorChange = false;
   CroppedFile? document;
   @override
@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void dispose() {
     nb.setStatusBarColor(whiteColor);
-    Get.delete<ProfileController>();
+    Get.delete<EmployeeProfileController>();
     super.dispose();
   }
 
@@ -177,12 +177,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             StepperTextField(
                               rOnly: true,
-                              controllerValue: controller.ctlAddress.value,
-                              inputType: TextInputType.streetAddress,
+                              controllerValue: controller.ctlType.value,
+                              inputType: TextInputType.text,
                               validate: (val) {
                                 return null;
                               },
-                              hintValue: "Address",
+                              hintValue: "Type",
                             ),
                           ],
                         ),

@@ -12,11 +12,14 @@ class EmployeeListController extends GetxController
 
   RxBool isSelectTechincian = false.obs;
 
-  RxBool isTechnicianLoading = false.obs;
+  RxBool isTechnicianLoading = false.obs, isEmployeeLoading = false.obs;
   techListLoadingFun(bool val) => isTechnicianLoading.value = val;
+  techmployeeLoadingFun(bool val) => isEmployeeLoading.value = val;
 
   RxList<TechnicianProfileModel> technicianList =
       <TechnicianProfileModel>[].obs;
+
+  RxList<EmployeeProfileModel> employeeList = <EmployeeProfileModel>[].obs;
 
   @override
   void onInit() {
@@ -27,7 +30,7 @@ class EmployeeListController extends GetxController
   }
 
   initData() async {
-    await Future.wait([getTechnicianList()]);
+    await Future.wait([getTechnicianList(), getEmployeeList()]);
   }
 
   Future getTechnicianList() async {
@@ -40,6 +43,19 @@ class EmployeeListController extends GetxController
     }, (data) {
       technicianList.value = data;
       techListLoadingFun(false);
+    });
+  }
+
+  Future getEmployeeList() async {
+    techmployeeLoadingFun(true);
+    var response = await authRepository.getEmployeeList();
+
+    response.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      techmployeeLoadingFun(false);
+    }, (data) {
+      employeeList.value = data;
+      techmployeeLoadingFun(false);
     });
   }
 
