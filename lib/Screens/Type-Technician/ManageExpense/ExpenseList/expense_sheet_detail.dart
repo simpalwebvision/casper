@@ -96,13 +96,6 @@ class _ExpenseSheetDetailState extends State<ExpenseSheetDetail> {
                 height: 10,
               ),
               DetailWidgetHelper(
-                heading: "Service Ticket No.",
-                value: widget.expenseModel.serviceTicketNo ?? "",
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              DetailWidgetHelper(
                 heading: "Mobile",
                 value: widget.expenseModel.mobile ?? "",
               ),
@@ -192,6 +185,20 @@ class _ExpenseSheetDetailState extends State<ExpenseSheetDetail> {
                                       heading: "Mode Of Transport",
                                       value: journey.modeOfTransport ?? "",
                                     ),
+                                    journey.modeOfTransport == "Other"
+                                        ? Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              DetailWidgetHelper(
+                                                heading: "Transport",
+                                                value: journey.otherTransport ??
+                                                    "",
+                                              ),
+                                            ],
+                                          )
+                                        : const SizedBox(),
                                     const SizedBox(
                                       height: 5,
                                     ),

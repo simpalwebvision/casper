@@ -85,6 +85,7 @@ class ExpenseModel {
 class JourneyModel {
   String? journeyType;
   String? modeOfTransport;
+  String? otherTransport;
   String? startFrom;
   String? toFrom;
   String? totalExpense;
@@ -95,6 +96,7 @@ class JourneyModel {
     this.startFrom,
     this.toFrom,
     this.totalExpense,
+    this.otherTransport,
   });
 
   factory JourneyModel.fromJson(Map<String, dynamic> json) {
@@ -104,6 +106,7 @@ class JourneyModel {
       startFrom: json["startFrom"] ?? "",
       toFrom: json["toFrom"] ?? "",
       totalExpense: json["totalExpense"] ?? "",
+      otherTransport: json["otherTransport"] ?? "",
     );
   }
 

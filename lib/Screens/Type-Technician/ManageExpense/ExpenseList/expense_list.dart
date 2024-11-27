@@ -39,7 +39,7 @@ class _ExpenseListState extends State<ExpenseList> {
           onRefresh: () => controller.getExpenseList(),
           child: Obx(
             () => controller.isLoading.value
-                ? const CommonLoader()
+                ? const Center(child: CommonLoader())
                 : controller.expenseList.isEmpty
                     ? const NoDataFoundScreen(
                         image: AppImages.emptyData,
@@ -93,14 +93,14 @@ class _ExpenseListState extends State<ExpenseList> {
                                             children: [
                                               InkWell(
                                                   onTap: () {
-                                                    // Get.toNamed(
-                                                    //         RouteNames
-                                                    //             .editExpense,
-                                                    //         arguments: {
-                                                    //       'expense_model': data
-                                                    //     })!
-                                                    //     .then((value) => controller
-                                                    //         .getExpenseList());
+                                                    Get.toNamed(
+                                                            RouteNames
+                                                                .editExpense,
+                                                            arguments: {
+                                                          'expense_model': data
+                                                        })!
+                                                        .then((value) => controller
+                                                            .getExpenseList());
                                                   },
                                                   child: const Icon(
                                                     FontAwesomeIcons

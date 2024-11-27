@@ -32,6 +32,7 @@ class AddComplaintController extends GetxController
   }
 
   final Rx<TextEditingController> ctlNumber = TextEditingController().obs;
+  final Rx<TextEditingController> ctlBagType = TextEditingController().obs;
   final Rx<TextEditingController> ctlName = TextEditingController().obs;
   final Rx<TextEditingController> ctlAddress = TextEditingController().obs;
   final Rx<TextEditingController> ctlMachineCode = TextEditingController().obs;
@@ -60,6 +61,8 @@ class AddComplaintController extends GetxController
     super.onInit();
   }
 
+  selectBagType(String val) => ctlBagType.value.text = val;
+
   initData() async {
     machineList.value = await CommonFunctions().getMachineList();
     bagList.value = await CommonFunctions().getBagList();
@@ -72,6 +75,7 @@ class AddComplaintController extends GetxController
     ctlMachineSizeWeightLitter.value.clear();
     ctlMachineCode.value.clear();
     ctlBagCode.value.clear();
+    ctlQuantity.value.clear();
   }
 
   MachineModel selectedMachineModel = MachineModel();
@@ -178,6 +182,7 @@ class AddComplaintController extends GetxController
     ctlMachineCode.value.dispose();
     ctlBagCode.value.dispose();
     ctlQuantity.value.dispose();
+    ctlBagType.value.dispose();
     super.dispose();
   }
 }

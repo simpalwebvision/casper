@@ -14,6 +14,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'local_shared_preferences.dart';
 import 'routes_names.dart';
@@ -36,14 +37,14 @@ class CommonFunctions {
   // }
 
   // // Function to launch phone dialer
-  // void launchPhoneDialer(String phoneNumber) async {
-  //   final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
-  //   if (await canLaunchUrl(phoneUri)) {
-  //     await launchUrl(phoneUri);
-  //   } else {
-  //     throw 'Could not launch $phoneNumber';
-  //   }
-  // }
+  void launchPhoneDialer(String phoneNumber) async {
+    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    } else {
+      throw 'Could not launch $phoneNumber';
+    }
+  }
 
   // Function to launch email client
   // void launchEmail(String emailAddress) async {

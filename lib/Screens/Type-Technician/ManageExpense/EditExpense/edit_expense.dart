@@ -258,6 +258,23 @@ class _EditExpenseState extends State<EditExpense> {
                                                       journey.modeOfTransport ??
                                                           "",
                                                 ),
+                                                journey.modeOfTransport ==
+                                                        "Other"
+                                                    ? Column(
+                                                        children: [
+                                                          const SizedBox(
+                                                            height: 5,
+                                                          ),
+                                                          DetailWidgetHelper(
+                                                            heading:
+                                                                "Transport",
+                                                            value: journey
+                                                                    .otherTransport ??
+                                                                "",
+                                                          ),
+                                                        ],
+                                                      )
+                                                    : const SizedBox(),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
@@ -618,7 +635,7 @@ class _EditExpenseState extends State<EditExpense> {
                     }
                     return null;
                   },
-                  dropMenuList: const ["Bus", "Bike", "Auto", "Taxi", "Tempo"],
+                  dropMenuList: const ["Metro", "Bus", "Taxi", "Auto", "Other"],
                 ),
                 const SizedBox(
                   height: 15,

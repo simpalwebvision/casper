@@ -192,6 +192,13 @@ class _HistoryListState extends State<HistoryList> {
                                               value: data.createdBy!,
                                             ),
                                             const SizedBox(
+                                              height: 5,
+                                            ),
+                                            DetailWidgetHelper(
+                                              heading: "Remark",
+                                              value: data.remark!,
+                                            ),
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Card(

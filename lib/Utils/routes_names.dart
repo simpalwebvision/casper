@@ -16,6 +16,7 @@ import 'package:caspro_enterprises/Screens/Type-Technician/History/history.dart'
 import 'package:caspro_enterprises/Screens/Type-Technician/Home/technician_home_screen.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Inventory/inventory_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/AddExpense/add_expense.dart';
+import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/EditExpense/edit_expense.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/ManageExpense/ExpenseList/expense_list.dart';
 import 'package:caspro_enterprises/Screens/Type-Technician/Manual/manual_screen.dart';
 import 'package:caspro_enterprises/Widgets/pdf_viewer_page.dart';
@@ -55,6 +56,7 @@ class RouteNames {
   static const String historyScreen = "/history_screen";
   static const String expenseList = "/expense_list";
   static const String addExpense = "/add_expense";
+  static const String editExpense = "/edit_expense";
   static const String inventoryList = "/inventory_list";
   static const String manualScreen = "/manual_screen";
   static const String addComplaint = "/add_complaint";
@@ -182,6 +184,12 @@ class AppRoute {
         GetPage(
             name: RouteNames.addExpense,
             page: () => const AddExpense(),
+            transition: Transition.rightToLeftWithFade,
+            transitionDuration: const Duration(milliseconds: 250)),
+
+        GetPage(
+            name: RouteNames.editExpense,
+            page: () => const EditExpense(),
             transition: Transition.rightToLeftWithFade,
             transitionDuration: const Duration(milliseconds: 250)),
 

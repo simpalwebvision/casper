@@ -28,6 +28,7 @@ class EditExpenseController extends GetxController {
   Rx<TextEditingController> ctlStartFrom = TextEditingController().obs;
   Rx<TextEditingController> ctlToFrom = TextEditingController().obs;
   Rx<TextEditingController> ctlTotalExp = TextEditingController().obs;
+
   var selectedTravelType = TravelType.startJourney.obs;
 
   RxList<JourneyModel> journeyList = <JourneyModel>[].obs;

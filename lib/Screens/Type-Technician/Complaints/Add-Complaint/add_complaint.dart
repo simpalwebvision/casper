@@ -4,6 +4,7 @@ import 'package:caspro_enterprises/Utils/common_appbar.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:caspro_enterprises/Widgets/app_button.dart';
 import 'package:caspro_enterprises/Widgets/app_helpers.dart';
+import 'package:caspro_enterprises/Widgets/dropdown_widget.dart';
 import 'package:caspro_enterprises/Widgets/input_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -66,6 +67,33 @@ class _AddComplaintState extends State<AddComplaint> {
                 const SizedBox(
                   height: 10,
                 ),
+                GetBuilder<AddComplaintController>(builder: (controller) {
+                  return Column(
+                    children: [
+                      DropDownWidget(
+                        isExpand: false,
+                        selectedVal: controller.ctlBagType.value.text,
+                        onChanged: (value) =>
+                            controller.selectBagType(value.toString()),
+                        labelText: "Order Type",
+                        hintText: "Order Type",
+                        validate: (val) {
+                          if (val == null) {
+                            return "Required";
+                          }
+                          return null;
+                        },
+                        dropMenuList: const [
+                          "New Machine",
+                          "Bag",
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      )
+                    ],
+                  );
+                }),
                 GetBuilder<AddComplaintController>(builder: (controller) {
                   return Column(
                     children: [
@@ -219,17 +247,17 @@ class _AddComplaintState extends State<AddComplaint> {
                   },
                   hintValue: "Mobile",
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                StepperTextField(
-                  controllerValue: ctl.ctlEmail.value,
-                  inputType: TextInputType.emailAddress,
-                  validate: (val) {
-                    return null;
-                  },
-                  hintValue: "E-Mail",
-                ),
+                // const SizedBox(
+                //   height: 15,
+                // ),
+                // StepperTextField(
+                //   controllerValue: ctl.ctlEmail.value,
+                //   inputType: TextInputType.emailAddress,
+                //   validate: (val) {
+                //     return null;
+                //   },
+                //   hintValue: "E-Mail",
+                // ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -237,11 +265,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   controllerValue: ctl.ctlName.value,
                   inputType: TextInputType.text,
                   validate: (val) {
-                    if (val!.isEmpty) {
-                      return "Name can't be empty.";
-                    } else {
-                      return null;
-                    }
+                    return null;
                   },
                   hintValue: "Name",
                 ),
@@ -252,11 +276,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   controllerValue: ctl.ctlAddress.value,
                   inputType: TextInputType.streetAddress,
                   validate: (val) {
-                    if (val!.isEmpty) {
-                      return "Address can't be empty.";
-                    } else {
-                      return null;
-                    }
+                    return null;
                   },
                   hintValue: "Address",
                 ),
@@ -323,11 +343,7 @@ class _AddComplaintState extends State<AddComplaint> {
                   controllerValue: ctl.ctlComplaint.value,
                   inputType: TextInputType.text,
                   validate: (val) {
-                    if (val!.isEmpty) {
-                      return "Complaint can't be empty.";
-                    } else {
-                      return null;
-                    }
+                    return null;
                   },
                   hintValue: "Write Complaint here ..",
                 ),

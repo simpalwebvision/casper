@@ -1,8 +1,10 @@
 import 'package:caspro_enterprises/Models/expense_model.dart';
+import 'package:caspro_enterprises/Repository/exxpense_repository.dart';
+import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:get/get.dart';
 
 class ExpenseSheetController extends GetxController {
-  // ExpenseRepository expenseRepository = ExpenseRepository();
+  ExpenseRepository expenseRepository = ExpenseRepository();
   RxBool isLoading = false.obs;
 
   @override
@@ -15,25 +17,17 @@ class ExpenseSheetController extends GetxController {
 
   loadingFun(bool val) => isLoading.value = val;
 
-  // openJourneyDetails(ExpenseModel model, bool value) {
-  //   expenseList.map((element) => element.isExpanded = false);
-  //   for (int i = 0; i < expenseList.length; i++) {
-  //     expenseList[i].isExpanded = false;
-  //   }
-  //   model.isExpanded = value;
-  // }
-
   Future getExpenseList() async {
-    // loadingFun(true);
+    loadingFun(true);
 
-    // var result = await expenseRepository.getAllExpenseListsheet();
+    var result = await expenseRepository.getAllExpenseListsheet();
 
-    // result.fold((error) {
-    //   CommonFunctions.showErrorSnackbar(error.message);
-    //   loadingFun(false);
-    // }, (data) {
-    //   expenseList.value = data;
-    //   loadingFun(false);
-    // });
+    result.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      loadingFun(false);
+    }, (data) {
+      expenseList.value = data;
+      loadingFun(false);
+    });
   }
 }

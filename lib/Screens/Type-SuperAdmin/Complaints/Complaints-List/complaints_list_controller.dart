@@ -110,9 +110,7 @@ class ComplaintsListController extends GetxController {
     super.onInit();
   }
 
-  initData() async {
-    await Future.wait([getTechnicianList(), fetchData()]);
-  }
+  initData() async => await Future.wait([getTechnicianList(), fetchData()]);
 
   @override
   void dispose() {

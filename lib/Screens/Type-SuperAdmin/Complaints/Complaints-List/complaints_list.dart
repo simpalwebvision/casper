@@ -202,9 +202,24 @@ class _ComplaintsListState extends State<ComplaintsList> {
                                                   const SizedBox(
                                                     height: 5,
                                                   ),
-                                                  DetailWidgetHelper(
-                                                    heading: "Mobile",
-                                                    value: data.mobile!,
+                                                  Row(
+                                                    children: [
+                                                      MultiDetailHelper(
+                                                        heading: "Mobile",
+                                                        value: data.mobile!,
+                                                      ),
+                                                      const Spacer(),
+                                                      InkWell(
+                                                          onTap: () => CommonFunctions()
+                                                              .launchPhoneDialer(
+                                                                  data.mobile ??
+                                                                      ""),
+                                                          child: const Icon(
+                                                              Icons.phone)),
+                                                      const SizedBox(
+                                                        width: 10,
+                                                      )
+                                                    ],
                                                   ),
                                                   const SizedBox(
                                                     height: 5,

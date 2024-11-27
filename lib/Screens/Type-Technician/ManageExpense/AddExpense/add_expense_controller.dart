@@ -1,28 +1,35 @@
+import 'dart:convert';
+
 import 'package:caspro_enterprises/Models/expense_model.dart';
+import 'package:caspro_enterprises/Models/user_profile_model.dart';
+import 'package:caspro_enterprises/Repository/exxpense_repository.dart';
+import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/common_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart' as dio;
 
 enum TravelType { startJourney, returnJourney }
 
 class AddExpenseController extends GetxController {
   // HomeRepository homeRepository = HomeRepository();
-  // ExpenseRepository expenseRepository = ExpenseRepository();
+  ExpenseRepository expenseRepository = ExpenseRepository();
   GlobalKey<FormState> formKey = GlobalKey();
   RxBool isSubmitting = false.obs;
-  // RxBool serviceValidate = false.obs;
+
   RxBool serviceCheck = false.obs;
 
   Rx<TextEditingController> ctlCallDate = TextEditingController().obs;
   Rx<TextEditingController> ctlCustomerName = TextEditingController().obs;
-  Rx<TextEditingController> ctlServiceTicketNo = TextEditingController().obs;
   Rx<TextEditingController> ctlMobile = TextEditingController().obs;
   Rx<TextEditingController> ctlTransportMode = TextEditingController().obs;
   Rx<TextEditingController> ctlStartFrom = TextEditingController().obs;
   Rx<TextEditingController> ctlToFrom = TextEditingController().obs;
   Rx<TextEditingController> ctlTotalExp = TextEditingController().obs;
+  Rx<TextEditingController> ctlOtherTransport = TextEditingController().obs;
   var selectedTravelType = TravelType.startJourney.obs;
 
   RxList<JourneyModel> journeyList = <JourneyModel>[].obs;
@@ -40,6 +47,7 @@ class AddExpenseController extends GetxController {
             ? "Start"
             : "Return",
         modeOfTransport: ctlTransportMode.value.text,
+        otherTransport: ctlOtherTransport.value.text,
         startFrom: ctlStartFrom.value.text,
         toFrom: ctlToFrom.value.text,
         totalExpense: ctlTotalExp.value.text));
@@ -58,6 +66,7 @@ class AddExpenseController extends GetxController {
     data.journeyType =
         selectedTravelType.value.name == "startJourney" ? "Start" : "Return";
     data.modeOfTransport = ctlTransportMode.value.text;
+    data.otherTransport = ctlOtherTransport.value.text;
     data.startFrom = ctlStartFrom.value.text;
     data.toFrom = ctlToFrom.value.text;
     data.totalExpense = ctlTotalExp.value.text;
@@ -108,7 +117,13 @@ class AddExpenseController extends GetxController {
     callDate = pickedDate[1];
   }
 
-  selectTransport(String problem) => ctlTransportMode.value.text = problem;
+  selectTransport(String problem) {
+    if (problem != "Other") ctlOtherTransport.value.clear();
+
+    ctlTransportMode.value.text = problem;
+
+    update();
+  }
 
   RxDouble totalExpense = 0.0.obs;
 
@@ -155,123 +170,90 @@ class AddExpenseController extends GetxController {
   RxBool errorEnable = false.obs, status = false.obs;
   RxString errorFailed = "".obs;
 
-  // Future validateServiceTicket(BuildContext context) async {
-  //   CommonFunctions.hideKeyboard(context);
-  //   if (ctlServiceTicketNo.value.text.isEmpty) {
-  //     return;
-  //   }
-  //   serviceChecking(true);
-
-  //   var result = await homeRepository.getServiceTicketValidate(
-  //       "Expenses", ctlServiceTicketNo.value.text);
-
-  //   result.fold((error) {
-  //     CommonFunctions.showErrorSnackbar(error.message);
-  //     serviceChecking(false);
-  //   }, (data) {
-  //     errorEnable.value = true;
-  //     status.value = data[0];
-  //     errorFailed.value = data[1];
-  //     if (!status.value) {
-  //       //    serviceValidate.value = true;
-  //     } else {
-  //       //    serviceValidate.value = false;
-  //     }
-  //     //}
-  //     serviceChecking(false);
-  //   });
-  // }
-
-  // ? ------------------------------------------------------------------------------------
-  // ! Add expense
-
   Future addExpenseSheet(
     dynamic document,
   ) async {
-    // var journeyString = jsonEncode(journeyList.map((e) => e.toJson()).toList());
+    var journeyString = jsonEncode(journeyList.map((e) => e.toJson()).toList());
 
-    // // if (!serviceValidate.value) {
-    // //   CommonFunctions.showErrorSnackbar("Validate Service Ticket Number.");
-    // //   return;
-    // // }
+    submittingFun(true);
+    await EasyLoading.show(
+      status: 'Uploading ....',
+      maskType: EasyLoadingMaskType.black,
+    );
+    TechnicianProfileModel userProfileModel =
+        await CommonFunctions().getTechnicianProfileData();
 
-    // submittingFun(true);
-    // await EasyLoading.show(
-    //   status: 'Uploading ....',
-    //   maskType: EasyLoadingMaskType.black,
-    // );
-    // UserProfileModel userProfileModel =
-    //     await CommonFunctions().getProfileData();
+    List<dio.MultipartFile> files = [];
+    for (var image in pickedFiles) {
+      files.add(
+          await dio.MultipartFile.fromFile(image!.path, filename: image.name));
+    }
 
-    // List<dio.MultipartFile> files = [];
-    // for (var image in pickedFiles) {
-    //   files.add(
-    //       await dio.MultipartFile.fromFile(image!.path, filename: image.name));
-    // }
-
-    // var passedBody = dio.FormData.fromMap({
-    //   "tech_id": userProfileModel.id,
-    //   "date": CommonFunctions().returnAPiDateFormat(ctlCallDate.value.text),
-    //   "customer_name": ctlCustomerName.value.text,
-    //   "service_ticket_no": ctlServiceTicketNo.value.text,
-    //   "mobile": ctlMobile.value.text,
-    //   "journey_string": journeyString,
-    //   "total_expense": totalExpense.value.toStringAsFixed(2),
-    //   "created_at": CommonFunctions().returnCurrentTime(),
-    //   "receipt": files.isEmpty ? [] : files
-    // }, dio.ListFormat.multiCompatible);
-    // // if (document != null) {
-    // //   passedBody.files.add(MapEntry(
-    // //       "receipt",
-    // //       await dio.MultipartFile.fromFile(
-    // //         document!.path,
-    // //       )));
-    // // }
+    var passedBody = dio.FormData.fromMap({
+      "tech_id": userProfileModel.id,
+      "date": CommonFunctions()
+          .convertToApplicationShowDate(ctlCallDate.value.text),
+      "customer_name": ctlCustomerName.value.text,
+      "mobile": ctlMobile.value.text,
+      "journey_string": journeyString,
+      "total_expense": totalExpense.value.toStringAsFixed(2),
+      "created_at": CommonFunctions.returnCreatedAtFormat(),
+      "receipt": files.isEmpty ? [] : files
+    }, dio.ListFormat.multiCompatible);
+    if (document != null) {
+      passedBody.files.add(MapEntry(
+          "receipt",
+          await dio.MultipartFile.fromFile(
+            document!.path,
+          )));
+    }
 
     // // print(passedBody);
     // // submittingFun(false);
     // // return;
 
-    // var result = await expenseRepository.addTechnicianExpense(passedBody);
+    var result = await expenseRepository.addTechnicianExpense(passedBody);
 
-    // result.fold((error) {
-    //   CommonFunctions.showErrorSnackbar(error.message);
-    //   submittingFun(false);
-    //   EasyLoading.dismiss();
-    // }, (data) async {
-    //   if (data != null) {
-    //     var responseJson = data.data;
+    result.fold((error) {
+      CommonFunctions.showGetxSnackBar("Error", msg: error.message);
+      submittingFun(false);
+      EasyLoading.dismiss();
+    }, (data) async {
+      if (data != null) {
+        var responseJson = data.data;
 
-    //     if (data.statusCode == 400) {
-    //       EasyLoading.dismiss();
-    //       submittingFun(false);
-    //       if (responseJson['msg'] == "Validation Error") {
-    //         responseJson['errors'].forEach((k, v) {
-    //           if (k == "total_expense") {
-    //             errorDetail.value = v;
-    //           }
-    //           // if (k == "password") {
-    //           //   errorPasswordText.value = v;
-    //           // }
-    //           // if (k == "technician_code") {
-    //           //   errorEmailText.value = v;
-    //           // }
-    //         });
+        if (data.statusCode == 400) {
+          EasyLoading.dismiss();
+          submittingFun(false);
+          if (responseJson['msg'] == "Validation Error") {
+            responseJson['errors'].forEach((k, v) {
+              if (k == "total_expense") {
+                errorDetail.value = v;
+              }
+              // if (k == "password") {
+              //   errorPasswordText.value = v;
+              // }
+              // if (k == "technician_code") {
+              //   errorEmailText.value = v;
+              // }
+            });
 
-    //         CommonFunctions.showErrorSnackbar(errorDetail.value);
-    //       } else {
-    //         CommonFunctions.showErrorSnackbar(responseJson['msg']);
-    //         EasyLoading.dismiss();
-    //         submittingFun(false);
-    //       }
-    //     } else if (data.statusCode == 200) {
-    //       EasyLoading.dismiss();
-    //       submittingFun(false);
-    //       CommonFunctions.showSuccessSnackbar(responseJson['msg']);
-    //       Get.back();
-    //     }
-    //   }
-    // });
+            CommonFunctions.showGetxSnackBar("Error", msg: errorDetail.value);
+          } else {
+            CommonFunctions.showGetxSnackBar("Error",
+                msg: responseJson['msg'], backColor: successColor);
+            EasyLoading.dismiss();
+            submittingFun(false);
+          }
+        } else if (data.statusCode == 200) {
+          EasyLoading.dismiss();
+          submittingFun(false);
+          Get.back();
+          CommonFunctions.showGetxSnackBar("Success",
+              msg: responseJson['msg'], backColor: successColor);
+        }
+      }
+    });
   }
 
   @override
@@ -285,7 +267,6 @@ class AddExpenseController extends GetxController {
   void dispose() {
     ctlCallDate.value.dispose();
     ctlCustomerName.value.dispose();
-    ctlServiceTicketNo.value.dispose();
     ctlMobile.value.dispose();
     ctlTransportMode.value.dispose();
     ctlStartFrom.value.dispose();

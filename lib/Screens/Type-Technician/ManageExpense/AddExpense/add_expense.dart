@@ -73,20 +73,7 @@ class _AddExpenseState extends State<AddExpense> {
                         return null;
                       },
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    StepperTextField(
-                      controllerValue: controller.ctlServiceTicketNo.value,
-                      inputType: TextInputType.text,
-                      hintValue: 'Service Ticket No.',
-                      validate: (val) {
-                        if (val!.isEmpty) {
-                          return "Service Ticket can't empty.";
-                        }
-                        return null;
-                      },
-                    ),
+
                     const SizedBox(
                       height: 15,
                     ),
@@ -105,7 +92,7 @@ class _AddExpenseState extends State<AddExpense> {
                       },
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
 
                     Row(
@@ -235,6 +222,21 @@ class _AddExpenseState extends State<AddExpense> {
                                         heading: "Mode Of Transport",
                                         value: journey.modeOfTransport ?? "",
                                       ),
+                                      journey.modeOfTransport == "Other"
+                                          ? Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                DetailWidgetHelper(
+                                                  heading: "Transport",
+                                                  value:
+                                                      journey.otherTransport ??
+                                                          "",
+                                                ),
+                                              ],
+                                            )
+                                          : const SizedBox(),
                                       const SizedBox(
                                         height: 5,
                                       ),
@@ -619,7 +621,29 @@ class _AddExpenseState extends State<AddExpense> {
                     }
                     return null;
                   },
-                  dropMenuList: const ["Bus", "Bike", "Auto", "Taxi", "Tempo"],
+                  dropMenuList: const ["Metro", "Bus", "Taxi", "Auto", "Other"],
+                ),
+                GetBuilder<AddExpenseController>(
+                  builder: (cntr) {
+                    return cntr.ctlTransportMode.value.text == "Other"
+                        ? Column(
+                            children: [
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              StepperTextField(
+                                controllerValue:
+                                    controller.ctlOtherTransport.value,
+                                inputType: TextInputType.text,
+                                hintValue: 'Other Transport',
+                                validate: (val) {
+                                  return null;
+                                },
+                              ),
+                            ],
+                          )
+                        : const SizedBox();
+                  },
                 ),
                 const SizedBox(
                   height: 15,
