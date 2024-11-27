@@ -22,6 +22,30 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<!-- <key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>FirebaseMessagingAutoInitEnabled</key>
+	<false/> -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is used to capture photo for uploading your Profile image and for Scanning bar.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Storage access is required to get image from your storage to upload your Profile images or documents.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We need access to speech recognition to convert your voice to text for a better experience.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We require access to the microphone to capture your voice for speech recognition.</string>
+		<!-- <key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array> -->
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

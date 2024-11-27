@@ -2,14 +2,12 @@ import 'package:caspro_enterprises/Screens/SplashScreen/splash_screen.dart';
 import 'package:caspro_enterprises/Utils/app_constants.dart';
 import 'package:caspro_enterprises/Utils/routes_names.dart';
 import 'package:caspro_enterprises/Utils/theme_data.dart';
-import 'package:caspro_enterprises/firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import 'Services/firebase_services.dart';
+// import 'Services/firebase_services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +16,10 @@ void main() {
   SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((value) async {
-    await Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform)
-        .then((value) => runApp(const MyApp()));
+    // await Firebase.initializeApp(
+    //         options: DefaultFirebaseOptions.currentPlatform)
+    //     .then((value) => runApp(const MyApp()));
+    runApp(const MyApp());
   });
 }
 
@@ -38,7 +37,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    FirebaseServices().firebaseInitServices();
+    // FirebaseServices().firebaseInitServices();
     super.initState();
   }
 

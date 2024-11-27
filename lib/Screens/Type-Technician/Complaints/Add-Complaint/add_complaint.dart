@@ -296,6 +296,26 @@ class _AddComplaintState extends State<AddComplaint> {
                   },
                   hintValue: "Size / Weight / Litter",
                 ),
+                GetBuilder<AddComplaintController>(builder: (controller) {
+                  return controller.tabController.index == 0
+                      ? const SizedBox()
+                      : Column(
+                          children: [
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            StepperTextField(
+                              controllerValue: controller.ctlQuantity.value,
+                              inputType: TextInputType.number,
+                              mLength: 4,
+                              validate: (val) {
+                                return null;
+                              },
+                              hintValue: "Quantity",
+                            ),
+                          ],
+                        );
+                }),
                 const SizedBox(
                   height: 15,
                 ),

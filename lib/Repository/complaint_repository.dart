@@ -21,7 +21,11 @@ class ComplaintRepository {
       List<ComplaintModel> complaintList = [];
       List list = response['data'];
 
-      complaintList = list.map((e) => ComplaintModel.fromJson(e)).toList();
+      complaintList = list
+          .map((e) => ComplaintModel.fromJson(e))
+          .toList()
+          .reversed
+          .toList();
 
       return right(complaintList);
     } on ServerException catch (e) {

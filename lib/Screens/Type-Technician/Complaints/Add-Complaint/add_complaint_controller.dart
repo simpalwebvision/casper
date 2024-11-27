@@ -38,6 +38,7 @@ class AddComplaintController extends GetxController
   final Rx<TextEditingController> ctlBagCode = TextEditingController().obs;
   final Rx<TextEditingController> ctlMachineName = TextEditingController().obs;
   final Rx<TextEditingController> ctlEmail = TextEditingController().obs;
+  final Rx<TextEditingController> ctlQuantity = TextEditingController().obs;
 
   final Rx<TextEditingController> ctlMachineDescription =
       TextEditingController().obs;
@@ -176,6 +177,7 @@ class AddComplaintController extends GetxController
     ctlComplaint.value.dispose();
     ctlMachineCode.value.dispose();
     ctlBagCode.value.dispose();
+    ctlQuantity.value.dispose();
     super.dispose();
   }
 }
