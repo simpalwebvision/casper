@@ -22,7 +22,6 @@ class EditExpenseController extends GetxController {
 
   Rx<TextEditingController> ctlCallDate = TextEditingController().obs;
   Rx<TextEditingController> ctlCustomerName = TextEditingController().obs;
-  Rx<TextEditingController> ctlServiceTicketNo = TextEditingController().obs;
   Rx<TextEditingController> ctlMobile = TextEditingController().obs;
   Rx<TextEditingController> ctlTransportMode = TextEditingController().obs;
   Rx<TextEditingController> ctlStartFrom = TextEditingController().obs;
@@ -47,8 +46,7 @@ class EditExpenseController extends GetxController {
     ctlCallDate.value.text = checkNullOperatorFun(expenseModel.value!.callDate);
     ctlCustomerName.value.text =
         checkNullOperatorFun(expenseModel.value!.customerName);
-    ctlServiceTicketNo.value.text =
-        checkNullOperatorFun(expenseModel.value!.serviceTicketNo);
+
     ctlMobile.value.text = checkNullOperatorFun(expenseModel.value!.mobile);
 
     journeyList.addAll(expenseModel.value!.journeyString!);
@@ -189,7 +187,6 @@ class EditExpenseController extends GetxController {
   void dispose() {
     ctlCallDate.value.dispose();
     ctlCustomerName.value.dispose();
-    ctlServiceTicketNo.value.dispose();
     ctlMobile.value.dispose();
     ctlTransportMode.value.dispose();
     ctlStartFrom.value.dispose();

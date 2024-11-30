@@ -35,7 +35,7 @@ class _AddExpenseState extends State<AddExpense> {
     return GestureDetector(
         onTap: () => CommonFunctions.hideKeyboard(context),
         child: Scaffold(
-          appBar: commonAppBar(context: context, heading: "Add Claim Sheet"),
+          appBar: commonAppBar(context: context, heading: "Add Expense"),
           body: SingleChildScrollView(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
@@ -67,9 +67,6 @@ class _AddExpenseState extends State<AddExpense> {
                       inputType: TextInputType.name,
                       hintValue: 'Customer Name',
                       validate: (val) {
-                        if (val!.isEmpty) {
-                          return "Name can't empty.";
-                        }
                         return null;
                       },
                     ),
@@ -83,11 +80,6 @@ class _AddExpenseState extends State<AddExpense> {
                       mLength: 10,
                       hintValue: 'Mobile',
                       validate: (val) {
-                        if (val!.isEmpty) {
-                          return "Mobile can't empty.";
-                        } else if (val.length < 10) {
-                          return "Mobile number should be 10 digits.";
-                        }
                         return null;
                       },
                     ),

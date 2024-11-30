@@ -161,13 +161,6 @@ class _ExpenseListState extends State<ExpenseList> {
                                             height: 10,
                                           ),
                                           DetailWidgetHelper(
-                                            heading: "Service Ticket No.",
-                                            value: data.serviceTicketNo ?? "",
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          DetailWidgetHelper(
                                             heading: "Remark",
                                             value: checkNullOperatorFun(
                                                 data.remark),

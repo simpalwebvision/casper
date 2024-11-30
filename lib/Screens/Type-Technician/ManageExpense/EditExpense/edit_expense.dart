@@ -87,22 +87,7 @@ class _EditExpenseState extends State<EditExpense> {
                                   return null;
                                 },
                               ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              StepperTextField(
-                                controllerValue:
-                                    controller.ctlServiceTicketNo.value,
-                                inputType: TextInputType.text,
-                                hintValue: 'Service Ticket No.',
-                                rOnly: true,
-                                validate: (val) {
-                                  if (val!.isEmpty) {
-                                    return "Service Ticket can't empty.";
-                                  }
-                                  return null;
-                                },
-                              ),
+
                               const SizedBox(
                                 height: 15,
                               ),

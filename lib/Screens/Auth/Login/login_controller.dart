@@ -90,11 +90,11 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     //! Admin
-    ctlMobile.value.text = "9049623444";
+    // ctlMobile.value.text = "9049623444";
     //! Manufacturing Unit
     // ctlMobile.value.text = "9670451991";
     //! Technician
-    // ctlMobile.value.text = "9324592094";
+    ctlMobile.value.text = "9324592094";
     ctlPassword.value.text = "12345";
     super.onInit();
   }

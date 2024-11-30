@@ -1,6 +1,6 @@
 class RemoteUrls {
-  static const baseUrl = "https://fastquote.co.in/cashpro/mobileAppApi";
-  static String imageUrl = "https://fastquote.co.in/cashpro";
+  static const baseUrl = "https://caspro.in/mobileAppApi";
+  static String imageUrl = "https://caspro.in";
 
   static String loginUrl = "$baseUrl/login";
   static String getMachineList = "$baseUrl/get-machine-list";
